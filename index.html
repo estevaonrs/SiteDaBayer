@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parceria Premiada - Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="index.html" class="navbar-logo">
+                <img src="logo.svg" alt="Logo Parceria Premiada">
+            </a>
+            <div class="navbar-links">
+                <img src="barrinhas.svg" alt="Separador" class="nav-separator">
+                <a href="como-funciona.html">Como Funciona</a>
+                <img src="barrinhas.svg" alt="Separador" class="nav-separator">
+                <a href="faq.html">FAQ</a>
+                <img src="barrinhas.svg" alt="Separador" class="nav-separator">
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section">
+            <div class="carousel-container">
+                <a href="#" class="hero-button">
+                    <img src="botaolaranja.svg" alt="Resgate já">
+                    <span>Resgate já</span>
+                </a>
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <img src="banner-dektop-participe.svg" alt="Banner principal da campanha">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="banner-dektop-resgate-safra-24-25.svg" alt="Outro banner da campanha">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="banner-dektop-conheca-oprograma.svg" alt="Outro banner da campanha">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-indicators">
+                </div>
+        </section>
+
+        <section id="introduction-section">
+            <div class="intro-content">
+                <p class="intro-kicker">Parceria Premiada Bayer</p>
+                <h1 class="intro-headline">
+                    Ganhe a cada venda<br>
+                    e resgate seu prêmio<br>
+                    no final de cada safra.
+                </h1>
+                <p class="intro-description">
+                    Nós incentivamos e bonificamos suas vendas, enquanto facilitamos sua rotina.
+                </p>
+                <a href="#" class="intro-button">
+                    <img src="botaolaranja.svg" alt="Saiba como funciona">
+                    <span>Saiba como funciona</span>
+                </a>
+            </div>
+            <div class="intro-image">
+                <img src="home-introducao.svg" alt="Produtor rural com um tablet no campo">
+            </div>
+        </section>
+
+        <section id="what-is-section">
+      <h2 class="what-is-title">O que é?</h2>
+      <img class="what-is-lines" src="linhas.svg" alt="">
+
+            <img class="what-is-celular" src="celular.svg" alt="Demonstração do aplicativo do programa em um celular">
+      
+      <div class="what-is-description">
+        <p>
+          A Parceria Premiada Bayer é um programa de benefícios que premia a dedicação da equipe de vendas, e da melhor forma possível, <strong>em dinheiro!</strong>
+          <br>
+          <span>Fuciona assim:</span>
+        </p>
+      </div>
+    </section>
+    </main>
+
+    <script>
+        // --- LÓGICA DO CARROSSEL ---
+        const slidesContainer = document.querySelector('.carousel-slides');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicatorsContainer = document.querySelector('.carousel-indicators');
+        let currentIndex = 0;
+        let slideInterval;
+
+        function goToSlide(index) {
+            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+            document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+            document.querySelectorAll('.dot')[index].classList.add('active');
+            currentIndex = index;
+        }
+
+        function createIndicators() {
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                    resetInterval();
+                });
+                indicatorsContainer.appendChild(dot);
+            });
+        }
+        
+        function nextSlide() {
+            const nextIndex = (currentIndex + 1) % slides.length;
+            goToSlide(nextIndex);
+        }
+
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+
+        function initCarousel() {
+            if (slides.length > 0) {
+                createIndicators();
+                goToSlide(0);
+                startInterval();
+            }
+        }
+        
+        initCarousel();
+    </script>
+    
+</body>
+</html>

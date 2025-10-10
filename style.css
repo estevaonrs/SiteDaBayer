@@ -1,0 +1,191 @@
+/* --- 1. Reset Básico e Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFFFFF;
+    color: #00213A;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- 2. Estilos Comuns e Reutilizados --- */
+.container-base {
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative; /* Essencial para o posicionamento dos filhos */
+}
+.hero-button span,
+.intro-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: 16px;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* --- 3. Header e Navbar --- */
+.main-header {
+    width: 100%;
+    background-color: #FFFFFF;
+}
+.navbar {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 133px;
+    padding: 0 5.55%; /* 80px / 1440px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-logo img { width: 128.7px; height: 84.78px; }
+.navbar-links { display: flex; align-items: center; }
+.navbar-links a { font-weight: 400; font-size: 16px; line-height: 24px; }
+.navbar-links a:not(:last-child) { margin-right: 24px; }
+.nav-separator { width: 10.45px; height: 19px; margin-right: 16px; }
+
+/* --- 4. Seção Hero (Carrossel) --- */
+#hero-section {
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+}
+.carousel-container {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-button {
+    position: absolute;
+    width: 25.27%; /* 364px / 1440px */
+    height: 40px;
+    z-index: 10;
+    display: block;
+    /* Centralização flexível e mais robusta */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 49px;
+}
+/* Estilos do carrossel permanecem os mesmos */
+.carousel-slides { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
+.carousel-slide { min-width: 100%; height: 100%; }
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+.carousel-indicators { width: 100%; height: 41px; display: flex; justify-content: center; align-items: center; gap: 16px; }
+.dot { width: 8px; height: 8px; background-color: transparent; border: 1px solid #00213A; border-radius: 50%; cursor: pointer; transition: background-color 0.3s ease; }
+.dot.active { background-color: #00213A; }
+
+/* --- 5. Seção de Introdução (Layout Proporcional) --- */
+#introduction-section {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 960px;
+    background-color: #E5F2F8;
+    position: relative;
+    overflow: hidden;
+}
+.intro-content {
+    position: absolute;
+    /* Valores em % calculados a partir da altura da seção (960px) e largura (1440px) */
+    top: 23.85%;   /* 229px / 960px */
+    left: 5.55%;   /* 80px / 1440px */
+    width: 45%;    /* Aprox. 650px / 1440px */
+}
+.intro-kicker {
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 36px;
+    font-size: clamp(1.5rem, 2.5vw, 36px); /* Fonte que escala */
+}
+.intro-headline {
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.15;
+    margin-bottom: 36px;
+    font-size: clamp(2.5rem, 4.86vw, 70px); /* Fonte que escala (70px em 1440px) */
+}
+.intro-description {
+    font-weight: 700;
+    margin-bottom: 36px;
+    font-size: clamp(1.25rem, 1.94vw, 28px); /* Fonte que escala */
+}
+.intro-button {
+    position: relative;
+    display: inline-block;
+    width: 364px;
+    height: 40px;
+}
+.intro-button img {
+    width: 100%;
+    height: 100%;
+}
+.intro-image {
+    position: absolute;
+    top: 14.68%;   /* 141px / 960px */
+    left: 51.87%;  /* 747px / 1440px */
+    width: 48.12%; /* 693px / 1440px */
+    height: 70.62%;/* 678px / 960px */
+}
+.intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Contain é mais seguro para não cortar a imagem ao escalar */
+}
+
+/* --- 6. Seção "O que é?" (Layout Proporcional) --- */
+#what-is-section {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 1026px; /* Reduzi um pouco a altura para melhor encaixe */
+    background-color: #E5F2F8;
+    position: relative;
+    overflow: hidden;
+}
+.what-is-title {
+    position: absolute;
+    top: 3.5%;      /* 36px / 1026px */
+    left: 5.55%;    /* 80px / 1440px */
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 36px);
+}
+.what-is-lines {
+    position: absolute;
+    top: 4.1%;      /* 42px / 1026px */
+    left: 16.6%;    /* 239px / 1440px */
+    width: 83.38%;  /* 1200.7px / 1440px */
+}
+.what-is-celular {
+    position: absolute;
+    top: 20%;       /* 205px / 1026px */
+    left: 4.44%;    /* 64px / 1440px */
+    width: 91.11%;  /* 1312px / 1440px */
+}
+.what-is-description {
+    position: absolute;
+    top: 51.16%;    /* 525px / 1026px */
+    left: 45.55%;   /* 656px / 1440px */
+    width: 43.05%;  /* 620px / 1440px */
+    font-size: clamp(1rem, 1.66vw, 24px); /* Fonte que escala */
+    font-weight: 400;
+    line-height: 1.5;
+}
+.what-is-description strong {
+    font-weight: 700;
+}
+.what-is-description span {
+    display: block;
+    margin-top: 24px;
+}
