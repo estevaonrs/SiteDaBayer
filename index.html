@@ -73,22 +73,89 @@
         </section>
 
         <section id="what-is-section">
-      <h2 class="what-is-title">O que é?</h2>
-      <img class="what-is-lines" src="linhas.svg" alt="">
+            <h2 class="what-is-title">O que é?</h2>
+            <img class="what-is-lines" src="linhas.svg" alt="">
 
-            <img class="what-is-celular" src="celular.svg" alt="Demonstração do aplicativo do programa em um celular">
-      
-      <div class="what-is-description">
-        <p>
-          A Parceria Premiada Bayer é um programa de benefícios que premia a dedicação da equipe de vendas, e da melhor forma possível, <strong>em dinheiro!</strong>
-          <br>
-          <span>Fuciona assim:</span>
-        </p>
-      </div>
-    </section>
+                    <img class="what-is-celular" src="celular.svg" alt="Demonstração do aplicativo do programa em um celular">
+            
+            <div class="what-is-description">
+                <p>
+                A Parceria Premiada Bayer é um programa de benefícios que premia a dedicação da equipe de vendas, e da melhor forma possível, <strong>em dinheiro!</strong>
+                <br>
+                <span>Fuciona assim:</span>
+                </p>
+            </div>
+        </section>
+
+        <section id="passo-a-passo-section">
+            <div class="step-item step-identificacao">
+                <img src="identificacao.svg" alt="Ícone de Identificação" class="step-icon">
+                <div class="step-text">
+                    <h3>Identificação</h3>
+                    <p>Cadastramento de CTVs e Masters.</p>
+                </div>
+            </div>
+
+            <div class="step-item step-participacao">
+                <img src="participacao.svg" alt="Ícone de Participação" class="step-icon">
+                <div class="step-text">
+                    <h3>Participação</h3>
+                    <p>Aceite das campanhas da Safra e venda dos produtos Bayer.</p>
+                </div>
+            </div>
+
+            <div class="step-item step-apuracao">
+                <img src="apuracao.svg" alt="Ícone de Apuração" class="step-icon">
+                <div class="step-text">
+                    <h3>Apuração</h3>
+                    <p>Apontamento e validação das notas fiscais.</p>
+                </div>
+            </div>
+
+            <div class="step-item step-pagamento">
+                <img src="pagamento.svg" alt="Ícone de Pagamento" class="step-icon">
+                <div class="step-text">
+                    <h3>Pagamento</h3>
+                    <p>Do seu perfil na plataforma direto para sua conta bancária.</p>
+                </div>
+            </div>
+
+            <div class="passo-a-passo-buttons">
+                <a href="#" class="cta-button button-left">
+                    <img src="botaolaranja.svg" alt="">
+                    <span>Saiba mais CTV</span>
+                </a>
+                <a href="#" class="cta-button button-right">
+                    <img src="botaolaranja.svg" alt="">
+                    <span>Saiba mais Master</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="como-fazer-parte-section">
+            <div class="como-fazer-parte-content">
+                <div class="title-group">
+                    <h2>Como fazer parte?</h2>
+                    <img src="barrinhas2.svg" class="title-bars" alt="">
+                </div>
+                <h3>Você é parte fundamental<br>deste programa.</h3>
+                <p>
+                    Para se cadastrar na plataforma basta você
+                    ser membro ativo dos nossos canais de venda,
+                    estar com todos os dados atualizados e querer
+                    ganhar a cada venda.
+                </p>
+            </div>
+
+            <img src="celular2.svg" alt="Demonstração do aplicativo em um celular" class="celular2-image">
+        </section>
     </main>
 
-    <script>
+    <a href="#" class="back-to-top-button">
+        <img src="voltaraotopo.svg" alt="Voltar ao topo">
+    </a>
+
+<script>
         // --- LÓGICA DO CARROSSEL ---
         const slidesContainer = document.querySelector('.carousel-slides');
         const slides = document.querySelectorAll('.carousel-slide');
@@ -97,9 +164,13 @@
         let slideInterval;
 
         function goToSlide(index) {
-            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+            if (slidesContainer) {
+                slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+            }
             document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
-            document.querySelectorAll('.dot')[index].classList.add('active');
+            if (document.querySelectorAll('.dot')[index]) {
+                document.querySelectorAll('.dot')[index].classList.add('active');
+            }
             currentIndex = index;
         }
 
@@ -138,6 +209,35 @@
         }
         
         initCarousel();
+
+        // --- SCRIPT PARA O BOTÃO VOLTAR AO TOPO ---
+        const backToTopButton = document.querySelector('.back-to-top-button');
+        const triggerSection = document.querySelector('#como-fazer-parte-section');
+
+        if (backToTopButton && triggerSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        const isScrollingDown = entry.boundingClientRect.top < 0;
+                        if (!isScrollingDown) {
+                            backToTopButton.classList.remove('visible');
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(triggerSection);
+
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
     </script>
     
 </body>

@@ -187,5 +187,197 @@ img {
 }
 .what-is-description span {
     display: block;
-    margin-top: 24px;
+    margin-top: 12px;
+}
+
+/* --- 7. Seção "Passo a Passo" (Layout Proporcional) --- */
+/* --- 7. Seção "Passo a Passo" (Layout Proporcional) --- */
+#passo-a-passo-section {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 433px;
+    background-color: #0391DF;
+    position: relative;
+}
+
+/* --- Passos --- */
+
+/* Classe base com estilos comuns a todos os passos */
+.step-item {
+    position: absolute;
+    top: -83px; /* Posição vertical é a mesma para todos */
+    /* Para manter a consistência visual do print, usaremos as mesmas dimensões para todos */
+    width: 14.58%;    /* 210px / 1440px */
+    height: 292px;
+}
+
+/* Posições horizontais de cada passo */
+.step-identificacao { left: 9.02%; }   /* 130px / 1440px */
+.step-participacao  { left: 31.32%; }  /* 451px / 1440px */
+.step-apuracao      { left: 53.61%; }  /* 772px / 1440px */
+.step-pagamento     { left: 75.9%; }   /* 1093px / 1440px */
+
+
+.step-icon {
+    position: absolute;
+    width: 72.38%; /* 152px / 210px (mantendo proporção do ícone) */
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+}
+
+.step-text {
+    position: absolute;
+    width: 100%;
+    top: 65%; /* Ajustado para alinhar melhor com o ícone (192px / 292px) */
+    left: 0;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 1.3;
+    padding: 0 5px; /* Evita que o texto encoste nas bordas */
+}
+
+.step-text h3 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(1.25rem, 1.94vw, 28px);
+    margin-bottom: 8px;
+}
+
+.step-text p {
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(0.875rem, 1.25vw, 18px);
+}
+
+/* --- Botões --- */
+
+.passo-a-passo-buttons {
+    position: absolute;
+    /* W 748px, H 40px, X 346px, Y 289px */
+    width: 51.94%;    /* 748px / 1440px */
+    height: 40px;
+    left: 24.02%;     /* 346px / 1440px */
+    top: 66.74%;      /* 289px / 433px */
+}
+
+/* Estilo base para os botões dentro do container */
+.cta-button {
+    position: absolute;
+    display: block;
+    height: 40px;
+}
+
+/* Posição e tamanho do botão da ESQUERDA */
+.button-left {
+    /* W 364px, X 0px */
+    width: 48.66%;  /* 364px / 748px (largura do pai) */
+    left: 0;
+    top: 0;
+}
+
+/* Posição e tamanho do botão da DIREITA */
+.button-right {
+    /* W 364px, X 384px */
+    width: 48.66%;  /* 364px / 748px (largura do pai) */
+    left: 51.33%;   /* 384px / 748px (largura do pai) */
+    top: 0;
+}
+
+/* O estilo para o texto (span) continua o mesmo, 
+   pois já centraliza perfeitamente o conteúdo. */
+.cta-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: 16px;
+    pointer-events: none;
+    white-space: nowrap;
+}
+/* --- 8. Seção "Como Fazer Parte" (Layout Proporcional) --- */
+#como-fazer-parte-section {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 815px;
+    background-color: #E5F2F8;
+    position: relative;
+    overflow: hidden;
+}
+.celular2-image {
+    position: absolute;
+    width: 48.6%;
+    top: 17.9%;
+    left: 51.38%;
+}
+.como-fazer-parte-content {
+    position: absolute;
+    top: 35.58%;
+    left: 0;
+    width: 52.67%;
+    padding-left: 4.44%;
+}
+.title-group {
+    position: relative;
+    height: 42px;
+    margin-bottom: 36px;
+}
+.title-group h2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 36px);
+}
+.title-group .title-bars {
+    position: absolute;
+    top: 6px;
+    height: 30.01px;
+
+    /* --- LÓGICA DE ALINHAMENTO ATUALIZADA --- */
+    /* Removemos 'left' e 'width' para usar 'right' */
+    left: auto; 
+    
+    /* Posiciona o final das barras para alinhar com o início da imagem do celular */
+    right: 2.45%; 
+    
+    /* Largura original mantida para consistência visual */
+    width: 59.58%; 
+}
+.como-fazer-parte-content h3 {
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 36px;
+    font-size: clamp(2rem, 3.75vw, 54px);
+}
+.como-fazer-parte-content p {
+    font-weight: 400;
+    font-size: clamp(1.25rem, 1.94vw, 28px);
+    line-height: 1.5;
+    max-width: 588px;
+}
+
+/* --- Botão Voltar ao Topo --- */
+.back-to-top-button {
+    position: fixed;
+    width: 171.5px;
+    height: 40px;
+    top: 47px;
+    /* --- Cálculo Corrigido --- */
+    /* (100vw - 1440px) / 2  => margem fora do site */
+    /* + 80.5px => distância correta da borda direita do site */
+    right: calc( (100vw - 1440px) / 2 + 80.5px );
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease-in-out;
+}
+.back-to-top-button.visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
 }
