@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Parceria Premiada</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/images/common/logo.svg" alt="Logo Parceria Premiada">
+            </a>
+            <div class="navbar-links">
+                <a href="index.html">Início</a>
+                <img src="assets/images/common/nav-separator.svg" alt="Separador" class="nav-separator">
+                <a href="como-funciona.html">Como Funciona</a>
+                <img src="assets/images/common/nav-separator.svg" alt="Separador" class="nav-separator">
+                <a href="faq.html">FAQ</a>
+                <img src="assets/images/common/nav-separator.svg" alt="Separador" class="nav-separator">
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+    </main>
+    
+    <footer id="site-footer">
+        <div class="footer-top">
+            <div class="footer-text-content">
+                <h2>Baixe o app.</h2>
+                <p>Ative as notificações. Pelo App nossa troca é mais dinâmica e segura, baixe-o e fique atento(a) aos nossos comunicados. Assim, o sucesso da nossa Parceria Premiada é ainda maior.</p>
+            </div>
+            <div class="footer-app-stores">
+                <a href="#" class="app-store-link"><img src="assets/images/footer/google-play-badge.svg" alt="Baixar na Google Play Store"></a>
+                <a href="#" class="app-store-link"><img src="assets/images/footer/apple-app-store-badge.svg" alt="Baixar na Apple App Store"></a>
+            </div>
+        </div>
+        <div class="footer-middle">
+            <img src="assets/images/footer/decorative-stripe.svg" alt="Listra decorativa" class="footer-stripe">
+            <p class="footer-subtitle">Impulsionando o seu negócio para o futuro!</p>
+            <img src="assets/images/footer/bayer-logo.svg" alt="Logo da Bayer" class="footer-bayer-logo">
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-contact">
+                <img src="assets/images/footer/converse-bayer-logo.svg" alt="Converse Bayer" class="contact-logo">
+                <p class="contact-phone">0800 011 5560 *</p>
+                <p class="contact-disclaimer">* Central de atendimento: Segunda a Sábado | 7h - 19h (exceto feriados). Em caso de emergência, nosso atendimento ocorre 24 horas, todos os dias da semana.</p>
+            </div>
+            <div class="footer-social">
+                <h3>Nossos canais:</h3>
+                <div class="social-icons-list">
+                    <a href="#"><img src="assets/images/footer/icon-web.svg" alt="Website"></a>
+                    <a href="#"><img src="assets/images/footer/icon-facebook.svg" alt="Facebook"></a>
+                    <a href="#"><img src="assets/images/footer/icon-instagram.svg" alt="Instagram"></a>
+                    <a href="#"><img src="assets/images/footer/icon-youtube.svg" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top-button">
+        <img src="assets/images/common/back-to-top.svg" alt="Voltar ao topo">
+    </a>
+
+<script>
+    // Apenas os scripts que não dependem de seções específicas da home
+    const backToTopButton = document.querySelector('.back-to-top-button');
+    if (backToTopButton) {
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+            if (currentScrollTop > window.innerHeight) {
+                if (currentScrollTop < lastScrollTop) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+        });
+    }
+</script>
+    
+</body>
+</html>

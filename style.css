@@ -8,7 +8,17 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #FFFFFF;
     color: #00213A;
+    overflow-x: hidden;
+
 }
+
+.page-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    transform-origin: top center;
+    transition: transform 0.1s ease-out;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -645,9 +655,7 @@ img {
     margin: 0 auto;
     height: 1012px;
     position: relative;
-    /* Adicionaremos um background para a parte de baixo depois */
 }
-
 .footer-top {
     width: 100%;
     height: 320px;
@@ -656,7 +664,6 @@ img {
     top: 0;
     left: 0;
 }
-
 .footer-text-content {
     position: absolute;
     width: 411.4px;
@@ -664,34 +671,30 @@ img {
     top: 80px;
     color: #FFFFFF;
 }
-
 .footer-text-content h2 {
-    font-weight: 700; /* Bold */
+    font-weight: 700;
     font-style: italic;
     font-size: 36px;
-    margin-bottom: 15px; /* Espaçamento entre título e parágrafo */
+    margin-bottom: 15px;
 }
-
 .footer-text-content p {
-    font-weight: 400; /* Regular */
+    font-weight: 400;
     font-size: 18px;
     line-height: 1.4;
 }
-
 .footer-app-stores {
     position: absolute;
-    left: 1162.71px;
+    right: 80px;
     top: 82px;
     display: flex;
     flex-direction: column;
-    gap: 29.78px; /* Espaço entre os dois botões de loja */
+    gap: 29.78px;
+    align-items: flex-end;
 }
-
 .footer-app-stores .app-store-link img {
     width: 199.82px;
-    height: auto; /* Mantém a proporção */
+    height: auto;
 }
-
 .footer-middle {
     position: absolute;
     width: 100%;
@@ -700,7 +703,6 @@ img {
     top: 320px;
     background-color: #FFFFFF;
 }
-
 .footer-stripe {
     position: absolute;
     width: 100%;
@@ -708,23 +710,21 @@ img {
     left: 0;
     top: 0;
 }
-
 .footer-subtitle {
     position: absolute;
     left: 78px;
     top: 110px;
-    font-weight: 700; /* Bold */
+    font-weight: 700;
     font-size: 28px;
+    width: 544px;
 }
-
 .footer-bayer-logo {
     position: absolute;
     width: 91.2px;
     height: 91.2px;
-    left: 1272px;
+    right: 80px;
     top: 80px;
 }
-
 .footer-bottom {
     position: absolute;
     width: 100%;
@@ -734,7 +734,6 @@ img {
     background-color: #00213A;
     color: #FFFFFF;
 }
-
 .footer-contact {
     position: absolute;
     width: 728px;
@@ -742,60 +741,126 @@ img {
     left: 76px;
     top: 80px;
 }
-
 .contact-logo {
     position: absolute;
     width: 232.37px;
     height: 106.44px;
-    left: 1.6px; /* 77.6 - 76 */
-    top: 0; /* 80 - 80 */
+    left: 1.6px;
+    top: 0;
 }
-
 .contact-phone {
     position: absolute;
     width: 216px;
-    left: 10px; /* 86 - 76 */
-    top: 122px; /* 202 - 80 */
+    left: 10px;
+    top: 122px;
     font-size: 28px;
     color: #FFFFFF;
 }
-
 .contact-disclaimer {
     position: absolute;
-    width: 100%; /* 728px */
-    left: 0; /* 76 - 76 */
-    top: 206px; /* 286 - 80 */
-    font-weight: 400; /* Regular */
+    width: 100%;
+    left: 0;
+    top: 206px;
+    font-weight: 400;
     font-size: 18px;
     line-height: 1.3;
     color: #FFFFFF;
 }
-
 .footer-social {
     position: absolute;
     width: 333.12px;
-    left: 1030.54px;
+    right: 80px;
     top: 80px;
 }
-
 .footer-social h3 {
-    font-weight: 700; /* Bold */
+    font-weight: 700;
     font-size: 28px;
-    margin-bottom: 54px; /* Espaço entre título e ícones (166 - 80 - 32) */
+    margin-bottom: 54px;
 }
-
 .social-icons-list {
     display: flex;
     align-items: center;
-    gap: 26px; /* Espaço entre os ícones */
+    gap: 26px;
+}
+.social-icons-list a:nth-child(1) img { width: 63.62px; }
+.social-icons-list a:nth-child(2) img { width: 63.62px; }
+.social-icons-list a:nth-child(3) img { width: 63.62px; }
+.social-icons-list a:nth-child(4) img { width: 63.62px; }
+
+/* --- 13. Páginas de Conteúdo (Placeholder) --- */
+.page-content {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 0 20px;
+    min-height: 50vh;
+}
+.page-content h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+.page-content p {
+    font-size: 18px;
+    line-height: 1.6;
 }
 
-/* Tamanhos individuais dos ícones */
-.social-icons-list a:nth-child(1) img { width: 63.62px; } /* web - ajustado para ser um ícone */
-.social-icons-list a:nth-child(2) img { width: 63.62px; } /* facebook */
-.social-icons-list a:nth-child(3) img { width: 63.62px; } /* instagram */
-.social-icons-list a:nth-child(4) img { width: 63.62px; } /* youtube */
 
+/* --- 14. Página "Como Funciona" - Seção Intro CTV --- */
+#ctv-intro-section {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 876px;
+    background-color: #E5F2F8;
+    position: relative;
+    overflow: hidden;
+}
+.ctv-intro-title-group {
+    position: absolute;
+    width: 1360px;
+    height: 42px;
+    left: 80px;
+    top: 126px;
+}
+.ctv-intro-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 36px;
+}
+.ctv-intro-lines {
+    position: absolute;
+    width: 1018px;
+    height: 30.01px;
+    left: 342px;
+    top: 6px;
+}
+.ctv-intro-content {
+    position: absolute;
+    width: 525px;
+    left: 77px;
+    top: 415px;
+    color: #00213A;
+}
+.ctv-intro-headline {
+    font-weight: 300;
+    font-style: italic;
+    font-size: 70px;
+    line-height: 1.1;
+    margin-bottom: 36px;
+}
+.ctv-intro-description {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.2;
+}
+.ctv-intro-illustration {
+    position: absolute;
+    width: 807px;
+    height: 680px;
+    left: 633px;
+    top: 194px;
+}
 
 /* --- Botão Voltar ao Topo --- */
 .back-to-top-button {
