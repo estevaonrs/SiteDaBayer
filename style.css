@@ -8,17 +8,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #FFFFFF;
     color: #00213A;
-    overflow-x: hidden;
-
 }
-
-.page-wrapper {
-    max-width: 1440px;
-    margin: 0 auto;
-    transform-origin: top center;
-    transition: transform 0.1s ease-out;
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -30,23 +20,43 @@ img {
 
 /* --- 2. Estilos Comuns e Reutilizados --- */
 .container-base {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
     position: relative;
 }
+
+/* --- MODIFICAÇÃO PARA CENTRALIZAÇÃO PERFEITA DO TEXTO DO BOTÃO --- */
+
+/* 1. Transformamos os links dos botões em containers Grid */
+.hero-button,
+.intro-button,
+.cta-button,
+.scams-button {
+    display: grid;
+    place-items: center; /* Centraliza tudo (horizontal e verticalmente) */
+}
+
+/* 2. Colocamos a imagem e o texto na mesma célula do grid (um sobre o outro) */
+.hero-button > *,
+.intro-button > *,
+.cta-button > *,
+.scams-button > * {
+    grid-area: 1 / 1;
+}
+
+/* 3. Estilo do texto, agora sem a necessidade de position absolute e transform */
 .hero-button span,
 .intro-button span,
 .cta-button span,
 .scams-button span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1.111vw; /* 16px */
     pointer-events: none;
     white-space: nowrap;
+    z-index: 2; /* Garante que o texto fique sobre a imagem */
 }
+/* --- FIM DA MODIFICAÇÃO --- */
+
 
 /* --- 3. Header e Navbar --- */
 .main-header {
@@ -54,54 +64,99 @@ img {
     background-color: #FFFFFF;
 }
 .navbar {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
-    height: 133px;
-    padding: 0 5.55%; /* 80px / 1440px */
+    height: 9.236vw; /* 133px */
+    padding: 0 5.55%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.navbar-logo img { width: 128.7px; height: 84.78px; }
-.navbar-links { display: flex; align-items: center; }
-.navbar-links a { font-weight: 400; font-size: 16px; line-height: 24px; }
-.navbar-links a:not(:last-child) { margin-right: 24px; }
-.nav-separator { width: 10.45px; height: 19px; margin-right: 16px; }
+.navbar-logo img {
+    width: 8.938vw; /* 128.7px */
+    height: 5.888vw; /* 84.78px */
+}
+.navbar-links {
+    display: flex;
+    align-items: center;
+}
+.navbar-links a {
+    font-weight: 400;
+    font-size: 1.111vw; /* 16px */
+    line-height: 1.667vw; /* 24px */
+}
+.navbar-links a:not(:last-child) {
+    margin-right: 1.667vw; /* 24px */
+}
+.nav-separator {
+    width: 0.726vw; /* 10.45px */
+    height: 1.319vw; /* 19px */
+    margin-right: 1.111vw; /* 16px */
+}
 
 /* --- 4. Seção Hero (Carrossel) --- */
 #hero-section {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
     position: relative;
 }
 .carousel-container {
     width: 100%;
-    height: 600px;
+    height: 41.667vw; /* 600px */
     position: relative;
     overflow: hidden;
 }
 .hero-button {
     position: absolute;
-    width: 25.27%; /* 364px / 1440px */
-    height: 40px;
+    width: 25.27%; /* Mantido em % */
+    height: 2.778vw; /* 40px */
     z-index: 10;
-    display: block;
+    display: grid; /* Modificado */
     left: 50%;
     transform: translateX(-50%);
-    bottom: 49px;
+    bottom: 3.403vw; /* 49px */
 }
-.carousel-slides { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
-.carousel-slide { min-width: 100%; height: 100%; }
-.carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
-.carousel-indicators { width: 100%; height: 41px; display: flex; justify-content: center; align-items: center; gap: 16px; }
-.dot { width: 8px; height: 8px; background-color: transparent; border: 1px solid #00213A; border-radius: 50%; cursor: pointer; transition: background-color 0.3s ease; }
-.dot.active { background-color: #00213A; }
+.carousel-slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+}
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.carousel-indicators {
+    width: 100%;
+    height: 2.847vw; /* 41px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.111vw; /* 16px */
+}
+.dot {
+    width: 0.556vw; /* 8px */
+    height: 0.556vw; /* 8px */
+    background-color: transparent;
+    border: 1px solid #00213A; /* Mantido em 1px por ser muito fino */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.dot.active {
+    background-color: #00213A;
+}
 
 /* --- 5. Seção de Introdução --- */
 #introduction-section {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
-    height: 960px;
+    height: 66.667vw; /* 960px */
     background-color: #E5F2F8;
     position: relative;
     overflow: hidden;
@@ -115,26 +170,26 @@ img {
 .intro-kicker {
     font-weight: 700;
     font-style: italic;
-    margin-bottom: 36px;
-    font-size: clamp(1.5rem, 2.5vw, 36px);
+    margin-bottom: 2.5vw; /* 36px */
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem); /* Mantido clamp */
 }
 .intro-headline {
     font-weight: 300;
     font-style: italic;
     line-height: 1.15;
-    margin-bottom: 36px;
-    font-size: clamp(2.5rem, 4.86vw, 70px);
+    margin-bottom: 2.5vw; /* 36px */
+    font-size: clamp(2.5rem, 4.86vw, 4.86rem); /* Mantido clamp */
 }
 .intro-description {
     font-weight: 700;
-    margin-bottom: 36px;
-    font-size: clamp(1.25rem, 1.94vw, 28px);
+    margin-bottom: 2.5vw; /* 36px */
+    font-size: clamp(1.25rem, 1.94vw, 1.94rem); /* Mantido clamp */
 }
 .intro-button {
     position: relative;
-    display: inline-block;
-    width: 364px;
-    height: 40px;
+    display: inline-grid; /* Modificado */
+    width: 25.278vw; /* 364px */
+    height: 2.778vw; /* 40px */
 }
 .intro-button img {
     width: 100%;
@@ -155,9 +210,9 @@ img {
 
 /* --- 6. Seção "O que é?" --- */
 #what-is-section {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
-    height: 1026px;
+    height: 71.25vw; /* 1026px */
     background-color: #E5F2F8;
     position: relative;
     overflow: hidden;
@@ -168,7 +223,7 @@ img {
     left: 5.55%;
     font-weight: 700;
     font-style: italic;
-    font-size: clamp(1.5rem, 2.5vw, 36px);
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem); /* Mantido clamp */
 }
 .what-is-lines {
     position: absolute;
@@ -187,7 +242,7 @@ img {
     top: 51.16%;
     left: 45.55%;
     width: 43.05%;
-    font-size: clamp(1rem, 1.66vw, 24px);
+    font-size: clamp(1rem, 1.66vw, 1.66rem); /* Mantido clamp */
     font-weight: 400;
     line-height: 1.5;
 }
@@ -196,22 +251,22 @@ img {
 }
 .what-is-description span {
     display: block;
-    margin-top: 12px;
+    margin-top: 0.833vw; /* 12px */
 }
 
 /* --- 7. Seção "Passo a Passo" --- */
 #step-by-step-section {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
-    height: 433px;
+    height: 30.069vw; /* 433px */
     background-color: #0391DF;
     position: relative;
 }
 .step-item {
     position: absolute;
-    top: -83px;
+    top: -5.764vw; /* -83px */
     width: 14.58%;
-    height: 292px;
+    height: 20.278vw; /* 292px */
 }
 .step-identification { left: 9.02%; }
 .step-participation  { left: 31.32%; }
@@ -232,30 +287,30 @@ img {
     color: #FFFFFF;
     text-align: center;
     line-height: 1.3;
-    padding: 0 5px;
+    padding: 0 0.347vw; /* 5px */
 }
 .step-text h3 {
     font-weight: 700;
     font-style: italic;
-    font-size: clamp(1.25rem, 1.94vw, 28px);
-    margin-bottom: 8px;
+    font-size: clamp(1.25rem, 1.94vw, 1.94rem); /* Mantido clamp */
+    margin-bottom: 0.556vw; /* 8px */
 }
 .step-text p {
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(0.875rem, 1.25vw, 18px);
+    font-size: clamp(0.875rem, 1.25vw, 1.25rem); /* Mantido clamp */
 }
 .step-by-step-buttons {
     position: absolute;
     width: 51.94%;
-    height: 40px;
+    height: 2.778vw; /* 40px */
     left: 24.02%;
     top: 66.74%;
 }
 .cta-button {
     position: absolute;
-    display: block;
-    height: 40px;
+    display: grid; /* Modificado */
+    height: 2.778vw; /* 40px */
 }
 .button-left {
     width: 48.66%;
@@ -270,9 +325,9 @@ img {
 
 /* --- 8. Seção "Como Fazer Parte" --- */
 #how-to-join-section {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
-    height: 815px;
+    height: 56.597vw; /* 815px */
     background-color: #E5F2F8;
     position: relative;
     overflow: hidden;
@@ -292,8 +347,8 @@ img {
 }
 .title-group {
     position: relative;
-    height: 42px;
-    margin-bottom: 36px;
+    height: 2.917vw; /* 42px */
+    margin-bottom: 2.5vw; /* 36px */
 }
 .title-group h2 {
     position: absolute;
@@ -301,12 +356,12 @@ img {
     top: 0;
     font-weight: 700;
     font-style: italic;
-    font-size: clamp(1.5rem, 2.5vw, 36px);
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem); /* Mantido clamp */
 }
 .title-group .title-bars {
     position: absolute;
-    top: 6px;
-    height: 30.01px;
+    top: 0.417vw; /* 6px */
+    height: 2.084vw; /* 30.01px */
     left: 50.23%;
     width: 59.57%;
 }
@@ -314,19 +369,19 @@ img {
     font-weight: 300;
     font-style: italic;
     line-height: 1.2;
-    margin-bottom: 36px;
-    font-size: clamp(2rem, 3.75vw, 54px);
+    margin-bottom: 2.5vw; /* 36px */
+    font-size: clamp(2rem, 3.75vw, 3.75rem); /* Mantido clamp */
 }
 .join-content p {
     font-weight: 400;
-    font-size: clamp(1.25rem, 1.94vw, 28px);
+    font-size: clamp(1.25rem, 1.94vw, 1.94rem); /* Mantido clamp */
     line-height: 1.5;
-    max-width: 588px;
+    max-width: 40.833vw; /* 588px */
 }
 
 /* --- 9. Seção "Etapas de Cadastro" --- */
 #registration-steps-section {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
     height: 500vh;
     background-color: #E5F2F8;
@@ -340,7 +395,7 @@ img {
     position: sticky;
     top: 0;
     height: 100vh;
-    max-height: 590px;
+    max-height: 40.972vw; /* 590px */
     width: 100%;
     overflow: hidden;
 }
@@ -405,7 +460,7 @@ img {
     top: 47.46%;
     left: 14.24%;
     width: 16.32%;
-    font-size: 24px;
+    font-size: 1.667vw; /* 24px */
     font-weight: 400;
 }
 .registration-canvas.state-3 .step-blue-bar {
@@ -430,14 +485,14 @@ img {
     width: 26.32%;
 }
 .step-content-2 h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 1.667vw; /* 24px */
+    margin-bottom: 0.694vw; /* 10px */
     font-weight: 700;
 }
 .step-content-2 .list-columns ul {
     list-style: none;
     padding: 0;
-    font-size: 16px;
+    font-size: 1.111vw; /* 16px */
     line-height: 1.6;
 }
 .registration-canvas.state-4 .step-blue-bar {
@@ -465,7 +520,7 @@ img {
     left: 36.38%;
     width: 54%;
     gap: 2.3%;
-    font-size: 18px;
+    font-size: 1.25vw; /* 18px */
     line-height: 1.5;
 }
 .step-content-3 .text-column {
@@ -474,22 +529,22 @@ img {
 .step-content-3 strong {
     display: block;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 0.347vw; /* 5px */
 }
 .registration-canvas.state-5 .step-blue-bar {
-    width: 944.7px;
-    height: 152px;
-    left: 151px;
-    top: 219px;
+    width: 65.604vw; /* 944.7px */
+    height: 10.556vw; /* 152px */
+    left: 10.486vw; /* 151px */
+    top: 15.208vw; /* 219px */
 }
 .registration-canvas.state-5 .step-number-1 {
     left: 5.56%;
     top: 34.75%;
 }
 .registration-canvas.state-5 .step-number-2 {
-    width: 128px;
-    left: 199px;
-    top: 203px;
+    width: 8.889vw; /* 128px */
+    left: 13.819vw; /* 199px */
+    top: 14.097vw; /* 203px */
 }
 .registration-canvas.state-5 .step-number-3 {
     left: 25.48%;
@@ -500,30 +555,30 @@ img {
     pointer-events: auto;
     transition-delay: 0.3s;
     position: absolute;
-    width: 456.09px;
-    height: 41px;
-    left: 600px;
-    top: 276px;
+    width: 31.673vw; /* 456.09px */
+    height: 2.847vw; /* 41px */
+    left: 41.667vw; /* 600px */
+    top: 19.167vw; /* 276px */
     display: flex;
     align-items: center;
-    gap: 21px;
+    gap: 1.458vw; /* 21px */
     z-index: 5;
 }
 .registration-canvas.state-5 .step-white-bar {
-    width: 23.77px;
-    height: 127.98px;
-    left: 534px;
-    top: 231.62px;
+    width: 1.651vw; /* 23.77px */
+    height: 8.888vw; /* 127.98px */
+    left: 37.083vw; /* 534px */
+    top: 16.085vw; /* 231.62px */
     z-index: 4;
 }
 .registration-canvas.state-5 .step-attention-icon {
-    width: 41.88px;
-    height: 40.96px;
+    width: 2.908vw; /* 41.88px */
+    height: 2.844vw; /* 40.96px */
     flex-shrink: 0;
 }
 .registration-canvas.state-5 .step-content-4 p {
-    width: 393px;
-    font-size: 18px;
+    width: 27.292vw; /* 393px */
+    font-size: 1.25vw; /* 18px */
     font-style: italic;
     font-weight: 700;
     line-height: 1.3;
@@ -533,79 +588,79 @@ img {
 
 /* --- 10. Seção "Já sou cadastrado" --- */
 #already-registered-section {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
-    height: 890px;
+    height: 61.806vw; /* 890px */
     background-color: #FFFFFF;
     position: relative;
     z-index: 1;
 }
 .registered-app-image {
     position: absolute;
-    width: 419px;
-    height: 842px;
-    left: 186px;
-    top: 126px;
+    width: 29.097vw; /* 419px */
+    height: 58.472vw; /* 842px */
+    left: 12.917vw; /* 186px */
+    top: 8.75vw; /* 126px */
     object-fit: contain;
     z-index: 4;
 }
 .registered-decorative-lines {
     position: absolute;
-    width: 713.22px;
-    height: 30.01px;
+    width: 49.529vw; /* 713.22px */
+    height: 2.084vw; /* 30.01px */
     left: 0;
-    top: 174px;
+    top: 12.083vw; /* 174px */
 }
 .registered-content {
     position: absolute;
-    width: 634px;
-    height: 546px;
-    left: 730px;
-    top: 162px;
+    width: 44.028vw; /* 634px */
+    height: 37.917vw; /* 546px */
+    left: 50.694vw; /* 730px */
+    top: 11.25vw; /* 162px */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding-right: 20px;
+    padding-right: 1.389vw; /* 20px */
     z-index: 3;
 }
 .registered-content h2 {
-    height: 135px;
+    height: 9.375vw; /* 135px */
     font-weight: 300;
     font-style: italic;
-    font-size: 54px;
+    font-size: 3.75vw; /* 54px */
     line-height: 1.2;
-    margin-bottom: 26px;
+    margin-bottom: 1.806vw; /* 26px */
 }
 .registered-content h3 {
-    width: 621px;
-    height: 68px;
+    width: 43.125vw; /* 621px */
+    height: 4.722vw; /* 68px */
     font-weight: 400;
-    font-size: 28px;
+    font-size: 1.944vw; /* 28px */
     line-height: 1.2;
-    margin-bottom: 30px;
+    margin-bottom: 2.083vw; /* 30px */
 }
 .registered-content .highlight-bold {
-    width: 603px;
-    height: 100px;
+    width: 41.875vw; /* 603px */
+    height: 6.944vw; /* 100px */
     font-weight: 700;
-    font-size: 28px;
+    font-size: 1.944vw; /* 28px */
     line-height: 1.2;
-    margin-bottom: 26px;
+    margin-bottom: 1.806vw; /* 26px */
 }
 .registered-content p {
-    width: 634px;
-    height: 165px;
+    width: 44.028vw; /* 634px */
+    height: 11.458vw; /* 165px */
     font-weight: 400;
-    font-size: 28px;
+    font-size: 1.944vw; /* 28px */
     line-height: 1.2;
 }
 
 /* --- 11. Seção "Evite Golpes" --- */
 #avoid-scams-section {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
-    height: 735px;
+    height: 51.042vw; /* 735px */
     background-color: #00213A;
     color: #FFFFFF;
     position: relative;
@@ -613,37 +668,37 @@ img {
 }
 .scams-decorative-lines {
     position: absolute;
-    width: 660.81px;
-    height: 30.01px;
+    width: 45.89vw; /* 660.81px */
+    height: 2.084vw; /* 30.01px */
     left: 0;
-    top: 171px;
+    top: 11.875vw; /* 171px */
 }
 .scams-headline {
     position: absolute;
-    width: 494px;
-    left: 172px;
-    top: 250px;
+    width: 34.306vw; /* 494px */
+    left: 11.944vw; /* 172px */
+    top: 17.361vw; /* 250px */
     font-weight: 300;
     font-style: italic;
-    font-size: 54px;
+    font-size: 3.75vw; /* 54px */
     line-height: 1.2;
 }
 .scams-description {
     position: absolute;
-    width: 523px;
-    left: 746px;
-    top: 163px;
+    width: 36.319vw; /* 523px */
+    left: 51.806vw; /* 746px */
+    top: 11.319vw; /* 163px */
     font-weight: 400;
-    font-size: 28px;
+    font-size: 1.944vw; /* 28px */
     line-height: 1.3;
 }
 .scams-button {
     position: absolute;
-    width: 364px;
-    height: 40px;
-    left: 538px;
-    top: 625px;
-    display: block;
+    width: 25.278vw; /* 364px */
+    height: 2.778vw; /* 40px */
+    left: 37.361vw; /* 538px */
+    top: 43.403vw; /* 625px */
+    display: grid; /* Modificado */
 }
 .scams-button span {
     color: #00213A;
@@ -651,14 +706,14 @@ img {
 
 /* --- 12. Footer --- */
 #site-footer {
-    max-width: 1440px;
+    max-width: 100vw; /* 1440px */
     margin: 0 auto;
-    height: 1012px;
+    height: 70.278vw; /* 1012px */
     position: relative;
 }
 .footer-top {
     width: 100%;
-    height: 320px;
+    height: 22.222vw; /* 320px */
     background-color: #0391DF;
     position: absolute;
     top: 0;
@@ -666,213 +721,138 @@ img {
 }
 .footer-text-content {
     position: absolute;
-    width: 411.4px;
-    left: 81.6px;
-    top: 80px;
+    width: 28.569vw; /* 411.4px */
+    left: 5.667vw; /* 81.6px */
+    top: 5.556vw; /* 80px */
     color: #FFFFFF;
 }
 .footer-text-content h2 {
     font-weight: 700;
     font-style: italic;
-    font-size: 36px;
-    margin-bottom: 15px;
+    font-size: 2.5vw; /* 36px */
+    margin-bottom: 1.042vw; /* 15px */
 }
 .footer-text-content p {
     font-weight: 400;
-    font-size: 18px;
+    font-size: 1.25vw; /* 18px */
     line-height: 1.4;
 }
 .footer-app-stores {
     position: absolute;
-    right: 80px;
-    top: 82px;
+    right: 5.556vw; /* 80px */
+    top: 5.694vw; /* 82px */
     display: flex;
     flex-direction: column;
-    gap: 29.78px;
+    gap: 2.068vw; /* 29.78px */
     align-items: flex-end;
 }
 .footer-app-stores .app-store-link img {
-    width: 199.82px;
+    width: 13.876vw; /* 199.82px */
     height: auto;
 }
 .footer-middle {
     position: absolute;
     width: 100%;
-    height: 252px;
+    height: 17.5vw; /* 252px */
     left: 0;
-    top: 320px;
+    top: 22.222vw; /* 320px */
     background-color: #FFFFFF;
 }
 .footer-stripe {
     position: absolute;
     width: 100%;
-    height: 6px;
+    height: 0.417vw; /* 6px */
     left: 0;
     top: 0;
 }
 .footer-subtitle {
     position: absolute;
-    left: 78px;
-    top: 110px;
+    left: 5.417vw; /* 78px */
+    top: 7.639vw; /* 110px */
     font-weight: 700;
-    font-size: 28px;
-    width: 544px;
+    font-size: 1.944vw; /* 28px */
+    width: 37.778vw; /* 544px */
 }
 .footer-bayer-logo {
     position: absolute;
-    width: 91.2px;
-    height: 91.2px;
-    right: 80px;
-    top: 80px;
+    width: 6.333vw; /* 91.2px */
+    height: 6.333vw; /* 91.2px */
+    right: 5.556vw; /* 80px */
+    top: 5.556vw; /* 80px */
 }
 .footer-bottom {
     position: absolute;
     width: 100%;
-    height: 440px;
+    height: 30.556vw; /* 440px */
     left: 0;
-    top: 572px;
+    top: 39.722vw; /* 572px */
     background-color: #00213A;
     color: #FFFFFF;
 }
 .footer-contact {
     position: absolute;
-    width: 728px;
-    height: 280px;
-    left: 76px;
-    top: 80px;
+    width: 50.556vw; /* 728px */
+    height: 19.444vw; /* 280px */
+    left: 5.278vw; /* 76px */
+    top: 5.556vw; /* 80px */
 }
 .contact-logo {
     position: absolute;
-    width: 232.37px;
-    height: 106.44px;
-    left: 1.6px;
+    width: 16.137vw; /* 232.37px */
+    height: 7.392vw; /* 106.44px */
+    left: 0.111vw; /* 1.6px */
     top: 0;
 }
 .contact-phone {
     position: absolute;
-    width: 216px;
-    left: 10px;
-    top: 122px;
-    font-size: 28px;
+    width: 15vw; /* 216px */
+    left: 0.694vw; /* 10px */
+    top: 8.472vw; /* 122px */
+    font-size: 1.944vw; /* 28px */
     color: #FFFFFF;
 }
 .contact-disclaimer {
     position: absolute;
     width: 100%;
     left: 0;
-    top: 206px;
+    top: 14.306vw; /* 206px */
     font-weight: 400;
-    font-size: 18px;
+    font-size: 1.25vw; /* 18px */
     line-height: 1.3;
     color: #FFFFFF;
 }
 .footer-social {
     position: absolute;
-    width: 333.12px;
-    right: 80px;
-    top: 80px;
+    width: 23.133vw; /* 333.12px */
+    right: 5.556vw; /* 80px */
+    top: 5.556vw; /* 80px */
 }
 .footer-social h3 {
     font-weight: 700;
-    font-size: 28px;
-    margin-bottom: 54px;
+    font-size: 1.944vw; /* 28px */
+    margin-bottom: 3.75vw; /* 54px */
 }
 .social-icons-list {
     display: flex;
     align-items: center;
-    gap: 26px;
+    gap: 1.806vw; /* 26px */
 }
-.social-icons-list a:nth-child(1) img { width: 63.62px; }
-.social-icons-list a:nth-child(2) img { width: 63.62px; }
-.social-icons-list a:nth-child(3) img { width: 63.62px; }
-.social-icons-list a:nth-child(4) img { width: 63.62px; }
-
-/* --- 13. Páginas de Conteúdo (Placeholder) --- */
-.page-content {
-    max-width: 900px;
-    margin: 80px auto;
-    padding: 0 20px;
-    min-height: 50vh;
-}
-.page-content h1 {
-    font-size: 48px;
-    margin-bottom: 30px;
-}
-.page-content p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-
-/* --- 14. Página "Como Funciona" - Seção Intro CTV --- */
-#ctv-intro-section {
-    max-width: 1440px;
-    margin: 0 auto;
-    height: 876px;
-    background-color: #E5F2F8;
-    position: relative;
-    overflow: hidden;
-}
-.ctv-intro-title-group {
-    position: absolute;
-    width: 1360px;
-    height: 42px;
-    left: 80px;
-    top: 126px;
-}
-.ctv-intro-title {
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
-    font-style: italic;
-    font-size: 36px;
-}
-.ctv-intro-lines {
-    position: absolute;
-    width: 1018px;
-    height: 30.01px;
-    left: 342px;
-    top: 6px;
-}
-.ctv-intro-content {
-    position: absolute;
-    width: 525px;
-    left: 77px;
-    top: 415px;
-    color: #00213A;
-}
-.ctv-intro-headline {
-    font-weight: 300;
-    font-style: italic;
-    font-size: 70px;
-    line-height: 1.1;
-    margin-bottom: 36px;
-}
-.ctv-intro-description {
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 1.2;
-}
-.ctv-intro-illustration {
-    position: absolute;
-    width: 807px;
-    height: 680px;
-    left: 633px;
-    top: 194px;
-}
+.social-icons-list a:nth-child(1) img { width: 4.418vw; }
+.social-icons-list a:nth-child(2) img { width: 4.418vw; }
+.social-icons-list a:nth-child(3) img { width: 4.418vw; }
+.social-icons-list a:nth-child(4) img { width: 4.418vw; }
 
 /* --- Botão Voltar ao Topo --- */
 .back-to-top-button {
     position: fixed;
-    width: 171.5px;
-    height: 40px;
-    top: 47px;
-    right: calc( (100vw - 1440px) / 2 + 80.5px );
+    width: 11.91vw; /* 171.5px */
+    height: 2.778vw; /* 40px */
+    top: 3.264vw; /* 47px */
+    right: 5.59vw; /* ~80.5px */
     z-index: 1000;
     visibility: hidden;
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-1.389vw); /* -20px */
     transition: all 0.3s ease-in-out;
 }
 .back-to-top-button.visible {
