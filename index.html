@@ -268,7 +268,7 @@
     </a>
 
 <script>
-    // --- LÓGICA DO CARROSSEL ---
+    // --- LÓGICA DO CARROSSEL (invariável) ---
     const slidesContainer = document.querySelector('.carousel-slides');
     const slides = document.querySelectorAll('.carousel-slide');
     const indicatorsContainer = document.querySelector('.carousel-indicators');
@@ -322,26 +322,11 @@
     
     initCarousel();
 
-    // --- SCRIPT PARA O BOTÃO VOLTAR AO TOPO ---
+    // --- SCRIPT PARA O BOTÃO VOLTAR AO TOPO (LÓGICA REFEITA) ---
     const backToTopButton = document.querySelector('.back-to-top-button');
-    const triggerSection = document.querySelector('#how-to-join-section'); // ATUALIZADO
 
-    if (backToTopButton && triggerSection) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    backToTopButton.classList.add('visible');
-                } else {
-                    const rect = triggerSection.getBoundingClientRect();
-                    if (rect.bottom > 0) {
-                        backToTopButton.classList.remove('visible');
-                    }
-                }
-            });
-        }, { threshold: 0.1 });
-
-        observer.observe(triggerSection);
-
+    if (backToTopButton) {
+        // A função de clique continua a mesma
         backToTopButton.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({
@@ -349,15 +334,41 @@
                 behavior: 'smooth'
             });
         });
+
+        let lastScrollTop = 0; // Variável para guardar a última posição do scroll
+
+        // Evento que dispara a cada rolagem da página
+        window.addEventListener('scroll', () => {
+            // Pega a posição atual do scroll
+            let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+            
+            // 1. Verifica se o usuário já rolou para baixo mais do que a altura de uma tela
+            //    (Isso é um ponto melhor que "metade da página" para a experiência do usuário)
+            if (currentScrollTop > window.innerHeight) {
+                // 2. Compara a posição atual com a anterior para saber a direção
+                if (currentScrollTop < lastScrollTop) {
+                    // Rolando para CIMA: mostra o botão
+                    backToTopButton.classList.add('visible');
+                } else {
+                    // Rolando para BAIXO: esconde o botão
+                    backToTopButton.classList.remove('visible');
+                }
+            } else {
+                // Se estiver no topo da página, o botão sempre fica escondido
+                backToTopButton.classList.remove('visible');
+            }
+            
+            // Atualiza a última posição de scroll para a próxima verificação
+            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+        });
     }
 
 
-    // --- LÓGICA REVISADA DA ANIMAÇÃO DE SCROLL DA SEÇÃO "ETAPAS" ---
-    const registrationSection = document.querySelector('#registration-steps-section'); // ATUALIZADO
-    const registrationCanvas = document.querySelector('.registration-canvas'); // ATUALIZADO
+    // --- LÓGICA DA ANIMAÇÃO DE SCROLL DA SEÇÃO "ETAPAS" (invariável) ---
+    const registrationSection = document.querySelector('#registration-steps-section');
+    const registrationCanvas = document.querySelector('.registration-canvas');
 
     if (registrationSection && registrationCanvas) {
-
         const handleScrollAnimation = () => {
             const rect = registrationSection.getBoundingClientRect();
             const scrollTopInSection = -rect.top;
@@ -367,16 +378,16 @@
 
             const progress = Math.min(1, Math.max(0, scrollTopInSection / scrollableHeight));
             
-            registrationCanvas.classList.remove('state-2', 'state-3', 'state-4', 'state-5'); // ATUALIZADO
+            registrationCanvas.classList.remove('state-2', 'state-3', 'state-4', 'state-5');
 
             if (progress > 0.1 && progress <= 0.3) {
-                registrationCanvas.classList.add('state-2'); // ATUALIZADO
+                registrationCanvas.classList.add('state-2');
             } else if (progress > 0.3 && progress <= 0.55) {
-                registrationCanvas.classList.add('state-3'); // ATUALIZADO
+                registrationCanvas.classList.add('state-3');
             } else if (progress > 0.55 && progress <= 0.75) {
-                registrationCanvas.classList.add('state-4'); // ATUALIZADO
+                registrationCanvas.classList.add('state-4');
             } else if (progress > 0.75) {
-                registrationCanvas.classList.add('state-5'); // ATUALIZADO
+                registrationCanvas.classList.add('state-5');
             }
         };
         
