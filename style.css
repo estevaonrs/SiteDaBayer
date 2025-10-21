@@ -20,31 +20,25 @@ img {
 
 /* --- 2. Estilos Comuns e Reutilizados --- */
 .container-base {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     position: relative;
 }
 
-/* --- MODIFICAÇÃO PARA CENTRALIZAÇÃO PERFEITA DO TEXTO DO BOTÃO --- */
-
-/* 1. Transformamos os links dos botões em containers Grid */
+/* Centralização do texto do botão com Grid */
 .hero-button,
 .intro-button,
 .cta-button,
 .scams-button {
     display: grid;
-    place-items: center; /* Centraliza tudo (horizontal e verticalmente) */
+    place-items: center;
 }
-
-/* 2. Colocamos a imagem e o texto na mesma célula do grid (um sobre o outro) */
 .hero-button > *,
 .intro-button > *,
 .cta-button > *,
 .scams-button > * {
     grid-area: 1 / 1;
 }
-
-/* 3. Estilo do texto, agora sem a necessidade de position absolute e transform */
 .hero-button span,
 .intro-button span,
 .cta-button span,
@@ -53,10 +47,8 @@ img {
     font-size: 1.111vw; /* 16px */
     pointer-events: none;
     white-space: nowrap;
-    z-index: 2; /* Garante que o texto fique sobre a imagem */
+    z-index: 2;
 }
-/* --- FIM DA MODIFICAÇÃO --- */
-
 
 /* --- 3. Header e Navbar --- */
 .main-header {
@@ -64,7 +56,7 @@ img {
     background-color: #FFFFFF;
 }
 .navbar {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     height: 9.236vw; /* 133px */
     padding: 0 5.55%;
@@ -96,7 +88,7 @@ img {
 
 /* --- 4. Seção Hero (Carrossel) --- */
 #hero-section {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     position: relative;
 }
@@ -108,10 +100,9 @@ img {
 }
 .hero-button {
     position: absolute;
-    width: 25.27%; /* Mantido em % */
+    width: 25.27%;
     height: 2.778vw; /* 40px */
     z-index: 10;
-    display: grid; /* Modificado */
     left: 50%;
     transform: translateX(-50%);
     bottom: 3.403vw; /* 49px */
@@ -143,7 +134,7 @@ img {
     width: 0.556vw; /* 8px */
     height: 0.556vw; /* 8px */
     background-color: transparent;
-    border: 1px solid #00213A; /* Mantido em 1px por ser muito fino */
+    border: 1px solid #00213A;
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -154,7 +145,7 @@ img {
 
 /* --- 5. Seção de Introdução --- */
 #introduction-section {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     height: 66.667vw; /* 960px */
     background-color: #E5F2F8;
@@ -171,23 +162,23 @@ img {
     font-weight: 700;
     font-style: italic;
     margin-bottom: 2.5vw; /* 36px */
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem); /* Mantido clamp */
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
 }
 .intro-headline {
     font-weight: 300;
     font-style: italic;
     line-height: 1.15;
     margin-bottom: 2.5vw; /* 36px */
-    font-size: clamp(2.5rem, 4.86vw, 4.86rem); /* Mantido clamp */
+    font-size: clamp(2.5rem, 4.86vw, 4.86rem);
 }
 .intro-description {
     font-weight: 700;
     margin-bottom: 2.5vw; /* 36px */
-    font-size: clamp(1.25rem, 1.94vw, 1.94rem); /* Mantido clamp */
+    font-size: clamp(1.25rem, 1.94vw, 1.94rem);
 }
 .intro-button {
     position: relative;
-    display: inline-grid; /* Modificado */
+    display: inline-grid;
     width: 25.278vw; /* 364px */
     height: 2.778vw; /* 40px */
 }
@@ -210,7 +201,7 @@ img {
 
 /* --- 6. Seção "O que é?" --- */
 #what-is-section {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     height: 71.25vw; /* 1026px */
     background-color: #E5F2F8;
@@ -223,7 +214,7 @@ img {
     left: 5.55%;
     font-weight: 700;
     font-style: italic;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem); /* Mantido clamp */
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
 }
 .what-is-lines {
     position: absolute;
@@ -242,7 +233,7 @@ img {
     top: 51.16%;
     left: 45.55%;
     width: 43.05%;
-    font-size: clamp(1rem, 1.66vw, 1.66rem); /* Mantido clamp */
+    font-size: clamp(1rem, 1.66vw, 1.66rem);
     font-weight: 400;
     line-height: 1.5;
 }
@@ -256,7 +247,7 @@ img {
 
 /* --- 7. Seção "Passo a Passo" --- */
 #step-by-step-section {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     height: 30.069vw; /* 433px */
     background-color: #0391DF;
@@ -292,13 +283,13 @@ img {
 .step-text h3 {
     font-weight: 700;
     font-style: italic;
-    font-size: clamp(1.25rem, 1.94vw, 1.94rem); /* Mantido clamp */
+    font-size: clamp(1.25rem, 1.94vw, 1.94rem);
     margin-bottom: 0.556vw; /* 8px */
 }
 .step-text p {
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(0.875rem, 1.25vw, 1.25rem); /* Mantido clamp */
+    font-size: clamp(0.875rem, 1.25vw, 1.25rem);
 }
 .step-by-step-buttons {
     position: absolute;
@@ -309,7 +300,7 @@ img {
 }
 .cta-button {
     position: absolute;
-    display: grid; /* Modificado */
+    display: grid;
     height: 2.778vw; /* 40px */
 }
 .button-left {
@@ -325,7 +316,7 @@ img {
 
 /* --- 8. Seção "Como Fazer Parte" --- */
 #how-to-join-section {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     height: 56.597vw; /* 815px */
     background-color: #E5F2F8;
@@ -356,7 +347,7 @@ img {
     top: 0;
     font-weight: 700;
     font-style: italic;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem); /* Mantido clamp */
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
 }
 .title-group .title-bars {
     position: absolute;
@@ -370,18 +361,18 @@ img {
     font-style: italic;
     line-height: 1.2;
     margin-bottom: 2.5vw; /* 36px */
-    font-size: clamp(2rem, 3.75vw, 3.75rem); /* Mantido clamp */
+    font-size: clamp(2rem, 3.75vw, 3.75rem);
 }
 .join-content p {
     font-weight: 400;
-    font-size: clamp(1.25rem, 1.94vw, 1.94rem); /* Mantido clamp */
+    font-size: clamp(1.25rem, 1.94vw, 1.94rem);
     line-height: 1.5;
     max-width: 40.833vw; /* 588px */
 }
 
 /* --- 9. Seção "Etapas de Cadastro" --- */
 #registration-steps-section {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     height: 500vh;
     background-color: #E5F2F8;
@@ -419,21 +410,10 @@ img {
     transition: all 0.5s ease-in-out;
     z-index: 2;
 }
-.step-number-1 {
-    width: 5.49%;
-    top: 34.58%;
-    left: 27.43%;
-}
-.step-number-2 {
-    width: 8.89%;
-    top: 34.41%;
-    left: 43.89%;
-}
-.step-number-3 {
-    width: 8.82%;
-    top: 34.07%;
-    left: 63.75%;
-}
+.step-number-1 { width: 5.49%; top: 34.58%; left: 27.43%; }
+.step-number-2 { width: 8.89%; top: 34.41%; left: 43.89%; }
+.step-number-3 { width: 8.82%; top: 34.07%; left: 63.75%; }
+
 .step-content {
     position: absolute;
     opacity: 0;
@@ -443,152 +423,34 @@ img {
     transition: opacity 0.3s ease, visibility 0s ease 0.3s;
     z-index: 3;
 }
-.registration-canvas.state-2 .step-blue-bar {
-    left: 9.76%;
-    top: 37.29%;
-    width: 60.47%;
-}
-.registration-canvas.state-2 .step-number-1 {
-    left: 5.56%;
-    top: 34.75%;
-}
-.registration-canvas.state-2 .step-content-1 {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition-delay: 0.3s;
-    top: 47.46%;
-    left: 14.24%;
-    width: 16.32%;
-    font-size: 1.667vw; /* 24px */
-    font-weight: 400;
-}
-.registration-canvas.state-3 .step-blue-bar {
-    left: 9.76%;
-    top: 37.29%;
-    width: 60.47%;
-}
-.registration-canvas.state-3 .step-number-1 {
-    left: 5.56%;
-    top: 34.75%;
-}
-.registration-canvas.state-3 .step-number-2 {
-    left: 13.82%;
-}
-.registration-canvas.state-3 .step-content-2 {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition-delay: 0.3s;
-    top: 38%;
-    left: 25.90%;
-    width: 26.32%;
-}
-.step-content-2 h3 {
-    font-size: 1.667vw; /* 24px */
-    margin-bottom: 0.694vw; /* 10px */
-    font-weight: 700;
-}
-.step-content-2 .list-columns ul {
-    list-style: none;
-    padding: 0;
-    font-size: 1.111vw; /* 16px */
-    line-height: 1.6;
-}
-.registration-canvas.state-4 .step-blue-bar {
-    left: 10.49%;
-    top: 37.12%;
-    width: 85.97%;
-}
-.registration-canvas.state-4 .step-number-1 {
-    left: 5.56%;
-    top: 34.75%;
-}
-.registration-canvas.state-4 .step-number-2 {
-    left: 13.82%;
-}
-.registration-canvas.state-4 .step-number-3 {
-    left: 25.48%;
-}
-.registration-canvas.state-4 .step-content-3 {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition-delay: 0.3s;
-    display: flex;
-    top: 40.8%;
-    left: 36.38%;
-    width: 54%;
-    gap: 2.3%;
-    font-size: 1.25vw; /* 18px */
-    line-height: 1.5;
-}
-.step-content-3 .text-column {
-    flex: 1;
-}
-.step-content-3 strong {
-    display: block;
-    font-weight: 700;
-    margin-bottom: 0.347vw; /* 5px */
-}
-.registration-canvas.state-5 .step-blue-bar {
-    width: 65.604vw; /* 944.7px */
-    height: 10.556vw; /* 152px */
-    left: 10.486vw; /* 151px */
-    top: 15.208vw; /* 219px */
-}
-.registration-canvas.state-5 .step-number-1 {
-    left: 5.56%;
-    top: 34.75%;
-}
-.registration-canvas.state-5 .step-number-2 {
-    width: 8.889vw; /* 128px */
-    left: 13.819vw; /* 199px */
-    top: 14.097vw; /* 203px */
-}
-.registration-canvas.state-5 .step-number-3 {
-    left: 25.48%;
-}
-.registration-canvas.state-5 .step-content-4 {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition-delay: 0.3s;
-    position: absolute;
-    width: 31.673vw; /* 456.09px */
-    height: 2.847vw; /* 41px */
-    left: 41.667vw; /* 600px */
-    top: 19.167vw; /* 276px */
-    display: flex;
-    align-items: center;
-    gap: 1.458vw; /* 21px */
-    z-index: 5;
-}
-.registration-canvas.state-5 .step-white-bar {
-    width: 1.651vw; /* 23.77px */
-    height: 8.888vw; /* 127.98px */
-    left: 37.083vw; /* 534px */
-    top: 16.085vw; /* 231.62px */
-    z-index: 4;
-}
-.registration-canvas.state-5 .step-attention-icon {
-    width: 2.908vw; /* 41.88px */
-    height: 2.844vw; /* 40.96px */
-    flex-shrink: 0;
-}
-.registration-canvas.state-5 .step-content-4 p {
-    width: 27.292vw; /* 393px */
-    font-size: 1.25vw; /* 18px */
-    font-style: italic;
-    font-weight: 700;
-    line-height: 1.3;
-    color: #FFFFFF;
-    margin: 0;
-}
+.registration-canvas.state-2 .step-blue-bar { left: 9.76%; top: 37.29%; width: 60.47%; }
+.registration-canvas.state-2 .step-number-1 { left: 5.56%; top: 34.75%; }
+.registration-canvas.state-2 .step-content-1 { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0.3s; top: 47.46%; left: 14.24%; width: 16.32%; font-size: 1.667vw; font-weight: 400; }
+.registration-canvas.state-3 .step-blue-bar { left: 9.76%; top: 37.29%; width: 60.47%; }
+.registration-canvas.state-3 .step-number-1 { left: 5.56%; top: 34.75%; }
+.registration-canvas.state-3 .step-number-2 { left: 13.82%; }
+.registration-canvas.state-3 .step-content-2 { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0.3s; top: 38%; left: 25.90%; width: 26.32%; }
+.step-content-2 h3 { font-size: 1.667vw; margin-bottom: 0.694vw; font-weight: 700; }
+.step-content-2 .list-columns ul { list-style: none; padding: 0; font-size: 1.111vw; line-height: 1.6; }
+.registration-canvas.state-4 .step-blue-bar { left: 10.49%; top: 37.12%; width: 85.97%; }
+.registration-canvas.state-4 .step-number-1 { left: 5.56%; top: 34.75%; }
+.registration-canvas.state-4 .step-number-2 { left: 13.82%; }
+.registration-canvas.state-4 .step-number-3 { left: 25.48%; }
+.registration-canvas.state-4 .step-content-3 { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0.3s; display: flex; top: 40.8%; left: 36.38%; width: 54%; gap: 2.3%; font-size: 1.25vw; line-height: 1.5; }
+.step-content-3 .text-column { flex: 1; }
+.step-content-3 strong { display: block; font-weight: 700; margin-bottom: 0.347vw; }
+.registration-canvas.state-5 .step-blue-bar { width: 65.604vw; height: 10.556vw; left: 10.486vw; top: 15.208vw; }
+.registration-canvas.state-5 .step-number-1 { left: 5.56%; top: 34.75%; }
+.registration-canvas.state-5 .step-number-2 { width: 8.889vw; left: 13.819vw; top: 14.097vw; }
+.registration-canvas.state-5 .step-number-3 { left: 25.48%; }
+.registration-canvas.state-5 .step-content-4 { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0.3s; position: absolute; width: 31.673vw; height: 2.847vw; left: 41.667vw; top: 19.167vw; display: flex; align-items: center; gap: 1.458vw; z-index: 5; }
+.registration-canvas.state-5 .step-white-bar { width: 1.651vw; height: 8.888vw; left: 37.083vw; top: 16.085vw; z-index: 4; }
+.registration-canvas.state-5 .step-attention-icon { width: 2.908vw; height: 2.844vw; flex-shrink: 0; }
+.registration-canvas.state-5 .step-content-4 p { width: 27.292vw; font-size: 1.25vw; font-style: italic; font-weight: 700; line-height: 1.3; color: #FFFFFF; margin: 0; }
 
 /* --- 10. Seção "Já sou cadastrado" --- */
 #already-registered-section {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     height: 61.806vw; /* 890px */
     background-color: #FFFFFF;
@@ -624,41 +486,14 @@ img {
     padding-right: 1.389vw; /* 20px */
     z-index: 3;
 }
-.registered-content h2 {
-    height: 9.375vw; /* 135px */
-    font-weight: 300;
-    font-style: italic;
-    font-size: 3.75vw; /* 54px */
-    line-height: 1.2;
-    margin-bottom: 1.806vw; /* 26px */
-}
-.registered-content h3 {
-    width: 43.125vw; /* 621px */
-    height: 4.722vw; /* 68px */
-    font-weight: 400;
-    font-size: 1.944vw; /* 28px */
-    line-height: 1.2;
-    margin-bottom: 2.083vw; /* 30px */
-}
-.registered-content .highlight-bold {
-    width: 41.875vw; /* 603px */
-    height: 6.944vw; /* 100px */
-    font-weight: 700;
-    font-size: 1.944vw; /* 28px */
-    line-height: 1.2;
-    margin-bottom: 1.806vw; /* 26px */
-}
-.registered-content p {
-    width: 44.028vw; /* 634px */
-    height: 11.458vw; /* 165px */
-    font-weight: 400;
-    font-size: 1.944vw; /* 28px */
-    line-height: 1.2;
-}
+.registered-content h2 { height: 9.375vw; font-weight: 300; font-style: italic; font-size: 3.75vw; line-height: 1.2; margin-bottom: 1.806vw; }
+.registered-content h3 { width: 43.125vw; height: 4.722vw; font-weight: 400; font-size: 1.944vw; line-height: 1.2; margin-bottom: 2.083vw; }
+.registered-content .highlight-bold { width: 41.875vw; height: 6.944vw; font-weight: 700; font-size: 1.944vw; line-height: 1.2; margin-bottom: 1.806vw; }
+.registered-content p { width: 44.028vw; height: 11.458vw; font-weight: 400; font-size: 1.944vw; line-height: 1.2; }
 
 /* --- 11. Seção "Evite Golpes" --- */
 #avoid-scams-section {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     height: 51.042vw; /* 735px */
     background-color: #00213A;
@@ -666,181 +501,234 @@ img {
     position: relative;
     overflow: hidden;
 }
-.scams-decorative-lines {
-    position: absolute;
-    width: 45.89vw; /* 660.81px */
-    height: 2.084vw; /* 30.01px */
-    left: 0;
-    top: 11.875vw; /* 171px */
-}
-.scams-headline {
-    position: absolute;
-    width: 34.306vw; /* 494px */
-    left: 11.944vw; /* 172px */
-    top: 17.361vw; /* 250px */
-    font-weight: 300;
-    font-style: italic;
-    font-size: 3.75vw; /* 54px */
-    line-height: 1.2;
-}
-.scams-description {
-    position: absolute;
-    width: 36.319vw; /* 523px */
-    left: 51.806vw; /* 746px */
-    top: 11.319vw; /* 163px */
-    font-weight: 400;
-    font-size: 1.944vw; /* 28px */
-    line-height: 1.3;
-}
-.scams-button {
-    position: absolute;
-    width: 25.278vw; /* 364px */
-    height: 2.778vw; /* 40px */
-    left: 37.361vw; /* 538px */
-    top: 43.403vw; /* 625px */
-    display: grid; /* Modificado */
-}
-.scams-button span {
-    color: #00213A;
-}
+.scams-decorative-lines { position: absolute; width: 45.89vw; height: 2.084vw; left: 0; top: 11.875vw; }
+.scams-headline { position: absolute; width: 34.306vw; left: 11.944vw; top: 17.361vw; font-weight: 300; font-style: italic; font-size: 3.75vw; line-height: 1.2; }
+.scams-description { position: absolute; width: 36.319vw; left: 51.806vw; top: 11.319vw; font-weight: 400; font-size: 1.944vw; line-height: 1.3; }
+.scams-button { position: absolute; width: 25.278vw; height: 2.778vw; left: 37.361vw; top: 43.403vw; display: grid; }
+.scams-button span { color: #00213A; }
 
 /* --- 12. Footer --- */
 #site-footer {
-    max-width: 100vw; /* 1440px */
+    max-width: 100%; /* 1440px */
     margin: 0 auto;
     height: 70.278vw; /* 1012px */
     position: relative;
 }
-.footer-top {
-    width: 100%;
-    height: 22.222vw; /* 320px */
-    background-color: #0391DF;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.footer-text-content {
-    position: absolute;
-    width: 28.569vw; /* 411.4px */
-    left: 5.667vw; /* 81.6px */
-    top: 5.556vw; /* 80px */
-    color: #FFFFFF;
-}
-.footer-text-content h2 {
-    font-weight: 700;
-    font-style: italic;
-    font-size: 2.5vw; /* 36px */
-    margin-bottom: 1.042vw; /* 15px */
-}
-.footer-text-content p {
-    font-weight: 400;
-    font-size: 1.25vw; /* 18px */
-    line-height: 1.4;
-}
-.footer-app-stores {
-    position: absolute;
-    right: 5.556vw; /* 80px */
-    top: 5.694vw; /* 82px */
-    display: flex;
-    flex-direction: column;
-    gap: 2.068vw; /* 29.78px */
-    align-items: flex-end;
-}
-.footer-app-stores .app-store-link img {
-    width: 13.876vw; /* 199.82px */
-    height: auto;
-}
-.footer-middle {
-    position: absolute;
-    width: 100%;
-    height: 17.5vw; /* 252px */
-    left: 0;
-    top: 22.222vw; /* 320px */
-    background-color: #FFFFFF;
-}
-.footer-stripe {
-    position: absolute;
-    width: 100%;
-    height: 0.417vw; /* 6px */
-    left: 0;
-    top: 0;
-}
-.footer-subtitle {
-    position: absolute;
-    left: 5.417vw; /* 78px */
-    top: 7.639vw; /* 110px */
-    font-weight: 700;
-    font-size: 1.944vw; /* 28px */
-    width: 37.778vw; /* 544px */
-}
-.footer-bayer-logo {
-    position: absolute;
-    width: 6.333vw; /* 91.2px */
-    height: 6.333vw; /* 91.2px */
-    right: 5.556vw; /* 80px */
-    top: 5.556vw; /* 80px */
-}
-.footer-bottom {
-    position: absolute;
-    width: 100%;
-    height: 30.556vw; /* 440px */
-    left: 0;
-    top: 39.722vw; /* 572px */
-    background-color: #00213A;
-    color: #FFFFFF;
-}
-.footer-contact {
-    position: absolute;
-    width: 50.556vw; /* 728px */
-    height: 19.444vw; /* 280px */
-    left: 5.278vw; /* 76px */
-    top: 5.556vw; /* 80px */
-}
-.contact-logo {
-    position: absolute;
-    width: 16.137vw; /* 232.37px */
-    height: 7.392vw; /* 106.44px */
-    left: 0.111vw; /* 1.6px */
-    top: 0;
-}
-.contact-phone {
-    position: absolute;
-    width: 15vw; /* 216px */
-    left: 0.694vw; /* 10px */
-    top: 8.472vw; /* 122px */
-    font-size: 1.944vw; /* 28px */
-    color: #FFFFFF;
-}
-.contact-disclaimer {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 14.306vw; /* 206px */
-    font-weight: 400;
-    font-size: 1.25vw; /* 18px */
-    line-height: 1.3;
-    color: #FFFFFF;
-}
-.footer-social {
-    position: absolute;
-    width: 23.133vw; /* 333.12px */
-    right: 5.556vw; /* 80px */
-    top: 5.556vw; /* 80px */
-}
-.footer-social h3 {
-    font-weight: 700;
-    font-size: 1.944vw; /* 28px */
-    margin-bottom: 3.75vw; /* 54px */
-}
-.social-icons-list {
-    display: flex;
-    align-items: center;
-    gap: 1.806vw; /* 26px */
-}
+.footer-top { width: 100%; height: 22.222vw; background-color: #0391DF; position: absolute; top: 0; left: 0; }
+.footer-text-content { position: absolute; width: 28.569vw; left: 5.667vw; top: 5.556vw; color: #FFFFFF; }
+.footer-text-content h2 { font-weight: 700; font-style: italic; font-size: 2.5vw; margin-bottom: 1.042vw; }
+.footer-text-content p { font-weight: 400; font-size: 1.25vw; line-height: 1.4; }
+.footer-app-stores { position: absolute; right: 5.556vw; top: 5.694vw; display: flex; flex-direction: column; gap: 2.068vw; align-items: flex-end; }
+.footer-app-stores .app-store-link img { width: 13.876vw; height: auto; }
+.footer-middle { position: absolute; width: 100%; height: 17.5vw; left: 0; top: 22.222vw; background-color: #FFFFFF; }
+.footer-stripe { position: absolute; width: 100%; height: 0.417vw; left: 0; top: 0; }
+.footer-subtitle { position: absolute; left: 5.417vw; top: 7.639vw; font-weight: 700; font-size: 1.944vw; width: 37.778vw; }
+.footer-bayer-logo { position: absolute; width: 6.333vw; height: 6.333vw; right: 5.556vw; top: 5.556vw; }
+.footer-bottom { position: absolute; width: 100%; height: 30.556vw; left: 0; top: 39.722vw; background-color: #00213A; color: #FFFFFF; }
+.footer-contact { position: absolute; width: 50.556vw; height: 19.444vw; left: 5.278vw; top: 5.556vw; }
+.contact-logo { position: absolute; width: 16.137vw; height: 7.392vw; left: 0.111vw; top: 0; }
+.contact-phone { position: absolute; width: 15vw; left: 0.694vw; top: 8.472vw; font-size: 1.944vw; color: #FFFFFF; }
+.contact-disclaimer { position: absolute; width: 100%; left: 0; top: 14.306vw; font-weight: 400; font-size: 1.25vw; line-height: 1.3; color: #FFFFFF; }
+.footer-social { position: absolute; width: 23.133vw; right: 5.556vw; top: 5.556vw; }
+.footer-social h3 { font-weight: 700; font-size: 1.944vw; margin-bottom: 3.75vw; }
+.social-icons-list { display: flex; align-items: center; gap: 1.806vw; }
 .social-icons-list a:nth-child(1) img { width: 4.418vw; }
 .social-icons-list a:nth-child(2) img { width: 4.418vw; }
 .social-icons-list a:nth-child(3) img { width: 4.418vw; }
 .social-icons-list a:nth-child(4) img { width: 4.418vw; }
+
+/* --- 13. PÁGINA "COMO FUNCIONA" --- */
+
+/* --- Seção de Introdução CTV (CORRIGIDA) --- */
+#ctv-intro-section {
+    max-width: 100%;
+    height: 60.833vw; /* 876px */
+    margin: 0 auto;
+    background-color: #E5F2F8;
+    position: relative;
+    z-index: 1; 
+    /* Removido o overflow: hidden para a imagem sobrepor */
+}
+.ctv-intro-title-group {
+    position: absolute;
+    width: 94.444vw; /* 1360px */
+    height: 2.917vw; /* 42px */
+    left: 4.556vw; /* 80px */
+    top: 8.75vw; /* 126px */
+    z-index: 2; 
+}
+.ctv-intro-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem); /* 36px */
+    color: #00213A;
+}
+.ctv-intro-lines {
+    position: absolute;
+    width: 70.694vw; /* 1018px */
+    height: 2.084vw; /* 30.01px */
+    left: 23.75vw; 
+    top: 0.417vw;
+}
+.ctv-intro-content {
+    position: absolute;
+    width: 36.458vw; /* 525px */
+    left: 5.347vw; /* 77px */
+    top: 28.819vw; /* 415px */
+    color: #00213A;
+    z-index: 2;
+}
+.ctv-intro-headline {
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2.5rem, 4.86vw, 4.86rem); /* 70px */
+    line-height: 1.15;
+    margin-bottom: 2.5vw;
+}
+.ctv-intro-description {
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1.94vw, 1.94rem); /* 28px */
+    line-height: 1.2;
+}
+.ctv-intro-illustration {
+    position: absolute;
+    width: 56.042vw; /* 807px */
+    height: 47.222vw; /* 680px */
+    right: 0;
+    top: 20.417vw;  /* 294px */
+    z-index: 3; 
+}
+
+/* --- Seção de Passos CTV com Scroll Horizontal (SOLUÇÃO DEFINITIVA) --- */
+/* --- Seção de Passos CTV com Scroll Horizontal (SOLUÇÃO DEFINITIVA) --- */
+#ctv-steps-section {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  position: relative;
+  z-index: 0;
+  margin-top: 9.306vw; /* Espaço para a ilustração da seção anterior */
+}
+
+.ctv-steps-scroll-track {
+  height: 300vh;
+  position: relative;
+}
+
+.ctv-steps-sticky-container {
+  position: sticky;
+  top: 0;
+  height: 46.389vw; /* 668px */
+  max-height: 668px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16.14vw;
+  width: max-content;
+  padding: 0 5.556vw;
+  will-change: transform;
+}
+
+/* Linha de fundo sempre visível */
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 0.556vw; /* 8px */
+  width: 100%;
+  background-color: #c8ef8a; /* verde mais claro, linha base */
+  transform: translateY(-50%);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+/* Linha de progresso controlada pelo JS */
+.timeline-line-progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 0.556vw;
+  width: 0;
+  background-color: #8AD429; /* verde principal */
+  transform: translateY(-50%);
+  z-index: 2;
+  border-radius: 4px;
+  transition: width 0.2s ease-out;
+}
+
+
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 18.056vw; /* 260px */
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2; /* Para que o conteúdo fique na frente da linha */
+}
+
+/* AJUSTE AQUI */
+.timeline-text-top {
+  color: #00213A;
+  font-size: clamp(1.25rem, 1.94vw, 1.94rem);
+  line-height: 1.2;
+  width: 100%;
+  margin-bottom: 2.2vw; /* Margem simétrica */
+  height: 6.8vw; /* Altura fixa para garantir consistência */
+  display: flex;
+  align-items: flex-end; /* Alinha o texto na base da caixa */
+  justify-content: center;
+}
+
+.timeline-icon-container {
+  width: 6.081vw; /* 87.56px */
+  height: 6.081vw; /* 87.56px */
+  max-width: 87.56px;
+  max-height: 87.56px;
+  border-radius: 50%;
+  background-color: #8AD429;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.timeline-icon {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+/* E AJUSTE AQUI */
+.timeline-text-bottom {
+  color: #00213A;
+  font-size: clamp(1.25rem, 1.94vw, 1.94rem);
+  font-style: italic;
+  white-space: nowrap;
+  margin-top: 2.2vw; /* Margem simétrica */
+  height: 6.8vw; /* Altura idêntica à de cima */
+  display: flex;
+  align-items: flex-start; /* Alinha o texto no topo da caixa */
+  justify-content: center;
+  padding-top: 0.5em; /* Pequeno ajuste para alinhar visualmente o texto */
+}
+
+/* Deixa o texto do placeholder invisível, mas ocupando espaço */
+.timeline-text-bottom.placeholder {
+  visibility: hidden;
+}
+
 
 /* --- Botão Voltar ao Topo --- */
 .back-to-top-button {

@@ -18,6 +18,7 @@
                 <img src="assets/images/common/logo.svg" alt="Logo Parceria Premiada">
             </a>
             <div class="navbar-links">
+                <img src="assets/images/common/nav-separator.svg" alt="Separador" class="nav-separator">
                 <a href="index.html">Início</a>
                 <img src="assets/images/common/nav-separator.svg" alt="Separador" class="nav-separator">
                 <a href="como-funciona.html">Como Funciona</a>
@@ -30,22 +31,73 @@
     </header>
 
     <main>
-        <section id="ctv-intro-section">
-            <div class="ctv-intro-title-group">
-                <h1 class="ctv-intro-title">Como funciona CTV</h1>
-                <img class="ctv-intro-lines" src="assets/images/how-it-works/title-lines.svg" alt="Linhas decorativas">
+    <section id="ctv-intro-section">
+        <div class="ctv-intro-title-group">
+            <h1 class="ctv-intro-title">Como funciona CTV</h1>
+            <img class="ctv-intro-lines" src="assets/images/how-it-works/title-lines.svg" alt="Linhas decorativas">
+        </div>
+        <div class="ctv-intro-content">
+            <h2 class="ctv-intro-headline">Aqui você só ganha!</h2>
+            <p class="ctv-intro-description">
+                Você vende, participa e ganha, nós fazemos o resto. Toda Safra o ciclo se repete, você se cadastra apenas uma vez.
+            </p>
+        </div>
+        <img class="ctv-intro-illustration" src="assets/images/how-it-works/ctv-illustration.svg" alt="Ilustração de como o programa funciona para CTVs">
+    </section>
+
+    <section id="ctv-steps-section">
+        <div class="ctv-steps-scroll-track">
+            <div class="ctv-steps-sticky-container">
+                
+                <div class="timeline-wrapper">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-line-progress"></div>
+                    
+                    <div class="timeline-step">
+                        <p class="timeline-text-top">Lançamos as campanhas da safra na plataforma.</p>
+                        <div class="timeline-icon-container">
+                            <img class="timeline-icon" src="assets/images/how-it-works/icon-1.svg" alt="">
+                        </div>
+                        <p class="timeline-text-bottom">Início da Safra</p>
+                    </div>
+                    <div class="timeline-step">
+                        <p class="timeline-text-top">Você aceita as campanhas e aponta as notas das suas vendas.</p>
+                        <div class="timeline-icon-container">
+                            <img class="timeline-icon" src="assets/images/how-it-works/icon-2.svg" alt="">
+                        </div>
+                        <p class="timeline-text-bottom placeholder">.</p> </div>
+                    <div class="timeline-step">
+                        <p class="timeline-text-top">O Master avalia as notas apontadas e faz o acompanhamento.</p>
+                        <div class="timeline-icon-container">
+                            <img class="timeline-icon" src="assets/images/how-it-works/icon-3.svg" alt="">
+                        </div>
+                        <p class="timeline-text-bottom placeholder">.</p> </div>
+                    <div class="timeline-step">
+                        <p class="timeline-text-top">Você acompanha o seu dinheiro ao longo da safra.</p>
+                        <div class="timeline-icon-container">
+                            <img class="timeline-icon" src="assets/images/how-it-works/icon-4.svg" alt="">
+                        </div>
+                        <p class="timeline-text-bottom placeholder">.</p> </div>
+                    <div class="timeline-step">
+                        <p class="timeline-text-top">Ao final da safra e após apuração você terá o seu benefício liberado.</p>
+                        <div class="timeline-icon-container">
+                            <img class="timeline-icon" src="assets/images/how-it-works/icon-5.svg" alt="">
+                        </div>
+                        <p class="timeline-text-bottom placeholder">.</p> </div>
+                    <div class="timeline-step">
+                        <p class="timeline-text-top">Prêmio disponível para resgate</p>
+                        <div class="timeline-icon-container">
+                            <img class="timeline-icon" src="assets/images/how-it-works/icon-6.svg" alt="">
+                        </div>
+                        <p class="timeline-text-bottom">Final da Safra</p>
+                    </div>
+                </div>
+                
             </div>
+        </div>
+    </section>
+</main>
 
-            <div class="ctv-intro-content">
-                <h2 class="ctv-intro-headline">Aqui você só ganha!</h2>
-                <p class="ctv-intro-description">Você vende, participa e ganha, nós fazemos o resto. Toda Safra o ciclo se repete, você se cadastra apenas uma vez.</p>
-            </div>
-
-            <img class="ctv-intro-illustration" src="assets/images/how-it-works/ctv-illustration.svg" alt="Ilustração do funcionamento para CTV">
-        </section>
-
-    </main>
-    
     <footer id="site-footer">
         <div class="footer-top">
             <div class="footer-text-content">
@@ -53,8 +105,12 @@
                 <p>Ative as notificações. Pelo App nossa troca é mais dinâmica e segura, baixe-o e fique atento(a) aos nossos comunicados. Assim, o sucesso da nossa Parceria Premiada é ainda maior.</p>
             </div>
             <div class="footer-app-stores">
-                <a href="#" class="app-store-link"><img src="assets/images/footer/google-play-badge.svg" alt="Baixar na Google Play Store"></a>
-                <a href="#" class="app-store-link"><img src="assets/images/footer/apple-app-store-badge.svg" alt="Baixar na Apple App Store"></a>
+                <a href="#" class="app-store-link">
+                    <img src="assets/images/footer/google-play-badge.svg" alt="Baixar na Google Play Store">
+                </a>
+                <a href="#" class="app-store-link">
+                    <img src="assets/images/footer/apple-app-store-badge.svg" alt="Baixar na Apple App Store">
+                </a>
             </div>
         </div>
         <div class="footer-middle">
@@ -84,30 +140,53 @@
         <img src="assets/images/common/back-to-top.svg" alt="Voltar ao topo">
     </a>
 
-<script>
-    // Apenas os scripts que não dependem de seções específicas da home
-    const backToTopButton = document.querySelector('.back-to-top-button');
-    if (backToTopButton) {
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', () => {
-            let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
-            if (currentScrollTop > window.innerHeight) {
-                if (currentScrollTop < lastScrollTop) {
-                    backToTopButton.classList.add('visible');
-                } else {
-                    backToTopButton.classList.remove('visible');
-                }
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-        });
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.ctv-steps-scroll-track');
+    const stickyContainer = document.querySelector('.ctv-steps-sticky-container');
+    const timeline = document.querySelector('.timeline-wrapper');
+    const progressLine = document.querySelector('.timeline-line-progress');
+    const steps = Array.from(document.querySelectorAll('.timeline-step'));
+
+    if (!track || !stickyContainer || !timeline || !progressLine || steps.length === 0) return;
+
+    function handleScroll() {
+        const trackRect = track.getBoundingClientRect();
+        const timelineWidth = timeline.scrollWidth;
+        const containerWidth = stickyContainer.clientWidth;
+        const maxMove = Math.max(0, timelineWidth - containerWidth);
+        const totalScroll = track.scrollHeight - window.innerHeight;
+
+        const scrollPassed = Math.min(Math.max(0, -trackRect.top), totalScroll);
+        const progress = scrollPassed / totalScroll;
+
+        // Atualiza o deslocamento da timeline
+        timeline.style.transform = `translateX(-${progress * maxMove}px)`;
+
+        // Atualiza a linha de progresso
+        const progressWidth = progress * 100;
+        progressLine.style.width = `${progressWidth}%`;
     }
+
+    function updateTrackHeight() {
+        const totalScrollable = Math.max(0, timeline.scrollWidth - stickyContainer.clientWidth);
+        const desiredHeight = totalScrollable + window.innerHeight;
+        track.style.height = `${desiredHeight}px`;
+    }
+
+    function init() {
+        updateTrackHeight();
+        handleScroll();
+    }
+
+    window.addEventListener('resize', () => {
+        clearTimeout(window.__timelineResizeTimer);
+        window.__timelineResizeTimer = setTimeout(init, 150);
+    });
+
+    window.addEventListener('scroll', handleScroll);
+    init();
+});
 </script>
-    
 </body>
 </html>
