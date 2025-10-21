@@ -553,7 +553,7 @@ img {
     position: absolute;
     width: 94.444vw; /* 1360px */
     height: 2.917vw; /* 42px */
-    left: 4.556vw; /* 80px */
+    left: 4vw; /* 80px */
     top: 8.75vw; /* 126px */
     z-index: 2; 
 }
@@ -602,7 +602,6 @@ img {
     z-index: 3; 
 }
 
-/* --- Seção de Passos CTV com Scroll Horizontal (SOLUÇÃO DEFINITIVA) --- */
 /* --- Seção de Passos CTV com Scroll Horizontal (SOLUÇÃO DEFINITIVA) --- */
 #ctv-steps-section {
   max-width: 100%;
@@ -729,7 +728,287 @@ img {
   visibility: hidden;
 }
 
+/* --- 15. Página "Como Funciona" - Seção Atenção CTV --- */
+#ctv-attention-section {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 326px;
+    background-color: #FFFFFF;
+    position: relative;
+    overflow: hidden; /* Garante que nada vaze, se necessário */
+}
 
+.attention-frame {
+    position: absolute;
+    width: 440.63px;
+    height: 130px;
+    left: 500.14px;
+    top: 0;
+}
+
+.attention-box {
+    position: absolute;
+    width: 379px;
+    height: 66px;
+    left: 537px;
+    top: 32px;
+    display: flex;
+    align-items: center;
+    z-index: 2; /* Garante que a caixa fique na frente da moldura */
+}
+
+.attention-icon {
+    width: 53px;
+    height: 51.84px;
+    flex-shrink: 0; /* Impede que o ícone seja espremido */
+}
+
+.attention-text {
+    width: 306px;
+    font-weight: 700; /* Bold */
+    font-size: 28px;
+    color: #00213A;
+    line-height: 1.2;
+    margin-left: 20px; /* (610px - 537px - 53px = 20px) */
+}
+
+/* --- 16. Página "Como Funciona" - Seção Aprenda (CORREÇÃO FINAL COM FLEXBOX) --- */
+#ctv-learn-section {
+    width: 100%;
+    height: 78.75vw; /* 1134px */
+    min-height: 800px;
+    background-color: #E5F2F8;
+    position: relative;
+    overflow: hidden;
+}
+
+.learn-illustration {
+    position: absolute;
+    width: 55.278vw; /* 796px */
+    left: 0;
+    top: 8.75vw; /* 126px */
+}
+
+.learn-content {
+    position: absolute;
+    width: 41.208vw; /* 593.4px */
+    height: 26.042vw; /* 375px */
+    left: 59.028vw; /* 850px */
+    top: 19.306vw; /* 278px */
+}
+
+.learn-headline {
+    position: absolute;
+    height: 9.375vw; /* 135px */
+    left: 0.278vw;   /* (854px - 850px) -> 4px */
+    top: 0;
+    font-weight: 300; /* Regular Italic */
+    font-style: italic;
+    font-size: clamp(36px, 3.75vw, 54px);
+    line-height: 1.2;
+    color: #00213A;
+}
+
+.learn-decorative-lines {
+    position: absolute;
+    width: 18.917vw; /* 272.4px */
+    height: 2.084vw; /* 30.01px */
+    left: 22.292vw;  /* (1171px - 850px) -> 321px */
+    top: 5.833vw;    /* (362px - 278px) -> 84px */
+}
+
+.learn-description {
+    position: absolute;
+    width: 35.417vw; /* 510px */
+    height: 14.861vw;/* 214px */
+    left: 0;
+    top: 11.181vw;   /* (439px - 278px) -> 161px */
+    font-size: clamp(20px, 1.944vw, 28px);
+    font-weight: 400; /* Regular */
+    line-height: 1.4;
+}
+
+.learn-description strong {
+    font-weight: 700; /* Bold */
+}
+
+/* --- 17. Página "Como Funciona" - Seção de Vídeos (ATUALIZADO) --- */
+#ctv-videos-section {
+    width: 100%;
+    height: 100.208vw;
+    max-height: 1443px;
+    background-color: #8AD429;
+    position: relative;
+    z-index: 0;
+}
+.video-card {
+    position: absolute;
+    width: 43.056vw; /* 620px */
+    left: 5.556%;    /* 80px */
+    top: -12.083vw;   /* -174px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.video-card--2 {
+    left: 51.389%;   /* 740px */
+}
+.video-card--3 {
+    top: 25.347vw;   /* 365px */
+    left: 5.556%;
+}
+.video-card--4 {
+    top: 25.347vw;   /* 365px */
+    left: 51.389%;
+}
+.video-card--5 {
+    top: 62.778vw;   /* 904px */
+    left: 5.556%;
+}
+.video-thumbnail-wrapper { position: relative; width: 100%; height: 28.264vw; display: block; }
+.video-thumbnail {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 24.167vw;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.video-play-icon {
+    position: absolute;
+    width: 3.958vw;
+    height: 3.958vw;
+    left: 50%;
+    top: 35%; /* Ajustado para % para melhor centralização vertical */
+    transform: translate(-50%, -50%);
+}
+.video-title {
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(20px, 1.944vw, 28px);
+    margin-top: -2.5vw; /* Ajuste para espaçamento consistente */
+}
+
+/* --- 18. Popup de Vídeo (ATUALIZADO COM RESPONSIVIDADE PARA TELAS MENORES) --- */
+/* --- 18. Popup de Vídeo (CORREÇÃO DE POSICIONAMENTO DO BOTÃO FECHAR) --- */
+.video-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 33, 58, 0.85);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* ATUALIZADO: Garante mais espaço no topo para o botão de fechar */
+    padding: 8vw 5vw; 
+}
+
+.video-popup-overlay.visible {
+    display: flex;
+}
+
+.video-popup-content {
+    position: relative;
+    
+    /* LARGURA: Ocupa 90% da largura da tela (vw), mas nunca passa de 1295px. */
+    max-width: 1295px;
+    width: 90vw; 
+
+    /* ALTURA: Nunca passa de 90% da altura da tela (vh). Essencial para celulares. */
+    max-height: 80vh;
+
+    /* PROPORÇÃO: Força o elemento a manter a escala de 1295x727. 
+       O navegador ajusta a altura com base na largura automaticamente. */
+    aspect-ratio: 1295 / 727;
+    
+    cursor: default;
+    background-color: transparent;
+}
+
+.video-popup-close-button {
+    position: absolute;
+    /* Posição acima do vídeo, mas usando 'bottom' em relação ao topo do container para consistência */
+    bottom: 100%; /* Coloca a base do botão no topo do .video-popup-content */
+    margin-bottom: 0.7vw; /* Adiciona um pequeno espaço (aprox. 10px) entre o botão e o vídeo */
+    right: 0;            /* Alinhado com a borda direita do vídeo */
+    width: clamp(28px, 2.569vw, 37px);
+    height: clamp(28px, 2.569vw, 37px);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.video-popup-close-button img {
+    width: 100%;
+    height: 100%;
+}
+
+#video-popup-player-container {
+    position: relative;
+    width: 100%; 
+    height: 100%; 
+    background-color: #000;
+    border-radius: clamp(12px, 1.389vw, 20px); /* Borda mínima de 12px, máxima de 20px */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.video-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: inherit; /* Herda o border-radius do pai */
+}
+
+.popup-play-icon {
+    position: relative;
+    width: clamp(80px, 8.268vw, 119px);  /* Tamanho mínimo de 80px, máximo de 119px */
+    height: clamp(80px, 8.268vw, 119px);
+    transition: transform 0.2s ease;
+}
+
+.popup-play-icon:hover {
+    transform: scale(1.1);
+}
+
+#video-popup-player-container iframe,
+#video-popup-player-container video {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: inherit; /* Herda o border-radius do pai */
+}
+
+body.modal-open {
+    overflow: hidden;
+}
 /* --- Botão Voltar ao Topo --- */
 .back-to-top-button {
     position: fixed;
