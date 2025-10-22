@@ -165,6 +165,90 @@
             </div>
         </section>
 
+        <section id="master-intro-section">
+            <h1 class="master-intro-title">Como funciona MASTER</h1>
+            <img class="master-intro-lines" src="assets/images/master/title-lines.svg" alt="Linhas decorativas">
+            
+            <img class="master-intro-illustration" src="assets/images/master/illustration.svg" alt="Ilustração do fluxo Master">
+
+            <div class="master-intro-text-content">
+                <p class="master-intro-headline">
+                    Simples e intuitivo. O que nós buscamos é facilitar sua rotina.
+                </p>
+                <p class="master-intro-description">
+                    Administrar o dia a dia da Parceria Premiada no seu canal, ficou mais fácil e ágil. Agora você faz tudo em um só lugar.
+                    <br><br>
+                    Suas responsabilidades?
+                </p>
+            </div>
+        </section>
+
+        <section id="master-steps-section">
+            <div class="master-step-item">
+                <img class="master-step-icon" src="assets/images/master/step-icon-1.svg" alt="Ícone de Aprovação de Cadastro">
+                <div class="master-step-text">
+                    <h3>Aprovar</h3>
+                    <p>o cadastro dos CTVs do seu canal</p>
+                </div>
+            </div>
+            
+            <div class="master-step-item master-step-item--2">
+                <img class="master-step-icon" src="assets/images/master/step-icon-2.svg" alt="Ícone de Validação de Notas">
+                <div class="master-step-text">
+                    <h3>Validar</h3>
+                    <p>as Notas Fiscais apontadas no seu Canal</p>
+                </div>
+            </div>
+
+            <div class="master-step-item master-step-item--3">
+                <img class="master-step-icon" src="assets/images/master/step-icon-3.svg" alt="Ícone de Garantia de Participação">
+                <div class="master-step-text">
+                    <h3>Garantir</h3>
+                    <p>que todos os CTVs estão inscritos, participando e ganhando com a Parceria Premiada.</p>
+                </div>
+            </div>
+
+            <img class="master-steps-lines" src="assets/images/master/decorative-lines-2.svg" alt="Linhas decorativas">
+            <img class="master-steps-illustration" src="assets/images/master/illustration-2.svg" alt="Ilustração de aprendizado do Master">
+
+            <div class="master-steps-text-content">
+                <h2 class="master-steps-headline">É fácil e prático. Veja os conteúdos que preparamos para você.</h2>
+                <p class="master-steps-description">Preparamos alguns vídeos para auxiliá-lo(a) com o uso da plataforma. Não se preocupe, são vídeos curtos e a plataforma é totalmente intuitiva, muito mais fácil do que se imagina, para agilizar sua rotina.</p>
+            </div>
+        </section>
+
+        <section id="master-videos-section">
+            <div class="container">
+                <div class="video-card"> <a href="#" class="video-thumbnail-wrapper" data-video-source="https://www.youtube.com/watch?v=cBgXL-IO4UQ">
+                        <img class="video-thumbnail" src="assets/images/master/video-thumb-master-register.svg" alt="Thumbnail do vídeo Como se cadastrar (Master)">
+                        <img class="video-play-icon" src="assets/images/how-it-works/icon-play.svg" alt="Ícone de Play">
+                    </a>
+                    <p class="video-title">Como se cadastrar</p>
+                </div>
+
+                <div class="video-card video-card--2"> <a href="#" class="video-thumbnail-wrapper" data-video-source="URL_DO_SEU_VIDEO_AQUI_2">
+                        <img class="video-thumbnail" src="assets/images/master/video-thumb-master-features.svg" alt="Thumbnail do vídeo Funcionalidades (Master)">
+                        <img class="video-play-icon" src="assets/images/how-it-works/icon-play.svg" alt="Ícone de Play">
+                    </a>
+                    <p class="video-title">Funcionalidades</p>
+                </div>
+
+                <div class="video-card video-card--3"> <a href="#" class="video-thumbnail-wrapper" data-video-source="URL_DO_SEU_VIDEO_AQUI_3">
+                        <img class="video-thumbnail" src="assets/images/master/video-thumb-master-validate-register.svg" alt="Thumbnail do vídeo Como validar cadastros (Master)">
+                        <img class="video-play-icon" src="assets/images/how-it-works/icon-play.svg" alt="Ícone de Play">
+                    </a>
+                    <p class="video-title">Como validar cadastros</p>
+                </div>
+
+                <div class="video-card video-card--4"> <a href="#" class="video-thumbnail-wrapper" data-video-source="URL_DO_SEU_VIDEO_AQUI_4">
+                        <img class="video-thumbnail" src="assets/images/master/video-thumb-master-validate-invoices.svg" alt="Thumbnail do vídeo Como validar notas fiscais (Master)">
+                        <img class="video-play-icon" src="assets/images/how-it-works/icon-play.svg" alt="Ícone de Play">
+                    </a>
+                    <p class="video-title">Como validar notas fiscais</p>
+                </div>
+            </div>
+        </section>
+
         <footer id="site-footer">
             <div class="footer-top">
                 <div class="footer-text-content">
@@ -220,7 +304,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Script da Timeline (sem alterações) ---
+        // --- Script da Timeline ---
         const track = document.querySelector('.ctv-steps-scroll-track');
         const stickyContainer = document.querySelector('.ctv-steps-sticky-container');
         const timeline = document.querySelector('.timeline-wrapper');
@@ -252,7 +336,7 @@
             initTimeline();
         }
 
-        // --- Script do Popup de Vídeo (ATUALIZADO) ---
+        // --- Script do Popup de Vídeo ---
         const videoTriggers = document.querySelectorAll('.video-thumbnail-wrapper');
         const popup = document.getElementById('video-popup');
         const closeBtn = document.querySelector('.video-popup-close-button');
@@ -261,67 +345,100 @@
 
         if (!popup || videoTriggers.length === 0) {
             console.error("ERRO: O popup ou os cards de vídeo não foram encontrados no HTML.");
-            return;
-        }
-
-        function getYouTubeId(url) {
-            if (!url) return null;
-            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
-            const match = url.match(regex);
-            return (match && match[1]) ? match[1] : null;
-        }
-
-        const openPopup = (videoSource) => {
-            const youtubeId = getYouTubeId(videoSource);
-            let thumbnailUrl = '';
-
-            if (youtubeId) {
-                thumbnailUrl = `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;
+            // Não precisa de `return` aqui, pois o resto do script ainda pode ser útil.
+        } else { // Adicionado um else para não executar se houver erro
+            function getYouTubeId(url) {
+                if (!url) return null;
+                const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+                const match = url.match(regex);
+                return (match && match[1]) ? match[1] : null;
             }
 
-            // ATUALIZADO: O placeholder agora usa uma tag <img> para o ícone de play
-            videoContainer.innerHTML = `
-                <div class="video-placeholder" style="background-image: url('${thumbnailUrl}'); background-color: #000;">
-                    <img class="popup-play-icon" src="assets/images/how-it-works/icon-play-video.svg" alt="Play Video">
-                </div>
-            `;
-            
-            popup.classList.add('visible');
-            body.classList.add('modal-open');
+            const openPopup = (videoSource) => {
+                const youtubeId = getYouTubeId(videoSource);
+                let thumbnailUrl = '';
 
-            const placeholder = videoContainer.querySelector('.video-placeholder');
-            if (placeholder) {
-                placeholder.addEventListener('click', () => {
-                    if (youtubeId) {
-                        videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-                    } else {
-                        videoContainer.innerHTML = `<video controls autoplay src="${videoSource}"></video>`;
-                    }
-                }, { once: true });
-            }
-        };
-
-        const closePopup = () => {
-            popup.classList.remove('visible');
-            body.classList.remove('modal-open');
-            videoContainer.innerHTML = ''; 
-        };
-
-        videoTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                const videoUrl = trigger.dataset.videoSource;
-                if (videoUrl) {
-                    openPopup(videoUrl);
-                } else {
-                    console.warn("AVISO: Popup não abriu porque a URL do vídeo está vazia.");
+                if (youtubeId) {
+                    thumbnailUrl = `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;
                 }
-            });
-        });
 
-        closeBtn.addEventListener('click', closePopup);
-        popup.addEventListener('click', (e) => { if (e.target === popup) { closePopup(); } });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && popup.classList.contains('visible')) { closePopup(); } });
+                videoContainer.innerHTML = `
+                    <div class="video-placeholder" style="background-image: url('${thumbnailUrl}'); background-color: #000;">
+                        <img class="popup-play-icon" src="assets/images/how-it-works/icon-play.svg" alt="Play Video">
+                    </div>
+                `;
+                
+                popup.classList.add('visible');
+                body.classList.add('modal-open');
+
+                const placeholder = videoContainer.querySelector('.video-placeholder');
+                if (placeholder) {
+                    placeholder.addEventListener('click', () => {
+                        if (youtubeId) {
+                            videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                        } else {
+                            videoContainer.innerHTML = `<video controls autoplay src="${videoSource}"></video>`;
+                        }
+                    }, { once: true });
+                }
+            };
+
+            const closePopup = () => {
+                popup.classList.remove('visible');
+                body.classList.remove('modal-open');
+                videoContainer.innerHTML = ''; 
+            };
+
+            videoTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const videoUrl = trigger.dataset.videoSource;
+                    if (videoUrl) {
+                        openPopup(videoUrl);
+                    } else {
+                        console.warn("AVISO: Popup não abriu porque a URL do vídeo está vazia.");
+                    }
+                });
+            });
+
+            closeBtn.addEventListener('click', closePopup);
+            popup.addEventListener('click', (e) => { if (e.target === popup) { closePopup(); } });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && popup.classList.contains('visible')) { closePopup(); } });
+        }
+
+
+        // --- Script para o BOTÃO VOLTAR AO TOPO (AGORA DENTRO DO DOMContentLoaded) ---
+        const backToTopButton = document.querySelector('.back-to-top-button');
+        console.log('Botão Voltar ao Topo encontrado:', backToTopButton); // DEBUG: Confirma se o botão foi encontrado
+
+        if (backToTopButton) {
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', () => {
+                let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+                // console.log('Scroll atual:', currentScrollTop, 'Altura da janela:', window.innerHeight); // DEBUG: Verifica valores de scroll
+                
+                if (currentScrollTop > window.innerHeight / 2) { // Condição ajustada para a metade da tela, mais fácil de testar
+                    if (currentScrollTop < lastScrollTop) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+                
+                lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+            });
+        }
     });
 </script>
 </body>

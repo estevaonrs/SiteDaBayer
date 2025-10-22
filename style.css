@@ -878,7 +878,8 @@ img {
     width: 3.958vw;
     height: 3.958vw;
     left: 50%;
-    top: 35%; /* Ajustado para % para melhor centralização vertical */
+    /* ATUALIZADO: Calculado para centralizar perfeitamente sobre a imagem do vídeo (video-thumbnail) */
+    top: calc(24.167vw / 2); /* Metade da altura da .video-thumbnail */
     transform: translate(-50%, -50%);
 }
 .video-title {
@@ -1008,6 +1009,187 @@ img {
 body.modal-open {
     overflow: hidden;
 }
+
+/* --- 19. PÁGINA "COMO FUNCIONA MASTER" - Seção Intro --- */
+#master-intro-section {
+    max-width: 100%; /* 1440px */
+    height: 86.875vw; /* 1251px */
+    margin: 0 auto;
+    background-color: #E5F2F8;
+    position: relative;
+    overflow: hidden;
+}
+
+.master-intro-title {
+    position: absolute;
+    top: 8.75vw; /* 126px */
+    left: 5.556vw; /* 80px */
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* 36px */
+    font-weight: 700;
+    font-style: italic;
+    color: #00213A;
+}
+
+.master-intro-lines {
+    position: absolute;
+    top: 9.306vw; /* 134px */
+    left: 34.861vw; /* 502px */
+    width: 65.234vw; /* 939.37px */
+}
+
+.master-intro-illustration {
+    position: absolute;
+    top: 20.127vw; /* 289.83px */
+    left: 5.556vw; /* 80px */
+    width: 88.889vw; /* 1280px */
+}
+
+.master-intro-text-content {
+    position: absolute;
+    top: 56.18vw; /* 809px */
+    left: 5.556vw; /* 80px */
+    width: 88.889vw; /* 1280px */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Alinha pela base dos elementos */
+}
+
+.master-intro-headline {
+    flex-basis: 48.2%; /* 617px / 1280px */
+    font-size: clamp(2rem, 4.722vw, 4.25rem); /* 68px */
+    font-weight: 300; /* Headlines grandes costumam ser mais leves */
+    font-style: italic;
+    color: #00213A;
+    line-height: 1.15;
+}
+
+.master-intro-description {
+    flex-basis: 46.95%; /* 601px / 1280px */
+    font-size: clamp(1.25rem, 1.944vw, 1.75rem); /* 28px */
+    font-weight: 700;
+    color: #00213A;
+    line-height: 1.4;
+}
+
+/* --- 20. PÁGINA "COMO FUNCIONA MASTER" - Seção Etapas --- */
+#master-steps-section {
+    max-width: 100%; /* 1438px */
+    height: 71.667vw; /* 1032px */
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    position: relative;
+}
+
+.master-step-item {
+    position: absolute;
+    width: 14.306vw;  /* 206px */
+    height: 18.819vw; /* 271px */
+    top: -5.486vw;    /* -79px */
+    left: 19.375%;    /* 279px / 1440px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.master-step-icon {
+    width: 10.556vw; /* 152px */
+    height: 10.625vw; /* 153px */
+    margin-bottom: 2.708vw; /* Espaçamento entre o ícone e o texto (aprox. 39px) */
+}
+
+.master-step-text {
+    width: 100%;
+}
+
+.master-step-text h3 {
+    font-size: clamp(1.25rem, 1.944vw, 1.75rem); /* 28px */
+    font-weight: 700;
+    font-style: italic;
+    color: #00213A; /* Assumindo que "Azul 04" seja a cor principal do texto */
+    margin-bottom: 0.556vw; /* 8px */
+}
+
+.master-step-text p {
+    font-size: clamp(0.875rem, 1.25vw, 1.125rem); /* 18px */
+    font-weight: 400;
+    color: #00213A;
+    line-height: 1.4;
+}
+
+/* Posicionamento para o segundo step item */
+.master-step-item--2 {
+    width: 14.583vw;  /* 210px */
+    left: 41.875%;    /* 603px */
+}
+
+/* Dimensões específicas para o ícone do segundo step */
+.master-step-item--2 .master-step-icon {
+    width: 10.764vw; /* 155px */
+    height: 10.833vw; /* 156px */
+}
+
+/* Posicionamento e dimensões para o terceiro step item */
+.master-step-item--3 {
+    width: 19.167vw;  /* 276px */
+    height: 20.069vw; /* 289px */
+    left: 62.292%;    /* 897px */
+}
+
+/* Linhas decorativas na parte central da seção */
+.master-steps-lines {
+    position: absolute;
+    top: 24.236vw;  /* 349px */
+    left: 0;
+    width: 48.81vw; /* 702.87px */
+}
+
+/* Ilustração na parte central da seção */
+.master-steps-illustration {
+    position: absolute;
+    top: 27.431vw; /* 395px */
+    left: -0.139vw; /* -2px */
+    width: 48.056vw; /* 692px */
+}
+
+/* Container para os textos à direita */
+.master-steps-text-content {
+    position: absolute;
+    top: 23.333vw; /* 336px */
+    left: 52.778vw; /* 760px */
+    width: 39.861vw; /* 574px (usando a maior largura como base) */
+}
+
+.master-steps-headline {
+    font-size: clamp(2rem, 3.75vw, 3.375rem); /* 54px */
+    font-weight: 300; /* Itálico grande geralmente tem peso menor */
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 1vw; /* Espaçamento entre os textos */
+    color: #00213A;
+}
+
+.master-steps-description {
+    font-size: clamp(1.25rem, 1.944vw, 1.75rem); /* 28px */
+    font-weight: 400; /* Regular */
+    line-height: 1.4;
+    color: #00213A;
+}
+
+/* --- 21. PÁGINA "COMO FUNCIONA MASTER" - Seção Vídeos --- */
+#master-videos-section {
+    width: 100%;
+    height: 62.778vw; /* CORRIGIDO: Altura para 904px */    
+    background-color: #00BCFF; /* Nova cor de fundo */
+    position: relative;
+    z-index: 0;
+}
+
+/* Não são necessárias novas regras para .master-video-card--X, 
+   pois o HTML agora usa as classes .video-card--X existentes,
+   que já contêm o posicionamento correto. 
+*/
+
 /* --- Botão Voltar ao Topo --- */
 .back-to-top-button {
     position: fixed;
