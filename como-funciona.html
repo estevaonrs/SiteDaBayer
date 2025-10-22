@@ -345,8 +345,7 @@
 
         if (!popup || videoTriggers.length === 0) {
             console.error("ERRO: O popup ou os cards de vídeo não foram encontrados no HTML.");
-            // Não precisa de `return` aqui, pois o resto do script ainda pode ser útil.
-        } else { // Adicionado um else para não executar se houver erro
+        } else {
             function getYouTubeId(url) {
                 if (!url) return null;
                 const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
@@ -407,26 +406,18 @@
         }
 
 
-        // --- Script para o BOTÃO VOLTAR AO TOPO (AGORA DENTRO DO DOMContentLoaded) ---
+        // --- Script para o BOTÃO VOLTAR AO TOPO ---
         const backToTopButton = document.querySelector('.back-to-top-button');
-        console.log('Botão Voltar ao Topo encontrado:', backToTopButton); // DEBUG: Confirma se o botão foi encontrado
-
         if (backToTopButton) {
             backToTopButton.addEventListener('click', (e) => {
                 e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
             let lastScrollTop = 0;
-
             window.addEventListener('scroll', () => {
                 let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
-                // console.log('Scroll atual:', currentScrollTop, 'Altura da janela:', window.innerHeight); // DEBUG: Verifica valores de scroll
-                
-                if (currentScrollTop > window.innerHeight / 2) { // Condição ajustada para a metade da tela, mais fácil de testar
+                if (currentScrollTop > window.innerHeight / 2) {
                     if (currentScrollTop < lastScrollTop) {
                         backToTopButton.classList.add('visible');
                     } else {
@@ -435,10 +426,37 @@
                 } else {
                     backToTopButton.classList.remove('visible');
                 }
-                
                 lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
             });
         }
+
+
+        // --- LÓGICA PARA ANIMAÇÃO DE SURGIMENTO DAS SEÇÕES ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // ATUALIZADO: Seleciona TODAS as seções que devem ser animadas (exceto ctv-steps-section)
+        const sectionsToAnimate = document.querySelectorAll(
+            '#ctv-intro-section, #ctv-attention-section, #ctv-learn-section, #ctv-videos-section, #master-intro-section, #master-steps-section, #master-videos-section, #site-footer'
+        );
+        
+        sectionsToAnimate.forEach(section => {
+            if (section) {
+                observer.observe(section);
+            }
+        });
     });
 </script>
 </body>

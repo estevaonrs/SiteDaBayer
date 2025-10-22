@@ -1361,3 +1361,264 @@ body.modal-open {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* --- 25. Animações de Scroll --- */
+
+/* -- Section: Introduction -- */
+#introduction-section .intro-content,
+#introduction-section .intro-image {
+    opacity: 0;
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+#introduction-section .intro-content {
+    transform: translateX(-50px);
+}
+#introduction-section .intro-image {
+    transform: translateX(50px);
+}
+#introduction-section.is-visible .intro-content,
+#introduction-section.is-visible .intro-image {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* -- Section: O que é? -- */
+#what-is-section .what-is-title,
+#what-is-section .what-is-lines,
+#what-is-section .what-is-celular,
+#what-is-section .what-is-description {
+    opacity: 0;
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+#what-is-section .what-is-title,
+#what-is-section .what-is-lines {
+    transform: translateY(-50px); /* Vêm de cima */
+}
+#what-is-section .what-is-celular,
+#what-is-section .what-is-description {
+    transform: translateY(50px); /* Vêm de baixo */
+}
+#what-is-section.is-visible .what-is-title,
+#what-is-section.is-visible .what-is-lines,
+#what-is-section.is-visible .what-is-celular,
+#what-is-section.is-visible .what-is-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -- Section: Como fazer parte? -- */
+#how-to-join-section .join-content,
+#how-to-join-section .join-app-image {
+    opacity: 0;
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+#how-to-join-section .join-content {
+    transform: translateX(-50px); /* Texto da esquerda */
+}
+#how-to-join-section .join-app-image {
+    transform: translateX(50px); /* Imagem da direita */
+}
+#how-to-join-section.is-visible .join-content,
+#how-to-join-section.is-visible .join-app-image {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* -- Section: Já sou cadastrado -- */
+#already-registered-section .registered-app-image,
+#already-registered-section .registered-content {
+    opacity: 0;
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+#already-registered-section .registered-app-image {
+    transform: translateX(-50px); /* Imagem da esquerda */
+}
+#already-registered-section .registered-content {
+    transform: translateX(50px); /* Texto da direita */
+}
+#already-registered-section.is-visible .registered-app-image,
+#already-registered-section.is-visible .registered-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* -- Section: Evite Golpes -- */
+#avoid-scams-section .scams-headline,
+#avoid-scams-section .scams-description,
+#avoid-scams-section .scams-button {
+    opacity: 0;
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+#avoid-scams-section .scams-headline {
+    transform: translateX(-50px); /* Título da esquerda */
+}
+#avoid-scams-section .scams-description {
+    transform: translateX(50px); /* Descrição da direita */
+}
+#avoid-scams-section .scams-button {
+    transform: translateY(50px); /* Botão de baixo */
+}
+#avoid-scams-section.is-visible .scams-headline,
+#avoid-scams-section.is-visible .scams-description,
+#avoid-scams-section.is-visible .scams-button {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* -- Section: Footer -- */
+#site-footer {
+    opacity: 0;
+    transform: translateY(50px); /* Footer vem de baixo */
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+#site-footer.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 26. Animações de Scroll (COMO FUNCIONA) --- */
+
+/* -- Section: CTV Intro -- */
+#ctv-intro-section .ctv-intro-title-group,
+#ctv-intro-section .ctv-intro-content,
+#ctv-intro-section .ctv-intro-illustration {
+    opacity: 0;
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+#ctv-intro-section .ctv-intro-title-group {
+    transform: translateY(-50px); /* Título vem de cima */
+}
+#ctv-intro-section .ctv-intro-content {
+    transform: translateX(-50px); /* Conteúdo da esquerda */
+}
+#ctv-intro-section .ctv-intro-illustration {
+    transform: translateX(50px); /* Ilustração da direita */
+}
+#ctv-intro-section.is-visible .ctv-intro-title-group,
+#ctv-intro-section.is-visible .ctv-intro-content,
+#ctv-intro-section.is-visible .ctv-intro-illustration {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* -- Section: CTV Attention -- */
+#ctv-attention-section .attention-frame,
+#ctv-attention-section .attention-box {
+    opacity: 0;
+    transform: translateY(50px); /* Vem de baixo */
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+#ctv-attention-section.is-visible .attention-frame,
+#ctv-attention-section.is-visible .attention-box {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -- Section: CTV Learn -- */
+#ctv-learn-section .learn-illustration,
+#ctv-learn-section .learn-content {
+    opacity: 0;
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+#ctv-learn-section .learn-illustration {
+    transform: translateX(-50px); /* Ilustração da esquerda */
+}
+#ctv-learn-section .learn-content {
+    transform: translateX(50px); /* Conteúdo da direita */
+}
+#ctv-learn-section.is-visible .learn-illustration,
+#ctv-learn-section.is-visible .learn-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* -- Section: CTV Videos -- */
+#ctv-videos-section .video-card {
+    opacity: 0;
+    transform: translateY(50px); /* Cards de vídeo vêm de baixo */
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+/* Atraso para os cards aparecerem em sequência */
+#ctv-videos-section.is-visible .video-card:nth-child(1) { transition-delay: 0.1s; }
+#ctv-videos-section.is-visible .video-card:nth-child(2) { transition-delay: 0.2s; }
+#ctv-videos-section.is-visible .video-card:nth-child(3) { transition-delay: 0.3s; }
+#ctv-videos-section.is-visible .video-card:nth-child(4) { transition-delay: 0.4s; }
+#ctv-videos-section.is-visible .video-card:nth-child(5) { transition-delay: 0.5s; }
+
+#ctv-videos-section.is-visible .video-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -- Section: Master Intro -- */
+#master-intro-section .master-intro-title,
+#master-intro-section .master-intro-lines,
+#master-intro-section .master-intro-illustration,
+#master-intro-section .master-intro-text-content {
+    opacity: 0;
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+#master-intro-section .master-intro-title,
+#master-intro-section .master-intro-lines {
+    transform: translateY(-50px); /* Título e linhas vêm de cima */
+}
+#master-intro-section .master-intro-illustration {
+    transform: translateX(-50px); /* Ilustração vem da esquerda */
+}
+#master-intro-section .master-intro-text-content {
+    transform: translateY(50px); /* Texto vem de baixo */
+}
+#master-intro-section.is-visible .master-intro-title,
+#master-intro-section.is-visible .master-intro-lines,
+#master-intro-section.is-visible .master-intro-illustration,
+#master-intro-section.is-visible .master-intro-text-content {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* -- Section: Master Steps (elementos que não têm animação complexa de JS) -- */
+#master-steps-section .master-step-item,
+#master-steps-section .master-steps-lines,
+#master-steps-section .master-steps-illustration,
+#master-steps-section .master-steps-text-content {
+    opacity: 0;
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+/* Itens que vêm de cima/esquerda */
+#master-steps-section .master-step-item {
+    transform: translateY(-50px);
+}
+#master-steps-section .master-steps-lines,
+#master-steps-section .master-steps-illustration {
+    transform: translateX(-50px);
+}
+#master-steps-section .master-steps-text-content {
+    transform: translateX(50px);
+}
+
+#master-steps-section.is-visible .master-step-item,
+#master-steps-section.is-visible .master-steps-lines,
+#master-steps-section.is-visible .master-steps-illustration,
+#master-steps-section.is-visible .master-steps-text-content {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+
+/* -- Section: Master Videos -- */
+#master-videos-section .video-card {
+    opacity: 0;
+    transform: translateY(50px); /* Cards de vídeo vêm de baixo */
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+/* Atraso para os cards aparecerem em sequência */
+#master-videos-section.is-visible .video-card:nth-child(1) { transition-delay: 0.1s; }
+#master-videos-section.is-visible .video-card:nth-child(2) { transition-delay: 0.2s; }
+#master-videos-section.is-visible .video-card:nth-child(3) { transition-delay: 0.3s; }
+#master-videos-section.is-visible .video-card:nth-child(4) { transition-delay: 0.4s; }
+
+#master-videos-section.is-visible .video-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
