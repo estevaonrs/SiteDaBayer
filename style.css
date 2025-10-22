@@ -1190,6 +1190,159 @@ body.modal-open {
    que já contêm o posicionamento correto. 
 */
 
+
+/* --- 22. PÁGINA "FAQ" (CORRIGIDO COM DIMENSÕES EXATAS) --- */
+#faq-section {
+    width: 100%;
+    /* REMOVIDO: A altura mínima estava causando o espaçamento excessivo. */
+    /* min-height: 394.167vw; */ 
+    background-color: #E5F2F8;
+    position: relative;
+    padding-bottom: 5.556vw;
+    overflow-x: hidden; /* Garante que nenhum scroll horizontal ocorra */
+}
+
+.faq-title-group {
+    position: absolute;
+    top: 8.75vw;      /* 126px */
+    left: 5.556vw;     /* 80px */
+    width: 88.889vw;   /* 1280px */
+    height: 2.847vw;    /* 41px */
+    display: flex;
+    align-items: center;
+    gap: 1.806vw;      /* Gap de 26px ( (93 - 67) / 1440 * 100 ) */
+}
+
+.faq-title {
+    /* w=67px -> (67 / 1440) * 100 = 4.653vw */
+    flex-basis: 4.653vw; 
+    flex-shrink: 0; /* Impede que o texto "FAQ" encolha */
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* 36px */
+    font-weight: 700;
+    font-style: italic;
+    color: #00213A;
+    white-space: nowrap;
+}
+
+.faq-title-lines {
+    /* w=771.14px -> (771.14 / 1440) * 100 = 53.551vw */
+    width: 53.551vw;
+    height: 2.642vw; /* 38.05px */
+    flex-shrink: 1; /* Permite que as linhas encolham se for preciso (em caso de arredondamento) */
+}
+
+.faq-subtitle {
+    /* w=390px -> (390 / 1440) * 100 = 27.083vw */
+    flex-basis: 27.083vw;
+    flex-shrink: 0; /* Impede que o subtítulo encolha */
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* 36px */
+    font-weight: 700;
+    font-style: italic;
+    color: #00213A;
+    white-space: nowrap;
+}
+
+/* --- 23. PÁGINA "FAQ" - Categoria de Perguntas --- */
+/* --- 23. PÁGINA "FAQ" - Categoria de Perguntas (ATUALIZADO) --- */
+.faq-content-wrapper {
+    position: relative; /* Mudado de absolute para relative */
+    padding-top: 20.347vw; /* 293px (espaço que antes era do 'top' absoluto) */
+    width: 88.889vw; /* 1280px */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+.faq-category {
+    /* Removemos o posicionamento absoluto para que as categorias fiquem uma abaixo da outra */
+    margin-bottom: 5.556vw; /* 80px de espaço entre cada categoria */
+}
+
+.faq-category-header {
+    width: 100%;
+    padding-bottom: 1.389vw; /* ~20px */
+    border-bottom: 1px solid #FEC311;
+    margin-bottom: 1.389vw; /* Reduzido para ~20px */
+}
+
+.faq-category-header h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* 36px */
+    font-weight: 300; /* Medium Italic -> Regular Italic é 300 */
+    font-style: italic;
+    color: #00213A;
+}
+
+/* --- 24. PÁGINA "FAQ" - Acordeão de Perguntas (CORREÇÃO DE ESPAÇAMENTO E ANIMAÇÃO) --- */
+.faq-accordion {
+    width: 100%;
+}
+
+.faq-item {
+    border-bottom: 1px solid #FEC311; 
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* ATUALIZADO: Voltamos a usar padding para um espaçamento mais natural */
+    padding: 1.736vw 0; /* ~25px */
+    cursor: pointer;
+}
+
+.faq-question p {
+    font-size: clamp(1.25rem, 1.944vw, 1.75rem); /* 28px */
+    font-weight: 700;
+    color: #00213A;
+    padding-right: 1.389vw;
+}
+
+.faq-icon-container {
+    width: 2.118vw;  /* 30.5px */
+    height: 2.153vw; /* 31px */
+    flex-shrink: 0;
+}
+
+.faq-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.icon-minus {
+    display: none;
+}
+
+.faq-item.active .icon-plus {
+    display: none;
+}
+.faq-item.active .icon-minus {
+    display: block;
+}
+
+/* ATUALIZADO: Lógica para esconder/mostrar a resposta com Grid */
+/* ATUALIZADO: Lógica para esconder/mostrar a resposta com max-height */
+.faq-answer {
+    max-height: 0; /* Começa totalmente fechado e invisível */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out; /* Animação suave e um pouco mais longa */
+}
+
+/* ATUALIZADO: Lógica para expandir a resposta para a altura exata do conteúdo */
+.faq-item.active .faq-answer {
+    /* Um valor alto que o conteúdo nunca ultrapassará. A animação para na altura real. */
+    max-height: 100vh; 
+}
+.faq-answer p {
+    font-size: clamp(1rem, 1.389vw, 1.25rem); /* ~20px */
+    font-weight: 400;
+    color: #00213A;
+    line-height: 1.5;
+    /* ADICIONADO: Padding no topo para criar o espaçamento correto */
+    padding-top: 0.694vw; /* ~10px */
+    padding-bottom: 2.778vw; /* ~40px */
+    min-height: 0; /* Necessário para a animação de grid funcionar corretamente */
+}
+
+
 /* --- Botão Voltar ao Topo --- */
 .back-to-top-button {
     position: fixed;
