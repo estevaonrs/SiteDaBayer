@@ -11,6 +11,7 @@
     --color-master-blue: #00BCFF;
     --color-white: #FFFFFF;
     --color-black: #000000;
+    --color-accent-orange: #FFA20E;
 
     /* Tipografia */
     --font-primary: 'Roboto', sans-serif;
@@ -619,3 +620,35 @@ h1, h2, h3, h4, p {
 #ctv-videos-section.is-visible .video-card:nth-child(4),
 #master-videos-section.is-visible .video-card:nth-child(4) { transition-delay: 0.4s; }
 #ctv-videos-section.is-visible .video-card:nth-child(5) { transition-delay: 0.5s; }
+
+/* ==========================================================================
+   Efeitos de Hover para Botões CTA
+   ========================================================================== */
+
+/* --- Efeito Geral para todos os botões, EXCETO na seção #avoid-scams-section --- */
+section:not(#avoid-scams-section) a:hover span {
+    color: var(--color-accent-orange);
+}
+
+section:not(#avoid-scams-section) a:hover img[src*="button-cta.svg"] {
+    content: url('assets/images/common/button-cta-2.svg');
+}
+
+/* --- Efeito Específico para o botão na seção #avoid-scams-section --- */
+
+/* Estado de hover */
+#avoid-scams-section .scams-button:hover img[src*="button-cta.svg"] {
+    content: url('assets/images/common/button-cta-3.svg');
+}
+
+#avoid-scams-section .scams-button:hover span {
+    color: var(--color-accent-orange);
+}
+
+/* Adiciona uma transição suave para a cor do texto em todos os botões */
+.hero-button span,
+.intro-button span,
+.cta-button span,
+.scams-button span {
+    transition: color 0.3s ease;
+}
