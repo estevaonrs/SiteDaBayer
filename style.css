@@ -1,873 +1,373 @@
-/* --- 1. Reset Básico e Estilos Globais --- */
+/* ==========================================================================
+   1. Variáveis Globais (--root)
+   ========================================================================== */
+:root {
+    /* Cores */
+    --color-primary-dark-blue: #00213A;
+    --color-background-light-blue: #E5F2F8;
+    --color-accent-blue: #0391DF;
+    --color-accent-green: #8AD429;
+    --color-accent-yellow: #FEC311;
+    --color-master-blue: #00BCFF;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+
+    /* Tipografia */
+    --font-primary: 'Roboto', sans-serif;
+    --font-size-base: clamp(1rem, 1.111vw, 1.125rem); /* ~16-18px */
+    --font-size-lg: clamp(1.25rem, 1.944vw, 1.75rem); /* ~28px */
+    --font-size-xl: clamp(1.5rem, 2.5vw, 2.25rem);     /* ~36px */
+    --font-size-xxl: clamp(2.5rem, 4.86vw, 4.25rem);  /* ~70px */
+}
+
+/* ==========================================================================
+   2. Reset Básico e Estilos Globais
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #FFFFFF;
-    color: #00213A;
+    font-family: var(--font-primary);
+    background-color: var(--color-white);
+    color: var(--color-primary-dark-blue);
+    font-size: var(--font-size-base);
+    overflow-x: hidden;
 }
+
+body.modal-open {
+    overflow: hidden;
+}
+
 a {
     text-decoration: none;
     color: inherit;
 }
+
 img {
     max-width: 100%;
     display: block;
 }
 
-/* --- 2. Estilos Comuns e Reutilizados --- */
-.container-base {
-    max-width: 100%; /* 1440px */
-    margin: 0 auto;
-    position: relative;
+h1, h2, h3, h4, p {
+    line-height: 1.3;
 }
 
-/* Centralização do texto do botão com Grid */
+/* ==========================================================================
+   3. Componentes Reutilizáveis
+   ========================================================================== */
+
+/* --- Botões --- */
 .hero-button,
 .intro-button,
 .cta-button,
 .scams-button {
     display: grid;
     place-items: center;
+    position: relative;
+    height: 2.778vw; /* 40px */
 }
+
 .hero-button > *,
 .intro-button > *,
 .cta-button > *,
 .scams-button > * {
     grid-area: 1 / 1;
 }
+
 .hero-button span,
 .intro-button span,
 .cta-button span,
 .scams-button span {
     font-weight: 700;
-    font-size: 1.111vw; /* 16px */
+    font-size: var(--font-size-base);
     pointer-events: none;
     white-space: nowrap;
     z-index: 2;
 }
 
-/* --- 3. Header e Navbar --- */
+/* --- Acordeão FAQ --- */
+.faq-accordion {
+    width: 100%;
+}
+.faq-item {
+    border-bottom: 1px solid var(--color-accent-yellow);
+}
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.736vw 0;
+    cursor: pointer;
+}
+.faq-question p {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-primary-dark-blue);
+    padding-right: 1.389vw;
+}
+.faq-icon-container {
+    width: 2.118vw;
+    height: 2.153vw;
+    flex-shrink: 0;
+}
+.faq-icon {
+    width: 100%;
+    height: 100%;
+}
+.icon-minus { display: none; }
+.faq-item.active .icon-plus { display: none; }
+.faq-item.active .icon-minus { display: block; }
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+.faq-item.active .faq-answer {
+    max-height: 100vh;
+}
+.faq-answer p {
+    font-size: clamp(1rem, 1.389vw, 1.25rem);
+    font-weight: 400;
+    color: var(--color-primary-dark-blue);
+    line-height: 1.5;
+    padding-top: 0.694vw;
+    padding-bottom: 2.778vw;
+}
+
+/* ==========================================================================
+   4. Layouts Globais (Header, Footer, etc.)
+   ========================================================================== */
+
 .main-header {
     width: 100%;
-    background-color: #FFFFFF;
+    background-color: var(--color-white);
 }
 .navbar {
-    max-width: 100%; /* 1440px */
+    max-width: 100%;
     margin: 0 auto;
-    height: 9.236vw; /* 133px */
+    height: 9.236vw;
     padding: 0 5.55%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.navbar-logo img {
-    width: 8.938vw; /* 128.7px */
-    height: 5.888vw; /* 84.78px */
-}
-.navbar-links {
-    display: flex;
-    align-items: center;
-}
-.navbar-links a {
-    font-weight: 400;
-    font-size: 1.111vw; /* 16px */
-    line-height: 1.667vw; /* 24px */
-}
-.navbar-links a:not(:last-child) {
-    margin-right: 1.667vw; /* 24px */
-}
-.nav-separator {
-    width: 0.726vw; /* 10.45px */
-    height: 1.319vw; /* 19px */
-    margin-right: 1.111vw; /* 16px */
-}
+.navbar-logo img { width: 8.938vw; height: 5.888vw; }
+.navbar-links { display: flex; align-items: center; }
+.navbar-links a { font-weight: 400; font-size: var(--font-size-base); }
+.navbar-links a:not(:last-child) { margin-right: 1.667vw; }
+.nav-separator { width: 0.726vw; height: 1.319vw; margin-right: 1.111vw; }
 
-/* --- 4. Seção Hero (Carrossel) --- */
-#hero-section {
-    max-width: 100%; /* 1440px */
+#site-footer {
+    max-width: 100%;
     margin: 0 auto;
+    height: 70.278vw;
     position: relative;
 }
-.carousel-container {
-    width: 100%;
-    height: 41.667vw; /* 600px */
-    position: relative;
-    overflow: hidden;
-}
-.hero-button {
-    position: absolute;
-    width: 25.27%;
-    height: 2.778vw; /* 40px */
-    z-index: 10;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 3.403vw; /* 49px */
-}
-.carousel-slides {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease-in-out;
-}
-.carousel-slide {
-    min-width: 100%;
-    height: 100%;
-}
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.carousel-indicators {
-    width: 100%;
-    height: 2.847vw; /* 41px */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.111vw; /* 16px */
-}
-.dot {
-    width: 0.556vw; /* 8px */
-    height: 0.556vw; /* 8px */
-    background-color: transparent;
-    border: 1px solid #00213A;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.dot.active {
-    background-color: #00213A;
-}
+.footer-top { width: 100%; height: 22.222vw; background-color: var(--color-accent-blue); position: absolute; top: 0; left: 0; }
+.footer-text-content { position: absolute; width: 28.569vw; left: 5.667vw; top: 5.556vw; color: var(--color-white); }
+.footer-text-content h2 { font-weight: 700; font-style: italic; font-size: var(--font-size-xl); margin-bottom: 1.042vw; }
+.footer-text-content p { font-weight: 400; font-size: 1.25vw; line-height: 1.4; }
+.footer-app-stores { position: absolute; right: 5.556vw; top: 5.694vw; display: flex; flex-direction: column; gap: 2.068vw; align-items: flex-end; }
+.footer-app-stores .app-store-link img { width: 13.876vw; }
+.footer-middle { position: absolute; width: 100%; height: 17.5vw; left: 0; top: 22.222vw; background-color: var(--color-white); }
+.footer-stripe { position: absolute; width: 100%; height: 0.417vw; left: 0; top: 0; }
+.footer-subtitle { position: absolute; left: 5.417vw; top: 7.639vw; font-weight: 700; font-size: var(--font-size-lg); width: 37.778vw; }
+.footer-bayer-logo { position: absolute; width: 6.333vw; height: 6.333vw; right: 5.556vw; top: 5.556vw; }
+.footer-bottom { position: absolute; width: 100%; height: 30.556vw; left: 0; top: 39.722vw; background-color: var(--color-primary-dark-blue); color: var(--color-white); }
+.footer-contact { position: absolute; width: 50.556vw; height: 19.444vw; left: 5.278vw; top: 5.556vw; }
+.contact-logo { position: absolute; width: 16.137vw; height: 7.392vw; left: 0.111vw; top: 0; }
+.contact-phone { position: absolute; width: 15vw; left: 0.694vw; top: 8.472vw; font-size: var(--font-size-lg); color: var(--color-white); }
+.contact-disclaimer { position: absolute; width: 100%; left: 0; top: 14.306vw; font-weight: 400; font-size: 1.25vw; line-height: 1.3; color: var(--color-white); }
+.footer-social { position: absolute; width: 23.133vw; right: 5.556vw; top: 5.556vw; }
+.footer-social h3 { font-weight: 700; font-size: var(--font-size-lg); margin-bottom: 3.75vw; }
+.social-icons-list { display: flex; align-items: center; gap: 1.806vw; }
+.social-icons-list a img { width: 4.418vw; }
 
-/* --- 5. Seção de Introdução --- */
-#introduction-section {
-    max-width: 100%; /* 1440px */
-    margin: 0 auto;
-    height: 66.667vw; /* 960px */
-    background-color: #E5F2F8;
-    position: relative;
-    overflow: hidden;
-}
-.intro-content {
-    position: absolute;
-    top: 23.85%;
-    left: 5.55%;
-    width: 45%;
-}
-.intro-kicker {
-    font-weight: 700;
-    font-style: italic;
-    margin-bottom: 2.5vw; /* 36px */
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-}
-.intro-headline {
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.15;
-    margin-bottom: 2.5vw; /* 36px */
-    font-size: clamp(2.5rem, 4.86vw, 4.86rem);
-}
-.intro-description {
-    font-weight: 700;
-    margin-bottom: 2.5vw; /* 36px */
-    font-size: clamp(1.25rem, 1.94vw, 1.94rem);
-}
-.intro-button {
-    position: relative;
-    display: inline-grid;
-    width: 25.278vw; /* 364px */
-    height: 2.778vw; /* 40px */
-}
-.intro-button img {
-    width: 100%;
-    height: 100%;
-}
-.intro-image {
-    position: absolute;
-    top: 14.68%;
-    left: 51.87%;
-    width: 48.12%;
-    height: 70.62%;
-}
-.intro-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* --- 6. Seção "O que é?" --- */
-#what-is-section {
-    max-width: 100%; /* 1440px */
-    margin: 0 auto;
-    height: 71.25vw; /* 1026px */
-    background-color: #E5F2F8;
-    position: relative;
-    overflow: hidden;
-}
-.what-is-title {
-    position: absolute;
-    top: 3.5%;
-    left: 5.55%;
-    font-weight: 700;
-    font-style: italic;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-}
-.what-is-lines {
-    position: absolute;
-    top: 4.1%;
-    left: 16.6%;
-    width: 83.38%;
-}
-.what-is-celular {
-    position: absolute;
-    top: 20%;
-    left: 4.44%;
-    width: 91.11%;
-}
-.what-is-description {
-    position: absolute;
-    top: 51.16%;
-    left: 45.55%;
-    width: 43.05%;
-    font-size: clamp(1rem, 1.66vw, 1.66rem);
-    font-weight: 400;
-    line-height: 1.5;
-}
-.what-is-description strong {
-    font-weight: 700;
-}
-.what-is-description span {
-    display: block;
-    margin-top: 0.833vw; /* 12px */
-}
-
-/* --- 7. Seção "Passo a Passo" --- */
-#step-by-step-section {
-    max-width: 100%; /* 1440px */
-    margin: 0 auto;
-    height: 30.069vw; /* 433px */
-    background-color: #0391DF;
-    position: relative;
-}
-.step-item {
-    position: absolute;
-    top: -5.764vw; /* -83px */
-    width: 14.58%;
-    height: 20.278vw; /* 292px */
-}
-.step-identification { left: 9.02%; }
-.step-participation  { left: 31.32%; }
-.step-validation     { left: 53.61%; }
-.step-payment        { left: 75.9%; }
-.step-icon {
-    position: absolute;
-    width: 72.38%;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-}
-.step-text {
-    position: absolute;
-    width: 100%;
-    top: 65%;
-    left: 0;
-    color: #FFFFFF;
-    text-align: center;
-    line-height: 1.3;
-    padding: 0 0.347vw; /* 5px */
-}
-.step-text h3 {
-    font-weight: 700;
-    font-style: italic;
-    font-size: clamp(1.25rem, 1.94vw, 1.94rem);
-    margin-bottom: 0.556vw; /* 8px */
-}
-.step-text p {
-    font-weight: 400;
-    font-style: normal;
-    font-size: clamp(0.875rem, 1.25vw, 1.25rem);
-}
-.step-by-step-buttons {
-    position: absolute;
-    width: 51.94%;
-    height: 2.778vw; /* 40px */
-    left: 24.02%;
-    top: 66.74%;
-}
-.cta-button {
-    position: absolute;
-    display: grid;
-    height: 2.778vw; /* 40px */
-}
-.button-left {
-    width: 48.66%;
-    left: 0;
-    top: 0;
-}
-.button-right {
-    width: 48.66%;
-    left: 51.33%;
-    top: 0;
-}
-
-/* --- 8. Seção "Como Fazer Parte" --- */
-#how-to-join-section {
-    max-width: 100%; /* 1440px */
-    margin: 0 auto;
-    height: 56.597vw; /* 815px */
-    background-color: #E5F2F8;
-    position: relative;
-    overflow: hidden;
-}
-.join-app-image {
-    position: absolute;
-    width: 48.6%;
-    top: 17.9%;
-    left: 51.38%;
-}
-.join-content {
-    position: absolute;
-    top: 35.58%;
-    left: 0;
-    width: 52.675%;
-    padding-left: 4.44%;
-}
-.title-group {
-    position: relative;
-    height: 2.917vw; /* 42px */
-    margin-bottom: 2.5vw; /* 36px */
-}
-.title-group h2 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
-    font-style: italic;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-}
-.title-group .title-bars {
-    position: absolute;
-    top: 0.417vw; /* 6px */
-    height: 2.084vw; /* 30.01px */
-    left: 50.23%;
-    width: 59.57%;
-}
-.join-content h3 {
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.2;
-    margin-bottom: 2.5vw; /* 36px */
-    font-size: clamp(2rem, 3.75vw, 3.75rem);
-}
-.join-content p {
-    font-weight: 400;
-    font-size: clamp(1.25rem, 1.94vw, 1.94rem);
-    line-height: 1.5;
-    max-width: 40.833vw; /* 588px */
-}
-
-/* --- 9. Seção "Etapas de Cadastro" --- */
-#registration-steps-section {
-    max-width: 100%; /* 1440px */
-    margin: 0 auto;
-    height: 500vh;
-    background-color: #E5F2F8;
-    position: relative;
-}
-.registration-scroll-container {
-    height: 100%;
-    position: relative;
-}
-.registration-sticky-container {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    max-height: 40.972vw; /* 590px */
-    width: 100%;
-    overflow: hidden;
-}
-.registration-canvas {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-.step-blue-bar {
-    position: absolute;
-    background-color: #0391DF;
-    top: 37.12%;
-    left: 31.98%;
-    width: 38.23%;
-    height: 25.76%;
-    transition: all 0.5s ease-in-out;
-    z-index: 1;
-}
-.step-number {
-    position: absolute;
-    transition: all 0.5s ease-in-out;
-    z-index: 2;
-}
-.step-number-1 { width: 5.49%; top: 34.58%; left: 27.43%; }
-.step-number-2 { width: 8.89%; top: 34.41%; left: 43.89%; }
-.step-number-3 { width: 8.82%; top: 34.07%; left: 63.75%; }
-
-.step-content {
-    position: absolute;
-    opacity: 0;
+.back-to-top-button {
+    position: fixed;
+    width: 11.91vw;
+    height: 2.778vw;
+    top: 3.264vw;
+    right: 5.59vw;
+    z-index: 1000;
     visibility: hidden;
-    pointer-events: none;
-    color: #FFFFFF;
-    transition: opacity 0.3s ease, visibility 0s ease 0.3s;
-    z-index: 3;
+    opacity: 0;
+    transform: translateY(-1.389vw);
+    transition: all 0.3s ease-in-out;
 }
-.registration-canvas.state-2 .step-blue-bar { left: 9.76%; top: 37.29%; width: 60.47%; }
-.registration-canvas.state-2 .step-number-1 { left: 5.56%; top: 34.75%; }
-.registration-canvas.state-2 .step-content-1 { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0.3s; top: 47.46%; left: 14.24%; width: 16.32%; font-size: 1.667vw; font-weight: 400; }
-.registration-canvas.state-3 .step-blue-bar { left: 9.76%; top: 37.29%; width: 60.47%; }
-.registration-canvas.state-3 .step-number-1 { left: 5.56%; top: 34.75%; }
-.registration-canvas.state-3 .step-number-2 { left: 13.82%; }
-.registration-canvas.state-3 .step-content-2 { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0.3s; top: 38%; left: 25.90%; width: 26.32%; }
-.step-content-2 h3 { font-size: 1.667vw; margin-bottom: 0.694vw; font-weight: 700; }
-.step-content-2 .list-columns ul { list-style: none; padding: 0; font-size: 1.111vw; line-height: 1.6; }
-.registration-canvas.state-4 .step-blue-bar { left: 10.49%; top: 37.12%; width: 85.97%; }
-.registration-canvas.state-4 .step-number-1 { left: 5.56%; top: 34.75%; }
-.registration-canvas.state-4 .step-number-2 { left: 13.82%; }
-.registration-canvas.state-4 .step-number-3 { left: 25.48%; }
-.registration-canvas.state-4 .step-content-3 { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0.3s; display: flex; top: 40.8%; left: 36.38%; width: 54%; gap: 2.3%; font-size: 1.25vw; line-height: 1.5; }
-.step-content-3 .text-column { flex: 1; }
-.step-content-3 strong { display: block; font-weight: 700; margin-bottom: 0.347vw; }
-.registration-canvas.state-5 .step-blue-bar { width: 65.604vw; height: 10.556vw; left: 10.486vw; top: 15.208vw; }
-.registration-canvas.state-5 .step-number-1 { left: 5.56%; top: 34.75%; }
-.registration-canvas.state-5 .step-number-2 { width: 8.889vw; left: 13.819vw; top: 14.097vw; }
-.registration-canvas.state-5 .step-number-3 { left: 25.48%; }
-.registration-canvas.state-5 .step-content-4 { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0.3s; position: absolute; width: 31.673vw; height: 2.847vw; left: 41.667vw; top: 19.167vw; display: flex; align-items: center; gap: 1.458vw; z-index: 5; }
-.registration-canvas.state-5 .step-white-bar { width: 1.651vw; height: 8.888vw; left: 37.083vw; top: 16.085vw; z-index: 4; }
-.registration-canvas.state-5 .step-attention-icon { width: 2.908vw; height: 2.844vw; flex-shrink: 0; }
-.registration-canvas.state-5 .step-content-4 p { width: 27.292vw; font-size: 1.25vw; font-style: italic; font-weight: 700; line-height: 1.3; color: #FFFFFF; margin: 0; }
+.back-to-top-button.visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
 
-/* --- 10. Seção "Já sou cadastrado" --- */
+/* ==========================================================================
+   5. Seções das Páginas
+   ========================================================================== */
+
+/* --- Página HOME (index.html) --- */
+#hero-section {
+    max-width: 100%; margin: 0 auto; position: relative;
+}
+.carousel-container { width: 100%; height: 41.667vw; position: relative; overflow: hidden; }
+.hero-button { width: 25.27%; position: absolute; z-index: 10; left: 50%; transform: translateX(-50%); bottom: 3.403vw; }
+.carousel-slides { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
+.carousel-slide { min-width: 100%; height: 100%; }
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+.carousel-indicators { width: 100%; height: 2.847vw; display: flex; justify-content: center; align-items: center; gap: 1.111vw; }
+.dot { width: 0.556vw; height: 0.556vw; background-color: transparent; border: 1px solid var(--color-primary-dark-blue); border-radius: 50%; cursor: pointer; transition: background-color 0.3s ease; }
+.dot.active { background-color: var(--color-primary-dark-blue); }
+
+#introduction-section {
+    max-width: 100%; margin: 0 auto; height: 66.667vw; background-color: var(--color-background-light-blue); position: relative; overflow: hidden;
+}
+.intro-content { position: absolute; top: 23.85%; left: 5.55%; width: 45%; }
+.intro-kicker { font-weight: 700; font-style: italic; margin-bottom: 2.5vw; font-size: var(--font-size-xl); }
+.intro-headline { font-weight: 300; font-style: italic; line-height: 1.15; margin-bottom: 2.5vw; font-size: var(--font-size-xxl); }
+.intro-description { font-weight: 700; margin-bottom: 2.5vw; font-size: var(--font-size-lg); }
+.intro-button { width: 25.278vw; }
+.intro-image { position: absolute; top: 14.68%; left: 51.87%; width: 48.12%; height: 70.62%; }
+.intro-image img { width: 100%; height: 100%; object-fit: contain; }
+
+#what-is-section {
+    max-width: 100%; margin: 0 auto; height: 71.25vw; background-color: var(--color-background-light-blue); position: relative; overflow: hidden;
+}
+.what-is-title { position: absolute; top: 3.5%; left: 5.55%; font-weight: 700; font-style: italic; font-size: var(--font-size-xl); }
+.what-is-lines { position: absolute; top: 4.1%; left: 16.6%; width: 83.38%; }
+.what-is-celular { position: absolute; top: 20%; left: 4.44%; width: 91.11%; }
+.what-is-description { position: absolute; top: 51.16%; left: 45.55%; width: 43.05%; font-size: clamp(1rem, 1.66vw, 1.66rem); font-weight: 400; line-height: 1.5; }
+.what-is-description strong { font-weight: 700; }
+.what-is-description span { display: block; margin-top: 0.833vw; }
+
+#step-by-step-section {
+    max-width: 100%; margin: 0 auto; height: 30.069vw; background-color: var(--color-accent-blue); position: relative;
+}
+.step-item { position: absolute; top: -5.764vw; width: 14.58%; height: 20.278vw; }
+.step-identification { left: 9.02%; }
+.step-participation { left: 31.32%; }
+.step-validation { left: 53.61%; }
+.step-payment { left: 75.9%; }
+.step-icon { position: absolute; width: 72.38%; left: 50%; transform: translateX(-50%); top: 0; }
+.step-text { position: absolute; width: 100%; top: 65%; left: 0; color: var(--color-white); text-align: center; padding: 0 0.347vw; }
+.step-text h3 { font-weight: 700; font-style: italic; font-size: var(--font-size-lg); margin-bottom: 0.556vw; }
+.step-text p { font-weight: 400; font-style: normal; font-size: 1.25vw; }
+.step-by-step-buttons { position: absolute; width: 51.94%; height: 2.778vw; left: 24.02%; top: 66.74%; }
+.cta-button { position: absolute; }
+.button-left { width: 48.66%; left: 0; top: 0; }
+.button-right { width: 48.66%; left: 51.33%; top: 0; }
+
+#how-to-join-section {
+    max-width: 100%; margin: 0 auto; height: 56.597vw; background-color: var(--color-background-light-blue); position: relative; overflow: hidden;
+}
+.join-app-image { position: absolute; width: 48.6%; top: 17.9%; left: 51.38%; }
+.join-content { position: absolute; top: 35.58%; left: 0; width: 52.675%; padding-left: 4.44%; }
+.title-group { position: relative; height: 2.917vw; margin-bottom: 2.5vw; }
+.title-group h2 { position: absolute; left: 0; top: 0; font-weight: 700; font-style: italic; font-size: var(--font-size-xl); }
+.title-group .title-bars { position: absolute; top: 0.417vw; height: 2.084vw; left: 50.23%; width: 59.57%; }
+.join-content h3 { font-weight: 300; font-style: italic; margin-bottom: 2.5vw; font-size: 3.75vw; }
+.join-content p { font-weight: 400; font-size: var(--font-size-lg); line-height: 1.5; max-width: 40.833vw; }
+
+#registration-steps-section {
+    max-width: 100%; margin: 0 auto; height: 500vh; background-color: var(--color-background-light-blue); position: relative;
+}
+.registration-scroll-container{height:100%;position:relative}.registration-sticky-container{position:sticky;top:0;height:100vh;max-height:40.972vw;width:100%;overflow:hidden}.registration-canvas{position:relative;width:100%;height:100%}.step-blue-bar{position:absolute;background-color:var(--color-accent-blue);top:37.12%;left:31.98%;width:38.23%;height:25.76%;transition:all .5s ease-in-out;z-index:1}.step-number{position:absolute;transition:all .5s ease-in-out;z-index:2}.step-number-1{width:5.49%;top:34.58%;left:27.43%}.step-number-2{width:8.89%;top:34.41%;left:43.89%}.step-number-3{width:8.82%;top:34.07%;left:63.75%}.step-content{position:absolute;opacity:0;visibility:hidden;pointer-events:none;color:var(--color-white);transition:opacity .3s ease,visibility 0s ease .3s;z-index:3}.registration-canvas.state-2 .step-blue-bar{left:9.76%;top:37.29%;width:60.47%}.registration-canvas.state-2 .step-number-1{left:5.56%;top:34.75%}.registration-canvas.state-2 .step-content-1{opacity:1;visibility:visible;pointer-events:auto;transition-delay:.3s;top:47.46%;left:14.24%;width:16.32%;font-size:1.667vw;font-weight:400}.registration-canvas.state-3 .step-blue-bar{left:9.76%;top:37.29%;width:60.47%}.registration-canvas.state-3 .step-number-1{left:5.56%;top:34.75%}.registration-canvas.state-3 .step-number-2{left:13.82%}.registration-canvas.state-3 .step-content-2{opacity:1;visibility:visible;pointer-events:auto;transition-delay:.3s;top:38%;left:25.9%;width:26.32%}.step-content-2 h3{font-size:1.667vw;margin-bottom:.694vw;font-weight:700}.step-content-2 .list-columns ul{list-style:none;padding:0;font-size:1.111vw;line-height:1.6}.registration-canvas.state-4 .step-blue-bar{left:10.49%;top:37.12%;width:85.97%}.registration-canvas.state-4 .step-number-1{left:5.56%;top:34.75%}.registration-canvas.state-4 .step-number-2{left:13.82%}.registration-canvas.state-4 .step-number-3{left:25.48%}.registration-canvas.state-4 .step-content-3{opacity:1;visibility:visible;pointer-events:auto;transition-delay:.3s;display:flex;top:40.8%;left:36.38%;width:54%;gap:2.3%;font-size:1.25vw;line-height:1.5}.step-content-3 .text-column{flex:1}.step-content-3 strong{display:block;font-weight:700;margin-bottom:.347vw}.registration-canvas.state-5 .step-blue-bar{width:65.604vw;height:10.556vw;left:10.486vw;top:15.208vw}.registration-canvas.state-5 .step-number-1{left:5.56%;top:34.75%}.registration-canvas.state-5 .step-number-2{width:8.889vw;left:13.819vw;top:14.097vw}.registration-canvas.state-5 .step-number-3{left:25.48%}.registration-canvas.state-5 .step-content-4{opacity:1;visibility:visible;pointer-events:auto;transition-delay:.3s;position:absolute;width:31.673vw;height:2.847vw;left:41.667vw;top:19.167vw;display:flex;align-items:center;gap:1.458vw;z-index:5}.registration-canvas.state-5 .step-white-bar{width:1.651vw;height:8.888vw;left:37.083vw;top:16.085vw;z-index:4}.registration-canvas.state-5 .step-attention-icon{width:2.908vw;height:2.844vw;flex-shrink:0}.registration-canvas.state-5 .step-content-4 p{width:27.292vw;font-size:1.25vw;font-style:italic;font-weight:700;line-height:1.3;color:var(--color-white);margin:0}
+
 #already-registered-section {
-    max-width: 100%; /* 1440px */
-    margin: 0 auto;
-    height: 61.806vw; /* 890px */
-    background-color: #FFFFFF;
-    position: relative;
-    z-index: 1;
+    max-width: 100%; margin: 0 auto; height: 61.806vw; background-color: var(--color-white); position: relative; z-index: 1;
 }
-.registered-app-image {
-    position: absolute;
-    width: 29.097vw; /* 419px */
-    height: 58.472vw; /* 842px */
-    left: 12.917vw; /* 186px */
-    top: 8.75vw; /* 126px */
-    object-fit: contain;
-    z-index: 4;
-}
-.registered-decorative-lines {
-    position: absolute;
-    width: 49.529vw; /* 713.22px */
-    height: 2.084vw; /* 30.01px */
-    left: 0;
-    top: 12.083vw; /* 174px */
-}
-.registered-content {
-    position: absolute;
-    width: 44.028vw; /* 634px */
-    height: 37.917vw; /* 546px */
-    left: 50.694vw; /* 730px */
-    top: 11.25vw; /* 162px */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-right: 1.389vw; /* 20px */
-    z-index: 3;
-}
+.registered-app-image { position: absolute; width: 29.097vw; height: 58.472vw; left: 12.917vw; top: 8.75vw; object-fit: contain; z-index: 4; }
+.registered-decorative-lines { position: absolute; width: 49.529vw; height: 2.084vw; left: 0; top: 12.083vw; }
+.registered-content { position: absolute; width: 44.028vw; height: 37.917vw; left: 50.694vw; top: 11.25vw; display: flex; flex-direction: column; padding-right: 1.389vw; z-index: 3; }
 .registered-content h2 { height: 9.375vw; font-weight: 300; font-style: italic; font-size: 3.75vw; line-height: 1.2; margin-bottom: 1.806vw; }
-.registered-content h3 { width: 43.125vw; height: 4.722vw; font-weight: 400; font-size: 1.944vw; line-height: 1.2; margin-bottom: 2.083vw; }
-.registered-content .highlight-bold { width: 41.875vw; height: 6.944vw; font-weight: 700; font-size: 1.944vw; line-height: 1.2; margin-bottom: 1.806vw; }
-.registered-content p { width: 44.028vw; height: 11.458vw; font-weight: 400; font-size: 1.944vw; line-height: 1.2; }
+.registered-content h3 { width: 43.125vw; height: 4.722vw; font-weight: 400; font-size: var(--font-size-lg); line-height: 1.2; margin-bottom: 2.083vw; }
+.registered-content .highlight-bold { width: 41.875vw; height: 6.944vw; font-weight: 700; font-size: var(--font-size-lg); line-height: 1.2; margin-bottom: 1.806vw; }
+.registered-content p { width: 44.028vw; height: 11.458vw; font-weight: 400; font-size: var(--font-size-lg); line-height: 1.2; }
 
-/* --- 11. Seção "Evite Golpes" --- */
 #avoid-scams-section {
-    max-width: 100%; /* 1440px */
-    margin: 0 auto;
-    height: 51.042vw; /* 735px */
-    background-color: #00213A;
-    color: #FFFFFF;
-    position: relative;
-    overflow: hidden;
+    max-width: 100%; margin: 0 auto; height: 51.042vw; background-color: var(--color-primary-dark-blue); color: var(--color-white); position: relative; overflow: hidden;
 }
 .scams-decorative-lines { position: absolute; width: 45.89vw; height: 2.084vw; left: 0; top: 11.875vw; }
 .scams-headline { position: absolute; width: 34.306vw; left: 11.944vw; top: 17.361vw; font-weight: 300; font-style: italic; font-size: 3.75vw; line-height: 1.2; }
-.scams-description { position: absolute; width: 36.319vw; left: 51.806vw; top: 11.319vw; font-weight: 400; font-size: 1.944vw; line-height: 1.3; }
-.scams-button { position: absolute; width: 25.278vw; height: 2.778vw; left: 37.361vw; top: 43.403vw; display: grid; }
-.scams-button span { color: #00213A; }
+.scams-description { position: absolute; width: 36.319vw; left: 51.806vw; top: 11.319vw; font-weight: 400; font-size: var(--font-size-lg); line-height: 1.3; }
+.scams-button { width: 25.278vw; position: absolute; left: 37.361vw; top: 43.403vw; }
+.scams-button span { color: var(--color-primary-dark-blue); }
 
-/* --- 12. Footer --- */
-#site-footer {
-    max-width: 100%; /* 1440px */
-    margin: 0 auto;
-    height: 70.278vw; /* 1012px */
-    position: relative;
-}
-.footer-top { width: 100%; height: 22.222vw; background-color: #0391DF; position: absolute; top: 0; left: 0; }
-.footer-text-content { position: absolute; width: 28.569vw; left: 5.667vw; top: 5.556vw; color: #FFFFFF; }
-.footer-text-content h2 { font-weight: 700; font-style: italic; font-size: 2.5vw; margin-bottom: 1.042vw; }
-.footer-text-content p { font-weight: 400; font-size: 1.25vw; line-height: 1.4; }
-.footer-app-stores { position: absolute; right: 5.556vw; top: 5.694vw; display: flex; flex-direction: column; gap: 2.068vw; align-items: flex-end; }
-.footer-app-stores .app-store-link img { width: 13.876vw; height: auto; }
-.footer-middle { position: absolute; width: 100%; height: 17.5vw; left: 0; top: 22.222vw; background-color: #FFFFFF; }
-.footer-stripe { position: absolute; width: 100%; height: 0.417vw; left: 0; top: 0; }
-.footer-subtitle { position: absolute; left: 5.417vw; top: 7.639vw; font-weight: 700; font-size: 1.944vw; width: 37.778vw; }
-.footer-bayer-logo { position: absolute; width: 6.333vw; height: 6.333vw; right: 5.556vw; top: 5.556vw; }
-.footer-bottom { position: absolute; width: 100%; height: 30.556vw; left: 0; top: 39.722vw; background-color: #00213A; color: #FFFFFF; }
-.footer-contact { position: absolute; width: 50.556vw; height: 19.444vw; left: 5.278vw; top: 5.556vw; }
-.contact-logo { position: absolute; width: 16.137vw; height: 7.392vw; left: 0.111vw; top: 0; }
-.contact-phone { position: absolute; width: 15vw; left: 0.694vw; top: 8.472vw; font-size: 1.944vw; color: #FFFFFF; }
-.contact-disclaimer { position: absolute; width: 100%; left: 0; top: 14.306vw; font-weight: 400; font-size: 1.25vw; line-height: 1.3; color: #FFFFFF; }
-.footer-social { position: absolute; width: 23.133vw; right: 5.556vw; top: 5.556vw; }
-.footer-social h3 { font-weight: 700; font-size: 1.944vw; margin-bottom: 3.75vw; }
-.social-icons-list { display: flex; align-items: center; gap: 1.806vw; }
-.social-icons-list a:nth-child(1) img { width: 4.418vw; }
-.social-icons-list a:nth-child(2) img { width: 4.418vw; }
-.social-icons-list a:nth-child(3) img { width: 4.418vw; }
-.social-icons-list a:nth-child(4) img { width: 4.418vw; }
 
-/* --- 13. PÁGINA "COMO FUNCIONA" --- */
-
-/* --- Seção de Introdução CTV (CORRIGIDA) --- */
+/* --- Página COMO FUNCIONA (como-funciona.html) --- */
 #ctv-intro-section {
-    max-width: 100%;
-    height: 60.833vw; /* 876px */
-    margin: 0 auto;
-    background-color: #E5F2F8;
-    position: relative;
-    z-index: 1; 
-    /* Removido o overflow: hidden para a imagem sobrepor */
+    max-width: 100%; height: 60.833vw; margin: 0 auto; background-color: var(--color-background-light-blue); position: relative; z-index: 1;
 }
-.ctv-intro-title-group {
-    position: absolute;
-    width: 94.444vw; /* 1360px */
-    height: 2.917vw; /* 42px */
-    left: 4vw; /* 80px */
-    top: 8.75vw; /* 126px */
-    z-index: 2; 
-}
-.ctv-intro-title {
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
-    font-style: italic;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem); /* 36px */
-    color: #00213A;
-}
-.ctv-intro-lines {
-    position: absolute;
-    width: 70.694vw; /* 1018px */
-    height: 2.084vw; /* 30.01px */
-    left: 23.75vw; 
-    top: 0.417vw;
-}
-.ctv-intro-content {
-    position: absolute;
-    width: 36.458vw; /* 525px */
-    left: 5.347vw; /* 77px */
-    top: 28.819vw; /* 415px */
-    color: #00213A;
-    z-index: 2;
-}
-.ctv-intro-headline {
-    font-weight: 300;
-    font-style: italic;
-    font-size: clamp(2.5rem, 4.86vw, 4.86rem); /* 70px */
-    line-height: 1.15;
-    margin-bottom: 2.5vw;
-}
-.ctv-intro-description {
-    font-weight: 700;
-    font-size: clamp(1.25rem, 1.94vw, 1.94rem); /* 28px */
-    line-height: 1.2;
-}
-.ctv-intro-illustration {
-    position: absolute;
-    width: 56.042vw; /* 807px */
-    height: 47.222vw; /* 680px */
-    right: 0;
-    top: 20.417vw;  /* 294px */
-    z-index: 3; 
-}
+.ctv-intro-title-group { position: absolute; width: 94.444vw; height: 2.917vw; left: 4vw; top: 8.75vw; z-index: 2; }
+.ctv-intro-title { position: absolute; left: 0; top: 0; font-weight: 700; font-style: italic; font-size: var(--font-size-xl); color: var(--color-primary-dark-blue); }
+.ctv-intro-lines { position: absolute; width: 70.694vw; height: 2.084vw; left: 23.75vw; top: 0.417vw; }
+.ctv-intro-content { position: absolute; width: 36.458vw; left: 5.347vw; top: 28.819vw; color: var(--color-primary-dark-blue); z-index: 2; }
+.ctv-intro-headline { font-weight: 300; font-style: italic; font-size: var(--font-size-xxl); line-height: 1.15; margin-bottom: 2.5vw; }
+.ctv-intro-description { font-weight: 700; font-size: var(--font-size-lg); line-height: 1.2; }
+.ctv-intro-illustration { position: absolute; width: 56.042vw; height: 47.222vw; right: 0; top: 20.417vw; z-index: 3; }
 
-/* --- Seção de Passos CTV com Scroll Horizontal (SOLUÇÃO DEFINITIVA) --- */
 #ctv-steps-section {
-  max-width: 100%;
-  margin: 0 auto;
-  background-color: #FFFFFF;
-  position: relative;
-  z-index: 0;
-  margin-top: 9.306vw; /* Espaço para a ilustração da seção anterior */
+    max-width: 100%; margin: 0 auto; background-color: var(--color-white); position: relative; z-index: 0; margin-top: 9.306vw;
 }
+.ctv-steps-scroll-track{height:300vh;position:relative}.ctv-steps-sticky-container{position:sticky;top:0;height:46.389vw;max-height:668px;width:100%;overflow:hidden;display:flex;align-items:center}.timeline-wrapper{position:relative;display:flex;align-items:center;gap:16.14vw;width:max-content;padding:0 5.556vw;will-change:transform}.timeline-line{position:absolute;top:50%;left:0;height:.556vw;width:100%;background-color:#c8ef8a;transform:translateY(-50%);z-index:1;border-radius:4px}.timeline-line-progress{position:absolute;top:50%;left:0;height:.556vw;width:0;background-color:var(--color-accent-green);transform:translateY(-50%);z-index:2;border-radius:4px;transition:width .2s ease-out}.timeline-step{display:flex;flex-direction:column;align-items:center;text-align:center;width:18.056vw;flex-shrink:0;position:relative;z-index:2}.timeline-text-top{color:var(--color-primary-dark-blue);font-size:var(--font-size-lg);line-height:1.2;width:100%;margin-bottom:2.2vw;height:6.8vw;display:flex;align-items:flex-end;justify-content:center}.timeline-icon-container{width:6.081vw;height:6.081vw;max-width:87.56px;max-height:87.56px;border-radius:50%;background-color:var(--color-accent-green);display:flex;justify-content:center;align-items:center;flex-shrink:0}.timeline-icon{width:60%;height:60%;object-fit:contain}.timeline-text-bottom{color:var(--color-primary-dark-blue);font-size:var(--font-size-lg);font-style:italic;white-space:nowrap;margin-top:2.2vw;height:6.8vw;display:flex;align-items:flex-start;justify-content:center;padding-top:.5em}.timeline-text-bottom.placeholder{visibility:hidden}
 
-.ctv-steps-scroll-track {
-  height: 300vh;
-  position: relative;
-}
-
-.ctv-steps-sticky-container {
-  position: sticky;
-  top: 0;
-  height: 46.389vw; /* 668px */
-  max-height: 668px;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.timeline-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16.14vw;
-  width: max-content;
-  padding: 0 5.556vw;
-  will-change: transform;
-}
-
-/* Linha de fundo sempre visível */
-.timeline-line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  height: 0.556vw; /* 8px */
-  width: 100%;
-  background-color: #c8ef8a; /* verde mais claro, linha base */
-  transform: translateY(-50%);
-  z-index: 1;
-  border-radius: 4px;
-}
-
-/* Linha de progresso controlada pelo JS */
-.timeline-line-progress {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  height: 0.556vw;
-  width: 0;
-  background-color: #8AD429; /* verde principal */
-  transform: translateY(-50%);
-  z-index: 2;
-  border-radius: 4px;
-  transition: width 0.2s ease-out;
-}
-
-
-.timeline-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 18.056vw; /* 260px */
-  flex-shrink: 0;
-  position: relative;
-  z-index: 2; /* Para que o conteúdo fique na frente da linha */
-}
-
-/* AJUSTE AQUI */
-.timeline-text-top {
-  color: #00213A;
-  font-size: clamp(1.25rem, 1.94vw, 1.94rem);
-  line-height: 1.2;
-  width: 100%;
-  margin-bottom: 2.2vw; /* Margem simétrica */
-  height: 6.8vw; /* Altura fixa para garantir consistência */
-  display: flex;
-  align-items: flex-end; /* Alinha o texto na base da caixa */
-  justify-content: center;
-}
-
-.timeline-icon-container {
-  width: 6.081vw; /* 87.56px */
-  height: 6.081vw; /* 87.56px */
-  max-width: 87.56px;
-  max-height: 87.56px;
-  border-radius: 50%;
-  background-color: #8AD429;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.timeline-icon {
-  width: 60%;
-  height: 60%;
-  object-fit: contain;
-}
-
-/* E AJUSTE AQUI */
-.timeline-text-bottom {
-  color: #00213A;
-  font-size: clamp(1.25rem, 1.94vw, 1.94rem);
-  font-style: italic;
-  white-space: nowrap;
-  margin-top: 2.2vw; /* Margem simétrica */
-  height: 6.8vw; /* Altura idêntica à de cima */
-  display: flex;
-  align-items: flex-start; /* Alinha o texto no topo da caixa */
-  justify-content: center;
-  padding-top: 0.5em; /* Pequeno ajuste para alinhar visualmente o texto */
-}
-
-/* Deixa o texto do placeholder invisível, mas ocupando espaço */
-.timeline-text-bottom.placeholder {
-  visibility: hidden;
-}
-
-/* --- 15. Página "Como Funciona" - Seção Atenção CTV --- */
 #ctv-attention-section {
-    max-width: 1440px;
-    margin: 0 auto;
-    height: 326px;
-    background-color: #FFFFFF;
-    position: relative;
-    overflow: hidden; /* Garante que nada vaze, se necessário */
+    max-width: 1440px; margin: 0 auto; height: 22.639vw; background-color: var(--color-white); position: relative; overflow: hidden;
 }
+.attention-frame { position: absolute; width: 30.599vw; height: 9.028vw; left: 34.732vw; top: 0; }
+.attention-box { position: absolute; width: 26.319vw; height: 4.583vw; left: 37.292vw; top: 2.222vw; display: flex; align-items: center; z-index: 2; }
+.attention-icon { width: 3.681vw; height: 3.597vw; flex-shrink: 0; }
+.attention-text { width: 21.25vw; font-weight: 700; font-size: var(--font-size-lg); color: var(--color-primary-dark-blue); line-height: 1.2; margin-left: 1.389vw; }
 
-.attention-frame {
-    position: absolute;
-    width: 440.63px;
-    height: 130px;
-    left: 500.14px;
-    top: 0;
-}
-
-.attention-box {
-    position: absolute;
-    width: 379px;
-    height: 66px;
-    left: 537px;
-    top: 32px;
-    display: flex;
-    align-items: center;
-    z-index: 2; /* Garante que a caixa fique na frente da moldura */
-}
-
-.attention-icon {
-    width: 53px;
-    height: 51.84px;
-    flex-shrink: 0; /* Impede que o ícone seja espremido */
-}
-
-.attention-text {
-    width: 306px;
-    font-weight: 700; /* Bold */
-    font-size: 28px;
-    color: #00213A;
-    line-height: 1.2;
-    margin-left: 20px; /* (610px - 537px - 53px = 20px) */
-}
-
-/* --- 16. Página "Como Funciona" - Seção Aprenda (CORREÇÃO FINAL COM FLEXBOX) --- */
 #ctv-learn-section {
-    width: 100%;
-    height: 78.75vw; /* 1134px */
-    min-height: 800px;
-    background-color: #E5F2F8;
-    position: relative;
-    overflow: hidden;
+    width: 100%; height: 78.75vw; min-height: 800px; background-color: var(--color-background-light-blue); position: relative; overflow: hidden;
 }
+.learn-illustration { position: absolute; width: 55.278vw; left: 0; top: 8.75vw; }
+.learn-content { position: absolute; width: 41.208vw; height: 26.042vw; left: 59.028vw; top: 19.306vw; }
+.learn-headline { position: absolute; height: 9.375vw; left: 0.278vw; top: 0; font-weight: 300; font-style: italic; font-size: 3.75vw; line-height: 1.2; color: var(--color-primary-dark-blue); }
+.learn-decorative-lines { position: absolute; width: 18.917vw; height: 2.084vw; left: 22.292vw; top: 5.833vw; }
+.learn-description { position: absolute; width: 35.417vw; height: 14.861vw; left: 0; top: 11.181vw; font-size: var(--font-size-lg); font-weight: 400; line-height: 1.4; }
+.learn-description strong { font-weight: 700; }
 
-.learn-illustration {
-    position: absolute;
-    width: 55.278vw; /* 796px */
-    left: 0;
-    top: 8.75vw; /* 126px */
-}
-
-.learn-content {
-    position: absolute;
-    width: 41.208vw; /* 593.4px */
-    height: 26.042vw; /* 375px */
-    left: 59.028vw; /* 850px */
-    top: 19.306vw; /* 278px */
-}
-
-.learn-headline {
-    position: absolute;
-    height: 9.375vw; /* 135px */
-    left: 0.278vw;   /* (854px - 850px) -> 4px */
-    top: 0;
-    font-weight: 300; /* Regular Italic */
-    font-style: italic;
-    font-size: clamp(36px, 3.75vw, 54px);
-    line-height: 1.2;
-    color: #00213A;
-}
-
-.learn-decorative-lines {
-    position: absolute;
-    width: 18.917vw; /* 272.4px */
-    height: 2.084vw; /* 30.01px */
-    left: 22.292vw;  /* (1171px - 850px) -> 321px */
-    top: 5.833vw;    /* (362px - 278px) -> 84px */
-}
-
-.learn-description {
-    position: absolute;
-    width: 35.417vw; /* 510px */
-    height: 14.861vw;/* 214px */
-    left: 0;
-    top: 11.181vw;   /* (439px - 278px) -> 161px */
-    font-size: clamp(20px, 1.944vw, 28px);
-    font-weight: 400; /* Regular */
-    line-height: 1.4;
-}
-
-.learn-description strong {
-    font-weight: 700; /* Bold */
-}
-
-/* --- 17. Página "Como Funciona" - Seção de Vídeos (ATUALIZADO) --- */
 #ctv-videos-section {
     width: 100%;
     height: 100.208vw;
-    background-color: #8AD429;
+    background-color: var(--color-accent-green);
     position: relative;
     z-index: 0;
 }
 .video-card {
     position: absolute;
-    width: 43.056vw; /* 620px */
-    left: 5.556%;    /* 80px */
-    top: -12.083vw;   /* -174px */
+    width: 43.056vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.video-card--2 {
-    left: 51.389%;   /* 740px */
-}
-.video-card--3 {
-    top: 25.347vw;   /* 365px */
+    transition: transform 0.3s ease-out;
+    cursor: pointer;
+    top: -12.083vw;
     left: 5.556%;
 }
-.video-card--4 {
-    top: 25.347vw;   /* 365px */
-    left: 51.389%;
+.video-card:hover {
+    transform: scale(1.05) translateY(-0.7vw);
+    z-index: 10;
 }
-.video-card--5 {
-    top: 62.778vw;   /* 904px */
-    left: 5.556%;
+.video-card--2 { left: 51.389%; }
+.video-card--3 { top: 25.347vw; left: 5.556%; }
+.video-card--4 { top: 25.347vw; left: 51.389%; }
+.video-card--5 { top: 62.778vw; left: 5.556%; }
+.video-thumbnail-wrapper {
+    position: relative;
+    width: 100%;
+    height: 28.264vw;
+    display: block;
 }
-.video-thumbnail-wrapper { position: relative; width: 100%; height: 28.264vw; display: block; }
 .video-thumbnail {
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 24.167vw;
     object-fit: cover;
@@ -878,22 +378,67 @@ img {
     width: 3.958vw;
     height: 3.958vw;
     left: 50%;
-    /* ATUALIZADO: Calculado para centralizar perfeitamente sobre a imagem do vídeo (video-thumbnail) */
-    top: calc(24.167vw / 2); /* Metade da altura da .video-thumbnail */
+    top: calc(24.167vw / 2);
     transform: translate(-50%, -50%);
 }
 .video-title {
     width: 100%;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--color-white);
     font-weight: 700;
     font-style: italic;
     font-size: clamp(20px, 1.944vw, 28px);
-    margin-top: -2.5vw; /* Ajuste para espaçamento consistente */
+    margin-top: -2.5vw;
 }
 
-/* --- 18. Popup de Vídeo (ATUALIZADO COM RESPONSIVIDADE PARA TELAS MENORES) --- */
-/* --- 18. Popup de Vídeo (CORREÇÃO DE POSICIONAMENTO DO BOTÃO FECHAR) --- */
+#master-intro-section {
+    max-width: 100%; height: 86.875vw; margin: 0 auto; background-color: var(--color-background-light-blue); position: relative; overflow: hidden;
+}
+.master-intro-title { position: absolute; top: 8.75vw; left: 5.556vw; font-size: var(--font-size-xl); font-weight: 700; font-style: italic; color: var(--color-primary-dark-blue); }
+.master-intro-lines { position: absolute; top: 9.306vw; left: 34.861vw; width: 65.234vw; }
+.master-intro-illustration { position: absolute; top: 20.127vw; left: 5.556vw; width: 88.889vw; }
+.master-intro-text-content { position: absolute; top: 56.18vw; left: 5.556vw; width: 88.889vw; display: flex; justify-content: space-between; align-items: flex-end; }
+.master-intro-headline { flex-basis: 48.2%; font-size: 4.722vw; font-weight: 300; font-style: italic; color: var(--color-primary-dark-blue); line-height: 1.15; }
+.master-intro-description { flex-basis: 46.95%; font-size: var(--font-size-lg); font-weight: 700; color: var(--color-primary-dark-blue); line-height: 1.4; }
+
+#master-steps-section {
+    max-width: 100%; height: 71.667vw; margin: 0 auto; background-color: var(--color-white); position: relative;
+}
+.master-step-item { position: absolute; width: 14.306vw; height: 18.819vw; top: -5.486vw; left: 19.375%; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.master-step-icon { width: 10.556vw; height: 10.625vw; margin-bottom: 2.708vw; }
+.master-step-text { width: 100%; }
+.master-step-text h3 { font-size: var(--font-size-lg); font-weight: 700; font-style: italic; color: var(--color-primary-dark-blue); margin-bottom: 0.556vw; }
+.master-step-text p { font-size: 1.25vw; font-weight: 400; color: var(--color-primary-dark-blue); line-height: 1.4; }
+.master-step-item--2 { width: 14.583vw; left: 41.875%; }
+.master-step-item--2 .master-step-icon { width: 10.764vw; height: 10.833vw; }
+.master-step-item--3 { width: 19.167vw; height: 20.069vw; left: 62.292%; }
+.master-steps-lines { position: absolute; top: 24.236vw; left: 0; width: 48.81vw; }
+.master-steps-illustration { position: absolute; top: 27.431vw; left: -0.139vw; width: 48.056vw; }
+.master-steps-text-content { position: absolute; top: 23.333vw; left: 52.778vw; width: 39.861vw; }
+.master-steps-headline { font-size: 3.75vw; font-weight: 300; font-style: italic; line-height: 1.2; margin-bottom: 1vw; color: var(--color-primary-dark-blue); }
+.master-steps-description { font-size: var(--font-size-lg); font-weight: 400; line-height: 1.4; color: var(--color-primary-dark-blue); }
+
+#master-videos-section {
+    width: 100%; height: 62.778vw; background-color: var(--color-master-blue); position: relative; z-index: 0;
+}
+/* A seção master-videos herda os estilos de posicionamento de .video-card--X */
+
+
+/* --- Página FAQ (faq.html) --- */
+#faq-section {
+    width: 100%; background-color: var(--color-background-light-blue); position: relative; padding-bottom: 5.556vw; overflow-x: hidden;
+}
+.faq-title-group { position: absolute; top: 8.75vw; left: 5.556vw; width: 88.889vw; height: 2.847vw; display: flex; align-items: center; gap: 1.806vw; }
+.faq-title { flex-basis: 4.653vw; flex-shrink: 0; font-size: var(--font-size-xl); font-weight: 700; font-style: italic; color: var(--color-primary-dark-blue); white-space: nowrap; }
+.faq-title-lines { width: 53.551vw; height: 2.642vw; flex-shrink: 1; }
+.faq-subtitle { flex-basis: 27.083vw; flex-shrink: 0; font-size: var(--font-size-xl); font-weight: 700; font-style: italic; color: var(--color-primary-dark-blue); white-space: nowrap; }
+.faq-content-wrapper { position: relative; padding-top: 20.347vw; width: 88.889vw; margin: 0 auto; }
+.faq-category { margin-bottom: 5.556vw; }
+.faq-category-header { width: 100%; padding-bottom: 1.389vw; border-bottom: 1px solid var(--color-accent-yellow); margin-bottom: 1.389vw; }
+.faq-category-header h3 { font-size: var(--font-size-xl); font-weight: 300; font-style: italic; color: var(--color-primary-dark-blue); }
+
+
+/* --- Pop-up de Vídeo (Modal) --- */
 .video-popup-overlay {
     position: fixed;
     top: 0;
@@ -906,38 +451,25 @@ img {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /* ATUALIZADO: Garante mais espaço no topo para o botão de fechar */
-    padding: 8vw 5vw; 
+    padding: 8vw 5vw;
 }
-
 .video-popup-overlay.visible {
     display: flex;
 }
-
 .video-popup-content {
     position: relative;
-    
-    /* LARGURA: Ocupa 90% da largura da tela (vw), mas nunca passa de 1295px. */
     max-width: 1295px;
-    width: 90vw; 
-
-    /* ALTURA: Nunca passa de 90% da altura da tela (vh). Essencial para celulares. */
+    width: 90vw;
     max-height: 80vh;
-
-    /* PROPORÇÃO: Força o elemento a manter a escala de 1295x727. 
-       O navegador ajusta a altura com base na largura automaticamente. */
     aspect-ratio: 1295 / 727;
-    
     cursor: default;
     background-color: transparent;
 }
-
 .video-popup-close-button {
     position: absolute;
-    /* Posição acima do vídeo, mas usando 'bottom' em relação ao topo do container para consistência */
-    bottom: 100%; /* Coloca a base do botão no topo do .video-popup-content */
-    margin-bottom: 0.7vw; /* Adiciona um pequeno espaço (aprox. 10px) entre o botão e o vídeo */
-    right: 0;            /* Alinhado com a borda direita do vídeo */
+    bottom: 100%;
+    margin-bottom: 0.7vw;
+    right: 0;
     width: clamp(28px, 2.569vw, 37px);
     height: clamp(28px, 2.569vw, 37px);
     background: none;
@@ -946,24 +478,21 @@ img {
     cursor: pointer;
     z-index: 10000;
 }
-
 .video-popup-close-button img {
     width: 100%;
     height: 100%;
 }
-
 #video-popup-player-container {
     position: relative;
-    width: 100%; 
-    height: 100%; 
-    background-color: #000;
-    border-radius: clamp(12px, 1.389vw, 20px); /* Borda mínima de 12px, máxima de 20px */
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    border-radius: clamp(12px, 1.389vw, 20px);
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .video-placeholder {
     width: 100%;
     height: 100%;
@@ -975,7 +504,6 @@ img {
     cursor: pointer;
     position: relative;
 }
-
 .video-placeholder::before {
     content: '';
     position: absolute;
@@ -984,641 +512,110 @@ img {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
-    border-radius: inherit; /* Herda o border-radius do pai */
+    border-radius: inherit;
 }
-
 .popup-play-icon {
     position: relative;
-    width: clamp(80px, 8.268vw, 119px);  /* Tamanho mínimo de 80px, máximo de 119px */
+    width: clamp(80px, 8.268vw, 119px);
     height: clamp(80px, 8.268vw, 119px);
     transition: transform 0.2s ease;
 }
-
 .popup-play-icon:hover {
     transform: scale(1.1);
 }
-
 #video-popup-player-container iframe,
 #video-popup-player-container video {
     width: 100%;
     height: 100%;
     border: none;
-    border-radius: inherit; /* Herda o border-radius do pai */
-}
-
-body.modal-open {
-    overflow: hidden;
-}
-
-/* --- 19. PÁGINA "COMO FUNCIONA MASTER" - Seção Intro --- */
-#master-intro-section {
-    max-width: 100%; /* 1440px */
-    height: 86.875vw; /* 1251px */
-    margin: 0 auto;
-    background-color: #E5F2F8;
-    position: relative;
-    overflow: hidden;
-}
-
-.master-intro-title {
-    position: absolute;
-    top: 8.75vw; /* 126px */
-    left: 5.556vw; /* 80px */
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* 36px */
-    font-weight: 700;
-    font-style: italic;
-    color: #00213A;
-}
-
-.master-intro-lines {
-    position: absolute;
-    top: 9.306vw; /* 134px */
-    left: 34.861vw; /* 502px */
-    width: 65.234vw; /* 939.37px */
-}
-
-.master-intro-illustration {
-    position: absolute;
-    top: 20.127vw; /* 289.83px */
-    left: 5.556vw; /* 80px */
-    width: 88.889vw; /* 1280px */
-}
-
-.master-intro-text-content {
-    position: absolute;
-    top: 56.18vw; /* 809px */
-    left: 5.556vw; /* 80px */
-    width: 88.889vw; /* 1280px */
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end; /* Alinha pela base dos elementos */
-}
-
-.master-intro-headline {
-    flex-basis: 48.2%; /* 617px / 1280px */
-    font-size: clamp(2rem, 4.722vw, 4.25rem); /* 68px */
-    font-weight: 300; /* Headlines grandes costumam ser mais leves */
-    font-style: italic;
-    color: #00213A;
-    line-height: 1.15;
-}
-
-.master-intro-description {
-    flex-basis: 46.95%; /* 601px / 1280px */
-    font-size: clamp(1.25rem, 1.944vw, 1.75rem); /* 28px */
-    font-weight: 700;
-    color: #00213A;
-    line-height: 1.4;
-}
-
-/* --- 20. PÁGINA "COMO FUNCIONA MASTER" - Seção Etapas --- */
-#master-steps-section {
-    max-width: 100%; /* 1438px */
-    height: 71.667vw; /* 1032px */
-    margin: 0 auto;
-    background-color: #FFFFFF;
-    position: relative;
-}
-
-.master-step-item {
-    position: absolute;
-    width: 14.306vw;  /* 206px */
-    height: 18.819vw; /* 271px */
-    top: -5.486vw;    /* -79px */
-    left: 19.375%;    /* 279px / 1440px */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.master-step-icon {
-    width: 10.556vw; /* 152px */
-    height: 10.625vw; /* 153px */
-    margin-bottom: 2.708vw; /* Espaçamento entre o ícone e o texto (aprox. 39px) */
-}
-
-.master-step-text {
-    width: 100%;
-}
-
-.master-step-text h3 {
-    font-size: clamp(1.25rem, 1.944vw, 1.75rem); /* 28px */
-    font-weight: 700;
-    font-style: italic;
-    color: #00213A; /* Assumindo que "Azul 04" seja a cor principal do texto */
-    margin-bottom: 0.556vw; /* 8px */
-}
-
-.master-step-text p {
-    font-size: clamp(0.875rem, 1.25vw, 1.125rem); /* 18px */
-    font-weight: 400;
-    color: #00213A;
-    line-height: 1.4;
-}
-
-/* Posicionamento para o segundo step item */
-.master-step-item--2 {
-    width: 14.583vw;  /* 210px */
-    left: 41.875%;    /* 603px */
-}
-
-/* Dimensões específicas para o ícone do segundo step */
-.master-step-item--2 .master-step-icon {
-    width: 10.764vw; /* 155px */
-    height: 10.833vw; /* 156px */
-}
-
-/* Posicionamento e dimensões para o terceiro step item */
-.master-step-item--3 {
-    width: 19.167vw;  /* 276px */
-    height: 20.069vw; /* 289px */
-    left: 62.292%;    /* 897px */
-}
-
-/* Linhas decorativas na parte central da seção */
-.master-steps-lines {
-    position: absolute;
-    top: 24.236vw;  /* 349px */
-    left: 0;
-    width: 48.81vw; /* 702.87px */
-}
-
-/* Ilustração na parte central da seção */
-.master-steps-illustration {
-    position: absolute;
-    top: 27.431vw; /* 395px */
-    left: -0.139vw; /* -2px */
-    width: 48.056vw; /* 692px */
-}
-
-/* Container para os textos à direita */
-.master-steps-text-content {
-    position: absolute;
-    top: 23.333vw; /* 336px */
-    left: 52.778vw; /* 760px */
-    width: 39.861vw; /* 574px (usando a maior largura como base) */
-}
-
-.master-steps-headline {
-    font-size: clamp(2rem, 3.75vw, 3.375rem); /* 54px */
-    font-weight: 300; /* Itálico grande geralmente tem peso menor */
-    font-style: italic;
-    line-height: 1.2;
-    margin-bottom: 1vw; /* Espaçamento entre os textos */
-    color: #00213A;
-}
-
-.master-steps-description {
-    font-size: clamp(1.25rem, 1.944vw, 1.75rem); /* 28px */
-    font-weight: 400; /* Regular */
-    line-height: 1.4;
-    color: #00213A;
-}
-
-/* --- 21. PÁGINA "COMO FUNCIONA MASTER" - Seção Vídeos --- */
-#master-videos-section {
-    width: 100%;
-    height: 62.778vw; /* CORRIGIDO: Altura para 904px */    
-    background-color: #00BCFF; /* Nova cor de fundo */
-    position: relative;
-    z-index: 0;
-}
-
-/* Não são necessárias novas regras para .master-video-card--X, 
-   pois o HTML agora usa as classes .video-card--X existentes,
-   que já contêm o posicionamento correto. 
-*/
-
-
-/* --- 22. PÁGINA "FAQ" (CORRIGIDO COM DIMENSÕES EXATAS) --- */
-#faq-section {
-    width: 100%;
-    /* REMOVIDO: A altura mínima estava causando o espaçamento excessivo. */
-    /* min-height: 394.167vw; */ 
-    background-color: #E5F2F8;
-    position: relative;
-    padding-bottom: 5.556vw;
-    overflow-x: hidden; /* Garante que nenhum scroll horizontal ocorra */
-}
-
-.faq-title-group {
-    position: absolute;
-    top: 8.75vw;      /* 126px */
-    left: 5.556vw;     /* 80px */
-    width: 88.889vw;   /* 1280px */
-    height: 2.847vw;    /* 41px */
-    display: flex;
-    align-items: center;
-    gap: 1.806vw;      /* Gap de 26px ( (93 - 67) / 1440 * 100 ) */
-}
-
-.faq-title {
-    /* w=67px -> (67 / 1440) * 100 = 4.653vw */
-    flex-basis: 4.653vw; 
-    flex-shrink: 0; /* Impede que o texto "FAQ" encolha */
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* 36px */
-    font-weight: 700;
-    font-style: italic;
-    color: #00213A;
-    white-space: nowrap;
-}
-
-.faq-title-lines {
-    /* w=771.14px -> (771.14 / 1440) * 100 = 53.551vw */
-    width: 53.551vw;
-    height: 2.642vw; /* 38.05px */
-    flex-shrink: 1; /* Permite que as linhas encolham se for preciso (em caso de arredondamento) */
-}
-
-.faq-subtitle {
-    /* w=390px -> (390 / 1440) * 100 = 27.083vw */
-    flex-basis: 27.083vw;
-    flex-shrink: 0; /* Impede que o subtítulo encolha */
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* 36px */
-    font-weight: 700;
-    font-style: italic;
-    color: #00213A;
-    white-space: nowrap;
-}
-
-/* --- 23. PÁGINA "FAQ" - Categoria de Perguntas --- */
-/* --- 23. PÁGINA "FAQ" - Categoria de Perguntas (ATUALIZADO) --- */
-.faq-content-wrapper {
-    position: relative; /* Mudado de absolute para relative */
-    padding-top: 20.347vw; /* 293px (espaço que antes era do 'top' absoluto) */
-    width: 88.889vw; /* 1280px */
-    margin: 0 auto; /* Centraliza o container */
-}
-
-.faq-category {
-    /* Removemos o posicionamento absoluto para que as categorias fiquem uma abaixo da outra */
-    margin-bottom: 5.556vw; /* 80px de espaço entre cada categoria */
-}
-
-.faq-category-header {
-    width: 100%;
-    padding-bottom: 1.389vw; /* ~20px */
-    border-bottom: 1px solid #FEC311;
-    margin-bottom: 1.389vw; /* Reduzido para ~20px */
-}
-
-.faq-category-header h3 {
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* 36px */
-    font-weight: 300; /* Medium Italic -> Regular Italic é 300 */
-    font-style: italic;
-    color: #00213A;
-}
-
-/* --- 24. PÁGINA "FAQ" - Acordeão de Perguntas (CORREÇÃO DE ESPAÇAMENTO E ANIMAÇÃO) --- */
-.faq-accordion {
-    width: 100%;
-}
-
-.faq-item {
-    border-bottom: 1px solid #FEC311; 
-}
-
-.faq-question {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* ATUALIZADO: Voltamos a usar padding para um espaçamento mais natural */
-    padding: 1.736vw 0; /* ~25px */
-    cursor: pointer;
-}
-
-.faq-question p {
-    font-size: clamp(1.25rem, 1.944vw, 1.75rem); /* 28px */
-    font-weight: 700;
-    color: #00213A;
-    padding-right: 1.389vw;
-}
-
-.faq-icon-container {
-    width: 2.118vw;  /* 30.5px */
-    height: 2.153vw; /* 31px */
-    flex-shrink: 0;
-}
-
-.faq-icon {
-    width: 100%;
-    height: 100%;
-}
-
-.icon-minus {
-    display: none;
-}
-
-.faq-item.active .icon-plus {
-    display: none;
-}
-.faq-item.active .icon-minus {
-    display: block;
-}
-
-/* ATUALIZADO: Lógica para esconder/mostrar a resposta com Grid */
-/* ATUALIZADO: Lógica para esconder/mostrar a resposta com max-height */
-.faq-answer {
-    max-height: 0; /* Começa totalmente fechado e invisível */
-    overflow: hidden;
-    transition: max-height 0.4s ease-out; /* Animação suave e um pouco mais longa */
-}
-
-/* ATUALIZADO: Lógica para expandir a resposta para a altura exata do conteúdo */
-.faq-item.active .faq-answer {
-    /* Um valor alto que o conteúdo nunca ultrapassará. A animação para na altura real. */
-    max-height: 100vh; 
-}
-.faq-answer p {
-    font-size: clamp(1rem, 1.389vw, 1.25rem); /* ~20px */
-    font-weight: 400;
-    color: #00213A;
-    line-height: 1.5;
-    /* ADICIONADO: Padding no topo para criar o espaçamento correto */
-    padding-top: 0.694vw; /* ~10px */
-    padding-bottom: 2.778vw; /* ~40px */
-    min-height: 0; /* Necessário para a animação de grid funcionar corretamente */
+    border-radius: inherit;
 }
 
 
-/* --- Botão Voltar ao Topo --- */
-.back-to-top-button {
-    position: fixed;
-    width: 11.91vw; /* 171.5px */
-    height: 2.778vw; /* 40px */
-    top: 3.264vw; /* 47px */
-    right: 5.59vw; /* ~80.5px */
-    z-index: 1000;
-    visibility: hidden;
+/* --- Animações de Scroll --- */
+#introduction-section .intro-content, #introduction-section .intro-image,
+#what-is-section .what-is-title, #what-is-section .what-is-lines, #what-is-section .what-is-celular, #what-is-section .what-is-description,
+#how-to-join-section .join-content, #how-to-join-section .join-app-image,
+#already-registered-section .registered-app-image, #already-registered-section .registered-content,
+#avoid-scams-section .scams-headline, #avoid-scams-section .scams-description, #avoid-scams-section .scams-button,
+#site-footer,
+#ctv-intro-section .ctv-intro-title-group, #ctv-intro-section .ctv-intro-content, #ctv-intro-section .ctv-intro-illustration,
+#ctv-attention-section .attention-frame, #ctv-attention-section .attention-box,
+#ctv-learn-section .learn-illustration, #ctv-learn-section .learn-content,
+#ctv-videos-section .video-card,
+#master-intro-section .master-intro-title, #master-intro-section .master-intro-lines, #master-intro-section .master-intro-illustration, #master-intro-section .master-intro-text-content,
+#master-steps-section .master-step-item, #master-steps-section .master-steps-lines, #master-steps-section .master-steps-illustration, #master-steps-section .master-steps-text-content,
+#master-videos-section .video-card {
     opacity: 0;
-    transform: translateY(-1.389vw); /* -20px */
-    transition: all 0.3s ease-in-out;
-}
-.back-to-top-button.visible {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
 }
 
-/* --- 25. Animações de Scroll --- */
-
-/* -- Section: Introduction -- */
 #introduction-section .intro-content,
-#introduction-section .intro-image {
-    opacity: 0;
-    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
-}
-#introduction-section .intro-content {
-    transform: translateX(-50px);
-}
-#introduction-section .intro-image {
-    transform: translateX(50px);
-}
-#introduction-section.is-visible .intro-content,
-#introduction-section.is-visible .intro-image {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* -- Section: O que é? -- */
-#what-is-section .what-is-title,
-#what-is-section .what-is-lines,
-#what-is-section .what-is-celular,
-#what-is-section .what-is-description {
-    opacity: 0;
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-#what-is-section .what-is-title,
-#what-is-section .what-is-lines {
-    transform: translateY(-50px); /* Vêm de cima */
-}
-#what-is-section .what-is-celular,
-#what-is-section .what-is-description {
-    transform: translateY(50px); /* Vêm de baixo */
-}
-#what-is-section.is-visible .what-is-title,
-#what-is-section.is-visible .what-is-lines,
-#what-is-section.is-visible .what-is-celular,
-#what-is-section.is-visible .what-is-description {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* -- Section: Como fazer parte? -- */
 #how-to-join-section .join-content,
-#how-to-join-section .join-app-image {
-    opacity: 0;
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-#how-to-join-section .join-content {
-    transform: translateX(-50px); /* Texto da esquerda */
-}
-#how-to-join-section .join-app-image {
-    transform: translateX(50px); /* Imagem da direita */
-}
-#how-to-join-section.is-visible .join-content,
-#how-to-join-section.is-visible .join-app-image {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* -- Section: Já sou cadastrado -- */
 #already-registered-section .registered-app-image,
-#already-registered-section .registered-content {
-    opacity: 0;
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-#already-registered-section .registered-app-image {
-    transform: translateX(-50px); /* Imagem da esquerda */
-}
-#already-registered-section .registered-content {
-    transform: translateX(50px); /* Texto da direita */
-}
-#already-registered-section.is-visible .registered-app-image,
-#already-registered-section.is-visible .registered-content {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* -- Section: Evite Golpes -- */
 #avoid-scams-section .scams-headline,
-#avoid-scams-section .scams-description,
-#avoid-scams-section .scams-button {
-    opacity: 0;
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-#avoid-scams-section .scams-headline {
-    transform: translateX(-50px); /* Título da esquerda */
-}
-#avoid-scams-section .scams-description {
-    transform: translateX(50px); /* Descrição da direita */
-}
-#avoid-scams-section .scams-button {
-    transform: translateY(50px); /* Botão de baixo */
-}
-#avoid-scams-section.is-visible .scams-headline,
-#avoid-scams-section.is-visible .scams-description,
-#avoid-scams-section.is-visible .scams-button {
-    opacity: 1;
-    transform: translate(0, 0);
-}
-
-/* -- Section: Footer -- */
-#site-footer {
-    opacity: 0;
-    transform: translateY(50px); /* Footer vem de baixo */
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-#site-footer.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- 26. Animações de Scroll (COMO FUNCIONA) --- */
-
-/* -- Section: CTV Intro -- */
-#ctv-intro-section .ctv-intro-title-group,
 #ctv-intro-section .ctv-intro-content,
-#ctv-intro-section .ctv-intro-illustration {
-    opacity: 0;
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-#ctv-intro-section .ctv-intro-title-group {
-    transform: translateY(-50px); /* Título vem de cima */
-}
-#ctv-intro-section .ctv-intro-content {
-    transform: translateX(-50px); /* Conteúdo da esquerda */
-}
-#ctv-intro-section .ctv-intro-illustration {
-    transform: translateX(50px); /* Ilustração da direita */
-}
-#ctv-intro-section.is-visible .ctv-intro-title-group,
-#ctv-intro-section.is-visible .ctv-intro-content,
-#ctv-intro-section.is-visible .ctv-intro-illustration {
-    opacity: 1;
-    transform: translate(0, 0);
-}
-
-/* -- Section: CTV Attention -- */
-#ctv-attention-section .attention-frame,
-#ctv-attention-section .attention-box {
-    opacity: 0;
-    transform: translateY(50px); /* Vem de baixo */
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-#ctv-attention-section.is-visible .attention-frame,
-#ctv-attention-section.is-visible .attention-box {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* -- Section: CTV Learn -- */
 #ctv-learn-section .learn-illustration,
-#ctv-learn-section .learn-content {
-    opacity: 0;
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-#ctv-learn-section .learn-illustration {
-    transform: translateX(-50px); /* Ilustração da esquerda */
-}
-#ctv-learn-section .learn-content {
-    transform: translateX(50px); /* Conteúdo da direita */
-}
-#ctv-learn-section.is-visible .learn-illustration,
-#ctv-learn-section.is-visible .learn-content {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* -- Section: CTV Videos -- */
-#ctv-videos-section .video-card {
-    opacity: 0;
-    transform: translateY(50px); /* Cards de vídeo vêm de baixo */
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-/* Atraso para os cards aparecerem em sequência */
-#ctv-videos-section.is-visible .video-card:nth-child(1) { transition-delay: 0.1s; }
-#ctv-videos-section.is-visible .video-card:nth-child(2) { transition-delay: 0.2s; }
-#ctv-videos-section.is-visible .video-card:nth-child(3) { transition-delay: 0.3s; }
-#ctv-videos-section.is-visible .video-card:nth-child(4) { transition-delay: 0.4s; }
-#ctv-videos-section.is-visible .video-card:nth-child(5) { transition-delay: 0.5s; }
-
-#ctv-videos-section.is-visible .video-card {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* -- Section: Master Intro -- */
-#master-intro-section .master-intro-title,
-#master-intro-section .master-intro-lines,
 #master-intro-section .master-intro-illustration,
-#master-intro-section .master-intro-text-content {
-    opacity: 0;
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-#master-intro-section .master-intro-title,
-#master-intro-section .master-intro-lines {
-    transform: translateY(-50px); /* Título e linhas vêm de cima */
-}
-#master-intro-section .master-intro-illustration {
-    transform: translateX(-50px); /* Ilustração vem da esquerda */
-}
-#master-intro-section .master-intro-text-content {
-    transform: translateY(50px); /* Texto vem de baixo */
-}
-#master-intro-section.is-visible .master-intro-title,
-#master-intro-section.is-visible .master-intro-lines,
-#master-intro-section.is-visible .master-intro-illustration,
-#master-intro-section.is-visible .master-intro-text-content {
-    opacity: 1;
-    transform: translate(0, 0);
-}
-
-/* -- Section: Master Steps (elementos que não têm animação complexa de JS) -- */
-#master-steps-section .master-step-item,
-#master-steps-section .master-steps-lines,
-#master-steps-section .master-steps-illustration,
-#master-steps-section .master-steps-text-content {
-    opacity: 0;
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-/* Itens que vêm de cima/esquerda */
-#master-steps-section .master-step-item {
-    transform: translateY(-50px);
-}
 #master-steps-section .master-steps-lines,
 #master-steps-section .master-steps-illustration {
     transform: translateX(-50px);
 }
-#master-steps-section .master-steps-text-content {
+
+#introduction-section .intro-image,
+#how-to-join-section .join-app-image,
+#already-registered-section .registered-content,
+#avoid-scams-section .scams-description,
+#ctv-intro-section .ctv-intro-illustration,
+#ctv-learn-section .learn-content,
+#master-steps-text-content {
     transform: translateX(50px);
 }
 
-#master-steps-section.is-visible .master-step-item,
-#master-steps-section.is-visible .master-steps-lines,
-#master-steps-section.is-visible .master-steps-illustration,
-#master-steps-section.is-visible .master-steps-text-content {
-    opacity: 1;
-    transform: translate(0, 0);
+#what-is-section .what-is-title,
+#what-is-section .what-is-lines,
+#ctv-intro-section .ctv-intro-title-group,
+#master-intro-section .master-intro-title,
+#master-intro-section .master-intro-lines,
+#master-steps-section .master-step-item {
+    transform: translateY(-50px);
 }
 
-
-/* -- Section: Master Videos -- */
+#what-is-section .what-is-celular,
+#what-is-section .what-is-description,
+#avoid-scams-section .scams-button,
+#site-footer,
+#ctv-attention-section .attention-frame,
+#ctv-attention-section .attention-box,
+#ctv-videos-section .video-card,
+#master-intro-section .master-intro-text-content,
 #master-videos-section .video-card {
-    opacity: 0;
-    transform: translateY(50px); /* Cards de vídeo vêm de baixo */
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    transform: translateY(50px);
 }
-/* Atraso para os cards aparecerem em sequência */
-#master-videos-section.is-visible .video-card:nth-child(1) { transition-delay: 0.1s; }
-#master-videos-section.is-visible .video-card:nth-child(2) { transition-delay: 0.2s; }
-#master-videos-section.is-visible .video-card:nth-child(3) { transition-delay: 0.3s; }
-#master-videos-section.is-visible .video-card:nth-child(4) { transition-delay: 0.4s; }
 
+#introduction-section.is-visible .intro-content, #introduction-section.is-visible .intro-image,
+#what-is-section.is-visible .what-is-title, #what-is-section.is-visible .what-is-lines, #what-is-section.is-visible .what-is-celular, #what-is-section.is-visible .what-is-description,
+#how-to-join-section.is-visible .join-content, #how-to-join-section.is-visible .join-app-image,
+#already-registered-section.is-visible .registered-app-image, #already-registered-section.is-visible .registered-content,
+#avoid-scams-section.is-visible .scams-headline, #avoid-scams-section.is-visible .scams-description, #avoid-scams-section.is-visible .scams-button,
+#site-footer.is-visible,
+#ctv-intro-section.is-visible .ctv-intro-title-group, #ctv-intro-section.is-visible .ctv-intro-content, #ctv-intro-section.is-visible .ctv-intro-illustration,
+#ctv-attention-section.is-visible .attention-frame, #ctv-attention-section.is-visible .attention-box,
+#ctv-learn-section.is-visible .learn-illustration, #ctv-learn-section.is-visible .learn-content,
+#ctv-videos-section.is-visible .video-card,
+#master-intro-section.is-visible .master-intro-title, #master-intro-section.is-visible .master-intro-lines, #master-intro-section.is-visible .master-intro-illustration, #master-intro-section.is-visible .master-intro-text-content,
+#master-steps-section.is-visible .master-step-item, #master-steps-section.is-visible .master-steps-lines, #master-steps-section.is-visible .master-steps-illustration, #master-steps-section.is-visible .master-steps-text-content,
 #master-videos-section.is-visible .video-card {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
 
+#ctv-videos-section.is-visible .video-card:nth-child(1),
+#master-videos-section.is-visible .video-card:nth-child(1) { transition-delay: 0.1s; }
+#ctv-videos-section.is-visible .video-card:nth-child(2),
+#master-videos-section.is-visible .video-card:nth-child(2) { transition-delay: 0.2s; }
+#ctv-videos-section.is-visible .video-card:nth-child(3),
+#master-videos-section.is-visible .video-card:nth-child(3) { transition-delay: 0.3s; }
+#ctv-videos-section.is-visible .video-card:nth-child(4),
+#master-videos-section.is-visible .video-card:nth-child(4) { transition-delay: 0.4s; }
+#ctv-videos-section.is-visible .video-card:nth-child(5) { transition-delay: 0.5s; }

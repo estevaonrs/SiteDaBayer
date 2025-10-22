@@ -109,9 +109,8 @@
 
             </div> 
         </section>
-    </main>
-    
-            <footer id="site-footer">
+
+        <footer id="site-footer">
             <div class="footer-top">
                 <div class="footer-text-content">
                     <h2>Baixe o app.</h2>
@@ -149,47 +148,82 @@
             </div>
         </footer>
 
+    </main>
+    
+    
     <a href="#" class="back-to-top-button">
         <img src="assets/images/common/back-to-top.svg" alt="Voltar ao topo">
     </a>
 
 <script>
-    // Script do Botão Voltar ao Topo
-    document.addEventListener('DOMContentLoaded', () => {
-        const backToTopButton = document.querySelector('.back-to-top-button');
-        if (backToTopButton) {
-            backToTopButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+document.addEventListener('DOMContentLoaded', () => {
 
-            let lastScrollTop = 0;
-            window.addEventListener('scroll', () => {
-                let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
-                if (currentScrollTop > window.innerHeight / 2) {
-                    if (currentScrollTop < lastScrollTop) {
-                        backToTopButton.classList.add('visible');
-                    } else {
-                        backToTopButton.classList.remove('visible');
-                    }
+    // --- SCRIPT DE ANIMAÇÃO AO ROLAR (O QUE FALTAVA) ---
+    const animatedElements = document.querySelectorAll(
+        '#introduction-section .intro-content, #introduction-section .intro-image, ' +
+        '#what-is-section .what-is-title, #what-is-section .what-is-lines, #what-is-section .what-is-celular, #what-is-section .what-is-description, ' +
+        '#how-to-join-section .join-content, #how-to-join-section .join-app-image, ' +
+        '#already-registered-section .registered-app-image, #already-registered-section .registered-content, ' +
+        '#avoid-scams-section .scams-headline, #avoid-scams-section .scams-description, #avoid-scams-section .scams-button, ' +
+        '#site-footer, ' +
+        '#ctv-intro-section .ctv-intro-title-group, #ctv-intro-section .ctv-intro-content, #ctv-intro-section .ctv-intro-illustration, ' +
+        '#ctv-attention-section .attention-frame, #ctv-attention-section .attention-box, ' +
+        '#ctv-learn-section .learn-illustration, #ctv-learn-section .learn-content, ' +
+        '#ctv-videos-section .video-card, ' +
+        '#master-intro-section .master-intro-title, #master-intro-section .master-intro-lines, #master-intro-section .master-intro-illustration, #master-intro-section .master-intro-text-content, ' +
+        '#master-steps-section .master-step-item, #master-steps-section .master-steps-lines, #master-steps-section .master-steps-illustration, #master-steps-section .master-steps-text-content, ' +
+        '#master-videos-section .video-card'
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Opcional: para a animação ocorrer só uma vez
+            }
+        });
+    }, {
+        threshold: 0.1 // A animação começa quando 10% do elemento está visível
+    });
+
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+
+    // --- Script do Botão Voltar ao Topo ---
+    const backToTopButton = document.querySelector('.back-to-top-button');
+    if (backToTopButton) {
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+            if (currentScrollTop > window.innerHeight / 2) {
+                if (currentScrollTop < lastScrollTop) {
+                    backToTopButton.classList.add('visible');
                 } else {
                     backToTopButton.classList.remove('visible');
                 }
-                lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-            });
-        }
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+        });
+    }
 
-        // --- NOVO: Script do Acordeão FAQ ---
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                item.classList.toggle('active');
-            });
+    // --- Script do Acordeão FAQ ---
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            item.classList.toggle('active');
         });
     });
+});
 </script>
-    
 </body>
 </html>
